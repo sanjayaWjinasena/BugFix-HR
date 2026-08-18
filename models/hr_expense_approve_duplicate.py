@@ -2,6 +2,6 @@
 from odoo import fields, models
 
 
-class HrExpenseApproveDuplicate(models.Model):
+class HrExpenseApproveDuplicate(models.TransientModel):
     _inherit = 'hr.expense.approve.duplicate'
 
