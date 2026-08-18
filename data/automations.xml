@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- TODO: 7 automations records need hand-porting. -->
+  <!-- Clear-DB id=93: HR - Validate Stages -->
+  <!-- Clear-DB id=262: HR - Applicant -->
+  <!-- Clear-DB id=263: HR - Applicant 2 -->
+  <!-- Clear-DB id=264: HR - Validate Recruiter Marks -->
+  <!-- Clear-DB id=265: HR - Validate Line Manager Marks -->
+  <!-- Clear-DB id=266: HR - Validate Leadership Marks -->
+  <!-- Clear-DB id=267: HR - Validate Assignment Marks -->
+</odoo>

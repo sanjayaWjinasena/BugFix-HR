@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- TODO: 10 server_actions records need hand-porting. -->
+  <!-- Clear-DB id=1292: Digitize document -->
+  <!-- Clear-DB id=2577: EXP - Validate Negative Quantities -->
+  <!-- Clear-DB id=1293: Expense OCR: Update All Status -->
+  <!-- Clear-DB id=2993: Expense OCR: Validate Expenses -->
+  <!-- Clear-DB id=2580: HR - Applicant 2 -->
+  <!-- Clear-DB id=2579: HR - Applicant -->
+  <!-- Clear-DB id=2584: HR - Validate Assignment Marks -->
+  <!-- Clear-DB id=2583: HR - Validate Leadership Marks -->
+  <!-- Clear-DB id=2582: HR - Validate Line Manager Marks -->
+  <!-- Clear-DB id=2581: HR - Validate Recruiter Marks -->
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- TODO: 21 act_windows records need hand-porting. -->
+  <!-- Clear-DB id=1280: All Expense Reports -->
+  <!-- Clear-DB id=1278: All Reports -->
+  <!-- Clear-DB id=1279: Employee Expenses -->
+  <!-- Clear-DB id=1282: Expense Reports Analysis -->
+  <!-- Clear-DB id=1281: Expense Reports to Approve -->
+  <!-- Clear-DB id=1294: Expenses -->
+  <!-- Clear-DB id=1270: Expenses Analysis -->
+  <!-- Clear-DB id=1272: My Expenses -->
+  <!-- Clear-DB id=1274: My Reports -->
+  <!-- Clear-DB id=1269: Refuse Expense -->
+  <!-- Clear-DB id=1934: Validate Duplicate Expenses -->
+  <!-- Clear-DB id=2816: hr.expense -->
+  <!-- Clear-DB id=2585: hr.expense.sheet -->
+  <!-- Clear-DB id=2817: hr.expense.sheet -->
+  <!-- Clear-DB id=2596: hr.expense.sheet -->
+  <!-- Clear-DB id=2895: Bank Data -->
+  <!-- Clear-DB id=3546: Bulk Inputs -->
+  <!-- Clear-DB id=2367: ETF Schedule -->
+  <!-- Clear-DB id=2557: hr.attendance.overtime -->
+  <!-- Clear-DB id=2370: Rules -->
+  <!-- Clear-DB id=2369: Rules -->
+</odoo>
