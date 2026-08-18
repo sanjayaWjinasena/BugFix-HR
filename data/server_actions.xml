@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- TODO: 10 server_actions records need hand-porting. -->
-  <!-- Clear-DB id=1292: Digitize document -->
-  <!-- Clear-DB id=2577: EXP - Validate Negative Quantities -->
-  <!-- Clear-DB id=1293: Expense OCR: Update All Status -->
-  <!-- Clear-DB id=2993: Expense OCR: Validate Expenses -->
-  <!-- Clear-DB id=2580: HR - Applicant 2 -->
-  <!-- Clear-DB id=2579: HR - Applicant -->
-  <!-- Clear-DB id=2584: HR - Validate Assignment Marks -->
-  <!-- Clear-DB id=2583: HR - Validate Leadership Marks -->
-  <!-- Clear-DB id=2582: HR - Validate Line Manager Marks -->
-  <!-- Clear-DB id=2581: HR - Validate Recruiter Marks -->
+  <!-- 10 server_actions ports for BugFix-HR (auto-generated from Clear-DB snapshot) -->
+  <record id="server_action_1292_digitize_document" model="ir.actions.server">
+    <field name="name">Digitize document</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.expense&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[
+                if records:
+                    action = records.action_send_batch_for_digitization()
+            ]]></field>
+    <field name="usage">ir_actions_server</field>
+  </record>
+  <record id="server_action_2577_exp_validate_negative_quantities" model="ir.actions.server">
+    <field name="name">EXP - Validate Negative Quantities</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.expense&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.quantity < 0:
+  raise UserError("Invalid quantity")
+
+
+]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_1293_expense_ocr_update_all_status" model="ir.actions.server">
+    <field name="name">Expense OCR: Update All Status</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.expense&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[model.check_all_status()]]></field>
+    <field name="usage">ir_cron</field>
+  </record>
+  <record id="server_action_2993_expense_ocr_validate_expenses" model="ir.actions.server">
+    <field name="name">Expense OCR: Validate Expenses</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.expense&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[model._cron_validate()]]></field>
+    <field name="usage">ir_cron</field>
+  </record>
+  <record id="server_action_2580_hr_applicant_2" model="ir.actions.server">
+    <field name="name">HR - Applicant 2</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_2nd_selection == 'Yes':
+  record['stage_id'] = 0]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_2579_hr_applicant" model="ir.actions.server">
+    <field name="name">HR - Applicant</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_priority == 'No':
+  record['stage_id'] = 1
+]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_2584_hr_validate_assignment_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_marks_1 > 100.0:
+   raise UserError("Assignment Marks should be Less than or Equls to 100.")]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_2583_hr_validate_leadership_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_2 > 100.00:
+  raise UserError("Leadership Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_2582_hr_validate_line_manager_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_1 > 100.00:
+  raise UserError("Line Manager Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_2581_hr_validate_recruiter_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_3 > 100.00:
+  raise UserError("Recruiter Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+  </record>
 </odoo>

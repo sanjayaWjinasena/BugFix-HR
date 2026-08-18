@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- TODO: 7 automations records need hand-porting. -->
-  <!-- Clear-DB id=93: HR - Validate Stages -->
-  <!-- Clear-DB id=262: HR - Applicant -->
-  <!-- Clear-DB id=263: HR - Applicant 2 -->
-  <!-- Clear-DB id=264: HR - Validate Recruiter Marks -->
-  <!-- Clear-DB id=265: HR - Validate Line Manager Marks -->
-  <!-- Clear-DB id=266: HR - Validate Leadership Marks -->
-  <!-- Clear-DB id=267: HR - Validate Assignment Marks -->
+  <!-- 7 automations ports for BugFix-HR (auto-generated from Clear-DB snapshot) -->
+  <record id="automation_93_hr_validate_stages" model="base.automation">
+    <field name="name">HR - Validate Stages</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1522] -->
+  </record>
+  <record id="automation_262_hr_applicant" model="base.automation">
+    <field name="name">HR - Applicant</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2579] -->
+  </record>
+  <record id="automation_263_hr_applicant_2" model="base.automation">
+    <field name="name">HR - Applicant 2</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2580] -->
+  </record>
+  <record id="automation_264_hr_validate_recruiter_marks" model="base.automation">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2581] -->
+  </record>
+  <record id="automation_265_hr_validate_line_manager_marks" model="base.automation">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2582] -->
+  </record>
+  <record id="automation_266_hr_validate_leadership_marks" model="base.automation">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2583] -->
+  </record>
+  <record id="automation_267_hr_validate_assignment_marks" model="base.automation">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Applicant&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2584] -->
+  </record>
 </odoo>
