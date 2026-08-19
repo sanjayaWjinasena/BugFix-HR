@@ -14,7 +14,6 @@
         'data/automations.xml',
         'data/act_windows.xml',
         'reports/reports.xml',
-        'views/hr_applicant_studio_ported.xml',
         'views/hr_contract_studio_ported.xml',
         'views/hr_employee_studio_ported.xml',
         'views/hr_job_studio_ported.xml',
