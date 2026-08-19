@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- 7 automations ports for BugFix-HR (auto-generated from Clear-DB snapshot) -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_93_hr_validate_stages" model="base.automation">     <field name="name">HR - Validate Stages</field>     <field name="model_id" ... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_262_hr_applicant" model="base.automation">     <field name="name">HR - Applicant</field>     <field name="model_id" search="[(&... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_263_hr_applicant_2" model="base.automation">     <field name="name">HR - Applicant 2</field>     <field name="model_id" search=... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_264_hr_validate_recruiter_marks" model="base.automation">     <field name="name">HR - Validate Recruiter Marks</field>     <fie... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_265_hr_validate_line_manager_marks" model="base.automation">     <field name="name">HR - Validate Line Manager Marks</field>   ... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_266_hr_validate_leadership_marks" model="base.automation">     <field name="name">HR - Validate Leadership Marks</field>     <f... -->
-  <!-- SKIPPED unknown model Applicant: <record id="automation_267_hr_validate_assignment_marks" model="base.automation">     <field name="name">HR - Validate Assignment Marks</field>     <f... -->
+  
+  
+  
+  
+  
+  
+  
 </odoo>

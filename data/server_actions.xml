@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- 10 server_actions ports for BugFix-HR (auto-generated from Clear-DB snapshot) -->
-  <!-- SKIPPED unknown model hr.expense: <record id="server_action_1292_digitize_document" model="ir.actions.server">     <field name="name">Digitize document</field>     <field name="model_i... -->
-  <!-- SKIPPED unknown model hr.expense: <record id="server_action_2577_exp_validate_negative_quantities" model="ir.actions.server">     <field name="name">EXP - Validate Negative Quantities<... -->
-  <!-- SKIPPED unknown model hr.expense: <record id="server_action_1293_expense_ocr_update_all_status" model="ir.actions.server">     <field name="name">Expense OCR: Update All Status</field>... -->
-  <!-- SKIPPED unknown model hr.expense: <record id="server_action_2993_expense_ocr_validate_expenses" model="ir.actions.server">     <field name="name">Expense OCR: Validate Expenses</field>... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2580_hr_applicant_2" model="ir.actions.server">     <field name="name">HR - Applicant 2</field>     <field name="model_id" s... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2579_hr_applicant" model="ir.actions.server">     <field name="name">HR - Applicant</field>     <field name="model_id" searc... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2584_hr_validate_assignment_marks" model="ir.actions.server">     <field name="name">HR - Validate Assignment Marks</field> ... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2583_hr_validate_leadership_marks" model="ir.actions.server">     <field name="name">HR - Validate Leadership Marks</field> ... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2582_hr_validate_line_manager_marks" model="ir.actions.server">     <field name="name">HR - Validate Line Manager Marks</fie... -->
-  <!-- SKIPPED unknown model hr.applicant: <record id="server_action_2581_hr_validate_recruiter_marks" model="ir.actions.server">     <field name="name">HR - Validate Recruiter Marks</field>   ... -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </odoo>

@@ -2,6 +2,6 @@
 from odoo import fields, models
 
 
-class HrExpenseSplit(models.Model):
+class HrExpenseSplit(models.TransientModel):
     _inherit = 'hr.expense.split'
 
