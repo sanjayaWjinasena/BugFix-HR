@@ -94,35 +94,9 @@
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
   </record>
-  <record id="action_2895_bank_data" model="ir.actions.act_window">
-    <field name="name">Bank Data</field>
-    <field name="res_model">hr.payslip</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('net_wage', '&gt;', 0)]</field>
-  </record>
-  <record id="action_3546_bulk_inputs" model="ir.actions.act_window">
-    <field name="name">Bulk Inputs</field>
-    <field name="res_model">hr.payslip.bulk.input</field>
-    <field name="view_mode">tree,form</field>
-  </record>
   <record id="action_2367_etf_schedule" model="ir.actions.act_window">
     <field name="name">ETF Schedule</field>
     <field name="res_model">hr.contract</field>
     <field name="view_mode">kanban,tree,form,activity</field>
-  </record>
-  <record id="action_2557_hr_attendance_overtime" model="ir.actions.act_window">
-    <field name="name">hr.attendance.overtime</field>
-    <field name="res_model">hr.attendance.overtime</field>
-    <field name="view_mode">tree</field>
-  </record>
-  <record id="action_2370_rules" model="ir.actions.act_window">
-    <field name="name">Rules</field>
-    <field name="res_model">hr.salary.rule</field>
-    <field name="view_mode">kanban,tree,form</field>
-  </record>
-  <record id="action_2369_rules" model="ir.actions.act_window">
-    <field name="name">Rules</field>
-    <field name="res_model">hr.salary.rule</field>
-    <field name="view_mode">kanban,tree,form</field>
   </record>
 </odoo>
