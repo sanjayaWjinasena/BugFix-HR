@@ -20,7 +20,6 @@
         'views/hr_expense_split_wizard_studio_ported.xml',
         'views/hr_expense_approve_duplicate_studio_ported.xml',
         'views/hr_expense_refuse_wizard_studio_ported.xml',
-        'views/hr_expense_sheet_studio_ported.xml',
         'views/hr_applicant_studio_ported.xml',
     ],
     'installable': True,
