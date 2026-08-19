@@ -2,6 +2,6 @@
 from odoo import fields, models
 
 
-class HrExpenseRefuseWizard(models.Model):
+class HrExpenseRefuseWizard(models.TransientModel):
     _inherit = 'hr.expense.refuse.wizard'
 
