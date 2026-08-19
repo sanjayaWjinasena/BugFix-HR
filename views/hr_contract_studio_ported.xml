@@ -14,7 +14,11 @@
           
           
         </xpath>
-        
+        <xpath expr="//field[@name='wage_type']" position="after">
+          
+          
+          
+        </xpath>
         <xpath expr="//group[@name='yearly_benefits']" position="inside">
           
           

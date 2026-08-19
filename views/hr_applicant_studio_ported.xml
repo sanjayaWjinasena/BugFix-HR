@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="ported_odoo_studio_jobs_rec_1902edaf_d88f_4262_9db0_a090d5d60080" model="ir.ui.view">
+    <field name="name">Odoo Studio: Jobs - Recruitment Form customization</field>
+    <field name="model">hr.applicant</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='date_closed']" position="after">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <xpath expr="//field[@name='user_id']" position="move"/>
+          
+          
+          
+          
+        </xpath>
+        <xpath expr="//field[@name='user_id']" position="attributes">
+          <attribute name="force_save">True</attribute>
+          <attribute name="invisible">1</attribute><attribute name="readonly">1</attribute></xpath>
+      </data>
+    </field>
+  </record>
+</odoo>
