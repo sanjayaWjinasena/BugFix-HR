@@ -25,18 +25,7 @@
     <field name="mode">primary</field>
     <field name="arch" type="xml">
       <form string="Expense Reports">
-      <field name="approve" invisible="1"/>
-      <field name="cancel" invisible="1"/>
-      <field name="company_account" invisible="1"/>
-      <field name="done" invisible="1"/>
-      <field name="draft" invisible="1"/>
-      <field name="in_payment" invisible="1"/>
       <field name="nb_attachment" invisible="1"/>
-      <field name="own_account" invisible="1"/>
-      <field name="paid" invisible="1"/>
-      <field name="partial" invisible="1"/>
-      <field name="post" invisible="1"/>
-      <field name="submit" invisible="1"/>
                       <field name="can_reset" invisible="1"/>
                       <field name="can_approve" invisible="1"/>
                       <field name="company_id" invisible="1"/>

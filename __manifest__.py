@@ -8,7 +8,7 @@
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
-    'depends': ['base_setup', 'hr', 'hr_contract'],
+    'depends': ['base_setup', 'hr', 'hr_contract', 'hr_expense', 'hr_recruitment'],
     'data': [
         'data/server_actions.xml',
         'data/automations.xml',
