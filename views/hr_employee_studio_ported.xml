@@ -3,6 +3,7 @@
   <record id="ported_odoo_studio_hr_emplo_621580e0_1a5f_4b88_94c0_110759d76d8c" model="ir.ui.view">
     <field name="name">Odoo Studio: hr.employee.form customization</field>
     <field name="model">hr.employee</field>
+    <field name="key">studio_customization.odoo_studio_hr_emplo_621580e0-1a5f-4b88-94c0-110759d76d8c</field>
     <field name="type">form</field>
     <field name="priority">99</field>
     <field name="mode">extension</field>
@@ -14,13 +15,7 @@
           <field name="x_studio_etf_no" string="ETF No"/>
           <field name="x_studio_purpose_code" string="Purpose Code"/>
         </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='hr_settings']/group[1]/group[@name='active_group']/field[@name='user_id']" position="after">
-          <field name="x_studio_occupation_code"/>
-          <field name="x_studio_ot_hours" string="OT Hours" widget="float_time"/>
-          <field name="x_studio_ot_month" widget="float_time"/>
-          <field name="x_studio_ot_rate" string="OT Rate"/>
-          <field name="x_studio_employee_rate" string="Employee Rate"/>
-        </xpath>
+        
       </data>
     </field>
   </record>

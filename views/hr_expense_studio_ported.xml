@@ -3,12 +3,19 @@
   <record id="ported_hr_expense_extract_view_form" model="ir.ui.view">
     <field name="name">hr.expense.extract.view.form</field>
     <field name="model">hr.expense</field>
+    <field name="key">hr_expense_extract.hr_expense_extract_view_form</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">extension</field>
     <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
     <field name="arch" type="xml">
-      <data><xpath expr="//header" position="inside">
+      <data>
+      <field name="draft" invisible="1"/>
+      <field name="error_status" invisible="1"/>
+      <field name="extract_not_ready" invisible="1"/>
+      <field name="not_enough_credit" invisible="1"/>
+      <field name="state" invisible="1"/>
+      <field name="waiting_extraction" invisible="1"/><xpath expr="//header" position="inside">
                       <button name="action_manual_send_for_digitization" class="oe_highlight" string="Digitize document" type="object" invisible="not extract_can_show_send_button" data-hotkey="s"/>
                   </xpath>
                   <xpath expr="//header" position="after">
@@ -57,6 +64,7 @@
   <record id="ported_hr_expense_extract_v_f410d270_fd86_47a7_b176_83b0be1165ef" model="ir.ui.view">
     <field name="name">hr.expense.extract.view.form_studio_cus</field>
     <field name="model">hr.expense</field>
+    <field name="key">studio_customization.hr_expense_extract_v_f410d270-fd86-47a7-b176-83b0be1165ef</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">extension</field>
@@ -69,11 +77,18 @@
   <record id="ported_hr_expense_view_form" model="ir.ui.view">
     <field name="name">hr.expense.view.form</field>
     <field name="model">hr.expense</field>
+    <field name="key">hr_expense.hr_expense_view_form</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">primary</field>
     <field name="arch" type="xml">
       <form string="Expenses" js_class="hr_expense_form_view">
+      <field name="approved" invisible="1"/>
+      <field name="done" invisible="1"/>
+      <field name="draft" invisible="1"/>
+      <field name="gt" invisible="1"/>
+      <field name="lt" invisible="1"/>
+      <field name="refused" invisible="1"/>
                       <header>
                         <button name="action_submit_expenses" string="Create Report" type="object" class="oe_highlight o_expense_submit" invisible="nb_attachment &lt;= 0 or sheet_id" data-hotkey="v"/>
                         <button name="action_view_sheet" type="object" string="View Report" class="oe_highlight" invisible="not sheet_id or nb_attachment &lt; 1" data-hotkey="w"/>
@@ -177,6 +192,7 @@
   <record id="ported_hr_expense_view_form_inherit_documents_hr_expense" model="ir.ui.view">
     <field name="name">hr.expense.view.form.inherit.documents.hr.expense</field>
     <field name="model">hr.expense</field>
+    <field name="key">documents_hr_expense.hr_expense_view_form_inherit_documents_hr_expense</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">extension</field>
@@ -197,6 +213,7 @@
   <record id="ported_hr_expense_form_view_inherit_sale_expense" model="ir.ui.view">
     <field name="name">hr.expense.form.inherit.sale.expense</field>
     <field name="model">hr.expense</field>
+    <field name="key">sale_expense.hr_expense_form_view_inherit_sale_expense</field>
     <field name="type">form</field>
     <field name="priority">30</field>
     <field name="mode">extension</field>
@@ -213,6 +230,7 @@
   <record id="ported_hr_expense_view_form_without_header" model="ir.ui.view">
     <field name="name">hr.expense.view.form</field>
     <field name="model">hr.expense</field>
+    <field name="key">hr_expense.hr_expense_view_form_without_header</field>
     <field name="type">form</field>
     <field name="priority">35</field>
     <field name="mode">primary</field>
@@ -233,6 +251,7 @@
   <record id="ported_odoo_studio_hr_expen_d36bff56_32db_43db_915e_80086f744338" model="ir.ui.view">
     <field name="name">Odoo Studio: hr.expense.view.form customization</field>
     <field name="model">hr.expense</field>
+    <field name="key">studio_customization.odoo_studio_hr_expen_d36bff56-32db-43db-915e-80086f744338</field>
     <field name="type">form</field>
     <field name="priority">99</field>
     <field name="mode">extension</field>

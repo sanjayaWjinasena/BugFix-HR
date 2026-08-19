@@ -3,20 +3,16 @@
   <record id="ported_hr_expense_sheet_form_view_inherit_sale_expense" model="ir.ui.view">
     <field name="name">hr.expense.sheet.form.inherit.sale.expense</field>
     <field name="model">hr.expense.sheet</field>
+    <field name="key">sale_expense.hr_expense_sheet_form_view_inherit_sale_expense</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">extension</field>
     <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='description']" position="after">
-                      
-                      
-                  </xpath>
-    </field>
   </record>
   <record id="ported_hr_expense_sheet_view_form" model="ir.ui.view">
     <field name="name">hr.expense.sheet.view.form.inherit.sale.expense</field>
     <field name="model">hr.expense.sheet</field>
+    <field name="key">sale_expense.hr_expense_sheet_view_form</field>
     <field name="type">form</field>
     <field name="priority">16</field>
     <field name="mode">extension</field>
@@ -32,11 +28,24 @@
   <record id="ported_view_hr_expense_sheet_form" model="ir.ui.view">
     <field name="name">hr.expense.sheet.form</field>
     <field name="model">hr.expense.sheet</field>
+    <field name="key">hr_expense.view_hr_expense_sheet_form</field>
     <field name="type">form</field>
     <field name="priority">25</field>
     <field name="mode">primary</field>
     <field name="arch" type="xml">
       <form string="Expense Reports">
+      <field name="approve" invisible="1"/>
+      <field name="cancel" invisible="1"/>
+      <field name="company_account" invisible="1"/>
+      <field name="done" invisible="1"/>
+      <field name="draft" invisible="1"/>
+      <field name="in_payment" invisible="1"/>
+      <field name="nb_attachment" invisible="1"/>
+      <field name="own_account" invisible="1"/>
+      <field name="paid" invisible="1"/>
+      <field name="partial" invisible="1"/>
+      <field name="post" invisible="1"/>
+      <field name="submit" invisible="1"/>
                       <field name="can_reset" invisible="1"/>
                       <field name="can_approve" invisible="1"/>
                       <field name="company_id" invisible="1"/>
@@ -144,26 +153,20 @@
   <record id="ported_odoo_studio_hr_expen_530d392d_77b6_4202_a433_5257d6c510d2" model="ir.ui.view">
     <field name="name">Odoo Studio: hr.expense.sheet.form customization</field>
     <field name="model">hr.expense.sheet</field>
+    <field name="key">studio_customization.odoo_studio_hr_expen_530d392d-77b6-4202-a433-5257d6c510d2</field>
     <field name="type">form</field>
     <field name="priority">160</field>
     <field name="mode">extension</field>
     <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]/h1[1]/field[@name='name']" position="attributes">
-          <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute></xpath>
-        <xpath expr="//field[@name='accounting_date']" position="attributes">
-          <attribute name="invisible">(state not in ['approve', 'post', 'done']) or (state not in ['approve', 'post', 'done'])</attribute><attribute name="readonly">(not is_editable) or (state != 'draft')</attribute></xpath>
-        <xpath expr="//field[@name='date']" position="attributes">
-          <attribute name="readonly">(parent.state != 'draft') or (state not in ['draft', 'reported', 'approved', 'refused'])</attribute></xpath>
-        <xpath expr="//field[@name='product_id']" position="attributes">
-          <attribute name="readonly">(parent.state != 'draft') or (state not in ['draft', 'reported', 'approved', 'refused'])</attribute></xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='expenses']/field[@name='expense_line_ids']/tree[1]/field[@name='name']" position="attributes">
-          <attribute name="readonly">(parent.state != 'draft') or (state not in ['draft', 'reported', 'approved', 'refused'])</attribute></xpath>
-        <xpath expr="//field[@name='sale_order_id']" position="attributes">
-          <attribute name="invisible">(not can_be_reinvoiced) or (can_be_reinvoiced == False)</attribute><attribute name="readonly">(state in ['done', 'refused']) or ((parent.state != 'draft') or (state in ['done', 'refused']))</attribute></xpath>
-        <xpath expr="//field[@name='tax_ids']" position="attributes">
-          <attribute name="readonly">True</attribute></xpath>
+        
+        
+        
+        
+        
+        
+        
         </data>
     </field>
   </record>

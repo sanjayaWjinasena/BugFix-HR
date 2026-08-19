@@ -3,6 +3,7 @@
   <record id="ported_odoo_studio_hr_job_f_7b8bfbf6_206e_44fc_a575_a1752d80aa0e" model="ir.ui.view">
     <field name="name">Odoo Studio: hr.job.form customization</field>
     <field name="model">hr.job</field>
+    <field name="key">studio_customization.odoo_studio_hr_job_f_7b8bfbf6-206e-44fc-a575-a1752d80aa0e</field>
     <field name="type">form</field>
     <field name="priority">160</field>
     <field name="mode">extension</field>
