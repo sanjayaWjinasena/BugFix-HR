@@ -14,7 +14,6 @@
         'data/automations.xml',
         'data/act_windows.xml',
         'reports/reports.xml',
-        'views/hr_expense_refuse_wizard_studio_ported.xml',
         'views/hr_expense_sheet_studio_ported.xml',
         'views/hr_applicant_studio_ported.xml',
         'views/hr_contract_studio_ported.xml',
