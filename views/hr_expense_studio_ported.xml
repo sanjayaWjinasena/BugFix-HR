@@ -55,9 +55,7 @@
                           </button>
                       </div>
                   </xpath>
-                  <xpath expr="//field[@name='account_id']" position="after">
-                      <field name="extract_document_uuid" groups="base.group_no_one" widget="CopyClipboardChar" invisible="not extract_document_uuid"/>
-                  </xpath>
+                  
               </data>
     </field>
   </record>
@@ -218,14 +216,6 @@
     <field name="priority">30</field>
     <field name="mode">extension</field>
     <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//field[@name='analytic_distribution']" position="before">
-                      <field name="sale_order_id" groups="!sales_team.group_sale_salesman,!account.group_account_manager" invisible="not can_be_reinvoiced" readonly="not is_editable" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" context="{'sale_show_partner_name': True, 'sale_expense_all_order': True}" widget="sale_order_many2one"/>
-                      <field name="sale_order_id" groups="sales_team.group_sale_salesman,!account.group_account_manager" invisible="not can_be_reinvoiced" readonly="not is_editable" options="{'no_create_edit': True, 'no_create': True}" context="{'sale_show_partner_name': True, 'sale_expense_all_order': True}" widget="many2one"/>
-                      <field name="sale_order_id" groups="account.group_account_manager" widget="many2one" invisible="not can_be_reinvoiced" readonly="not is_editable" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" context="{'sale_show_partner_name': True, 'sale_expense_all_order': True}"/>
-                      <field name="can_be_reinvoiced" invisible="1"/>
-                  </xpath>
-    </field>
   </record>
   <record id="ported_hr_expense_view_form_without_header" model="ir.ui.view">
     <field name="name">hr.expense.view.form</field>
@@ -258,18 +248,12 @@
     <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//field[@name='product_id']" position="attributes">
-          <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute></xpath>
-        <xpath expr="//field[@name='price_unit']" position="attributes">
-          <attribute name="invisible">product_has_cost == False</attribute><attribute name="readonly">(state != 'draft') or (product_has_cost == True)</attribute></xpath>
-        <xpath expr="//field[@name='quantity']" position="attributes">
-          <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute></xpath>
-        <xpath expr="//field[@name='date']" position="attributes">
-          <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute></xpath>
-        <xpath expr="//field[@name='account_id']" position="attributes">
-          <attribute name="readonly">(not is_editable) or ((state != 'draft') or ((is_editable == False)))</attribute></xpath>
-        <xpath expr="//field[@name='sale_order_id']" position="attributes">
-          <attribute name="invisible">(not can_be_reinvoiced) or (can_be_reinvoiced == False)</attribute><attribute name="readonly">(not is_editable) or ((state != 'draft') or ((state in ['done'])))</attribute></xpath>
+        
+        
+        
+        
+        
+        
         </data>
     </field>
   </record>

@@ -10,11 +10,7 @@
     <field name="inherit_id" ref="hr.view_employee_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//field[@name='emergency_phone']" position="after">
-          <field name="x_studio_epf_no" string="EPF No"/>
-          <field name="x_studio_etf_no" string="ETF No"/>
-          <field name="x_studio_purpose_code" string="Purpose Code"/>
-        </xpath>
+        
         
       </data>
     </field>

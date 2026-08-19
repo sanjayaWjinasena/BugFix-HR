@@ -10,25 +10,8 @@
     <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//field[@name='date_closed']" position="after">
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          <xpath expr="//field[@name='user_id']" position="move"/>
-          
-          
-          
-          
-        </xpath>
-        <xpath expr="//field[@name='user_id']" position="attributes">
-          <attribute name="force_save">True</attribute>
-          <attribute name="invisible">1</attribute><attribute name="readonly">1</attribute></xpath>
+        
+        
       </data>
     </field>
   </record>

@@ -10,15 +10,8 @@
     <field name="inherit_id" ref="hr.view_hr_job_form"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//field[@name='no_of_recruitment']" position="after">
-          <field name="x_studio_line_manager_name" string="Line Manager Name"/>
-          <field name="x_studio_leadership_name" string="Leadership Name"/>
-        </xpath>
-        <xpath expr="//field[@name='user_id']" position="after">
-          <field name="x_studio_link" string="Link"/>
-          <field filename="x_studio_test_document_filename" name="x_studio_test_document" string="Test Document" required="False" widget="pdf_viewer"/>
-          <field invisible="1" name="x_studio_test_document_filename"/>
-        </xpath>
+        
+        
       </data>
     </field>
   </record>
