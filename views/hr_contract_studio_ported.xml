@@ -14,11 +14,7 @@
           <field name="x_studio_surname"/>
           <field name="x_studio_occupation_grade"/>
         </xpath>
-        <xpath expr="//field[@name='wage_type']" position="after">
-          <field name="x_studio_paye_tax_amount" string="Paye Tax Amount"/>
-          <field name="x_studio_ot_rate" string="OT Rate"/>
-          <field name="x_studio_ot_hours" string="OT Hours"/>
-        </xpath>
+        
         <xpath expr="//group[@name='yearly_benefits']" position="inside">
           <field name="x_studio_gbud_a"/>
           <field name="x_studio_gbud_l2"/>
