@@ -10,18 +10,18 @@
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='employee_id']" position="after">
-          <field name="x_studio_initial"/>
-          <field name="x_studio_surname"/>
-          <field name="x_studio_occupation_grade"/>
+          
+          
+          
         </xpath>
         
         <xpath expr="//group[@name='yearly_benefits']" position="inside">
-          <field name="x_studio_gbud_a"/>
-          <field name="x_studio_gbud_l2"/>
-          <field name="x_studio_standing_order_1"/>
-          <field name="x_studio_std_ord2"/>
-          <field name="x_studio_travelling_allowance"/>
-          <field name="x_studio_ex_gratia"/>
+          
+          
+          
+          
+          
+          
         </xpath>
       </data>
     </field>
