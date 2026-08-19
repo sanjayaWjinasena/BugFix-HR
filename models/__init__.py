@@ -1,4 +1,3 @@
-from . import hr_applicant
 from . import hr_contract
 from . import hr_employee
 from . import hr_expense
@@ -8,4 +7,3 @@ from . import hr_expense_sheet
 from . import hr_expense_split
 from . import hr_expense_split_wizard
 from . import hr_job
-from . import hr_recruitment_stage
