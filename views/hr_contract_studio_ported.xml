@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="ported_odoo_studio_hr_contr_ec7d09d2_5f44_4bea_84b8_0adee06eff44" model="ir.ui.view">
+    <field name="name">Odoo Studio: hr.contract.form customization</field>
+    <field name="model">hr.contract</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='employee_id']" position="after">
+          <field name="x_studio_initial"/>
+          <field name="x_studio_surname"/>
+          <field name="x_studio_occupation_grade"/>
+        </xpath>
+        <xpath expr="//field[@name='wage_type']" position="after">
+          <field name="x_studio_paye_tax_amount" string="Paye Tax Amount"/>
+          <field name="x_studio_ot_rate" string="OT Rate"/>
+          <field name="x_studio_ot_hours" string="OT Hours"/>
+        </xpath>
+        <xpath expr="//group[@name='yearly_benefits']" position="inside">
+          <field name="x_studio_gbud_a"/>
+          <field name="x_studio_gbud_l2"/>
+          <field name="x_studio_standing_order_1"/>
+          <field name="x_studio_std_ord2"/>
+          <field name="x_studio_travelling_allowance"/>
+          <field name="x_studio_ex_gratia"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>

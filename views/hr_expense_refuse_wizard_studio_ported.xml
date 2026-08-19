@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="ported_hr_expense_refuse_wizard_view_form" model="ir.ui.view">
+    <field name="name">hr.expense.refuse.wizard.form</field>
+    <field name="model">hr.expense.refuse.wizard</field>
+    <field name="type">form</field>
+    <field name="priority">16</field>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <form string="Expense refuse reason">
+                      <separator string="Reason to refuse Expense"/>
+                      <field name="sheet_ids" invisible="1"/>
+                      <field name="reason" class="w-100"/>
+                      <footer>
+                          <button string="Refuse" name="action_refuse" type="object" class="oe_highlight" data-hotkey="q"/>
+                          <button string="Cancel" class="oe_link" special="cancel" data-hotkey="x"/>
+                      </footer>
+                 </form>
+    </field>
+  </record>
+</odoo>
