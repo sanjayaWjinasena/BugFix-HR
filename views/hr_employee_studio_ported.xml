@@ -1,18 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="ported_odoo_studio_hr_emplo_621580e0_1a5f_4b88_94c0_110759d76d8c" model="ir.ui.view">
-    <field name="name">Odoo Studio: hr.employee.form customization</field>
-    <field name="model">hr.employee</field>
-    <field name="key">studio_customization.odoo_studio_hr_emplo_621580e0-1a5f-4b88-94c0-110759d76d8c</field>
-    <field name="type">form</field>
-    <field name="priority">99</field>
-    <field name="mode">extension</field>
-    <field name="inherit_id" ref="hr.view_employee_form"/>
-    <field name="arch" type="xml">
-      <data>
-        
-        
-      </data>
-    </field>
-  </record>
 </odoo>
