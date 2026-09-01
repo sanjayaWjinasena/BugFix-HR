@@ -6,15 +6,19 @@ so a future session can pick up without re-triaging.
 
 ---
 
-## Server actions — hr.applicant (13 total, none ported)
+## Server actions — hr.applicant (9 total, none ported; 4 permanently skipped)
 
 **All shipped as-is on Clear-DB; not yet ported to data/server_actions.xml.**
 
-### Interactive (button-invoked, usage=ir_actions_server)
-- `3017` Digitize document — OCR trigger
-- `3152` Refuse — reject applicant workflow
-- `3019` Request Signature — signature workflow trigger
-- `2933` Send Email — email compose action
+### PERMANENTLY SKIPPED (v0.0.20 rollback of v0.0.19)
+Standard Odoo modules already provide identical Action menu bindings on
+hr.applicant. Studio versions were pure code-wrappers calling the same
+standard methods -- porting them created duplicate menu items. Skipped
+for UX reasons; no functional loss.
+- `3017` Digitize document -> hr_recruitment_extract provides identical binding
+- `3152` Refuse -> hr_recruitment provides identical binding
+- `3019` Request Signature -> hr_recruitment_sign provides identical binding
+- `2933` Send Email -> mail / hr_recruitment provides identical binding
 
 ### Base automations (usage=base_automation)
 - `2579` HR - Applicant
@@ -31,13 +35,13 @@ so a future session can pick up without re-triaging.
 
 **Un-defer approach:**
 1. RPC-dump each action's `code` + trigger config (base.automation records).
-2. Port `usage=ir_actions_server` first (they're user-visible buttons).
-3. Port base_automation triggers with `<field name="action_server_ids"
+2. Port base_automation triggers with `<field name="action_server_ids"
    eval="[(6, 0, [ref('server_action_NNNN_...')])]"/>` binding.
-4. Port cron jobs last (ir.cron records + xmlids).
+3. Port cron jobs last (ir.cron records + xmlids).
 
-**Sizing:** 4 interactive = one small batch. 7 base_automation = medium
-batch. 2 cron = small batch. Total 3 versions to close out.
+**Sizing:** 7 base_automation = medium batch. 2 cron = small batch.
+Total 2 versions to close out (interactive category permanently skipped
+per v0.0.20 rollback).
 
 ---
 

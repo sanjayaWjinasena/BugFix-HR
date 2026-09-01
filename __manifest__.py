@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.19',
+    'version': '17.0.0.0.20',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.20: ROLLBACK of v0.0.19's 4 hr.applicant Action-menu server
+    # actions (Digitize, Refuse, Request Signature, Send Email).
+    # Discovered post-ship that standard Odoo modules already provide
+    # identical Action menu bindings on hr.applicant:
+    #   * Digitize -> hr_recruitment_extract
+    #   * Refuse -> hr_recruitment
+    #   * Request Signature -> hr_recruitment_sign
+    #   * Send Email -> mail / hr_recruitment
+    # Studio versions were pure code-wrappers calling the same standard
+    # methods. Landing them created duplicate menu items (2 of each).
+    # data/server_actions.xml reverted to empty stub. DEFERRED.md updated
+    # to remove these 4 from the deferred list -- they are permanently
+    # skipped, not deferred.
     # v0.0.19: 4 interactive hr.applicant server actions (usage=ir_actions_server,
     # binding_model_id=hr.applicant, binding_type=action - appear in Action menu):
     #   * 3017 Digitize document -> records.action_send_batch_for_digitization()

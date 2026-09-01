@@ -1,57 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- BugFix-HR server actions ported from Clear-DB. -->
-
-  <!-- v0.0.19: 4 interactive hr.applicant server actions -->
-  <!-- Each is bound to the hr.applicant form via binding_model_id + binding_type='action'
-       so it appears in the Action menu on the applicant record view. All 4 call existing
-       model methods; install-safe. Runtime requires:
-         * action_send_batch_for_digitization  -> hr_recruitment_extract (Enterprise OCR)
-         * archive_applicant                    -> hr_recruitment standard
-         * _send_applicant_sign_request         -> hr_recruitment_sign (Enterprise)
-         * action_send_email                    -> mail standard
-       Click failures on missing methods are runtime AttributeErrors, not install failures. -->
-
-  <record id="server_action_3017_digitize_document" model="ir.actions.server">
-    <field name="name">Digitize document</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_type">action</field>
-    <field name="state">code</field>
-    <field name="usage">ir_actions_server</field>
-    <field name="code"><![CDATA[if records:
-    action = records.action_send_batch_for_digitization()]]></field>
-  </record>
-
-  <record id="server_action_3152_refuse" model="ir.actions.server">
-    <field name="name">Refuse</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_type">action</field>
-    <field name="state">code</field>
-    <field name="usage">ir_actions_server</field>
-    <field name="code"><![CDATA[if records:
-    action = records.archive_applicant()]]></field>
-  </record>
-
-  <record id="server_action_3019_request_signature" model="ir.actions.server">
-    <field name="name">Request Signature</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_type">action</field>
-    <field name="state">code</field>
-    <field name="usage">ir_actions_server</field>
-    <field name="code"><![CDATA[action = records._send_applicant_sign_request()]]></field>
-  </record>
-
-  <record id="server_action_2933_send_email" model="ir.actions.server">
-    <field name="name">Send Email</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
-    <field name="binding_type">action</field>
-    <field name="state">code</field>
-    <field name="usage">ir_actions_server</field>
-    <field name="code"><![CDATA[action = records.action_send_email()]]></field>
-  </record>
-
+  <!-- BugFix-HR server actions ported from Clear-DB.
+       Empty stub after v0.0.20 rollback of v0.0.19's 4 hr.applicant
+       Action-menu ports. Standard Odoo modules (hr_recruitment,
+       hr_recruitment_extract, hr_recruitment_sign, mail) already
+       provide identical bindings, so Studio ports were pure
+       duplicates. See DEFERRED.md for the intentional-skip rationale. -->
 </odoo>
