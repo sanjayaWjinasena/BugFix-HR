@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'BugFix - HR',
-    'version': '17.0.0.0.12',
+    'name': 'Jinasena : Module : HR',
+    'version': '17.0.0.0.13',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.13: rename 'BugFix - HR' -> 'Jinasena : Module : HR' + add
+    # module icon (static/description/icon.png). Matches the branding
+    # pattern used by BugFix-MRP + other Jinasena_* modules.
     # v0.0.12: hr.recruitment.stage port (1 field + 1 view). First
     # substantive add after the v0.0.9-v0.0.11 CRITICAL strip cycle.
     #   * NEW DEP hr_recruitment (was stripped in v0.0.11 CRITICAL).
