@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.13',
+    'version': '17.0.0.0.14',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.14: hr.attendance port - 7 x_studio_ fields, 0 views.
+    # See models/hr_attendance.py. All fields declared from Clear-DB scout:
+    #   * x_studio_check_in_auto     (Boolean, copy=True)
+    #   * x_studio_check_out_auto    (Boolean, copy=True)
+    #   * x_studio_company_id        (M2O -> res.company)
+    #   * x_studio_ot_approved       (Boolean, copy=True)
+    #   * x_studio_ot_approved_by    (M2O -> res.users, copy=True)
+    #   * x_studio_ot_entry          (Boolean, copy=True)
+    #   * x_studio_over_time         (Float, store=False, readonly=True)
+    # Zero Studio views on hr.attendance -- the empty stub file
+    # views/hr_attendance_studio_ported.xml is intentionally left as-is.
+    # No new deps (hr_attendance already in dep chain).
     # v0.0.13: rename 'BugFix - HR' -> 'Jinasena : Module : HR' + add
     # module icon (static/description/icon.png). Matches the branding
     # pattern used by BugFix-MRP + other Jinasena_* modules.
