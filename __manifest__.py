@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.18',
+    'version': '17.0.0.0.19',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.19: 4 interactive hr.applicant server actions (usage=ir_actions_server,
+    # binding_model_id=hr.applicant, binding_type=action - appear in Action menu):
+    #   * 3017 Digitize document -> records.action_send_batch_for_digitization()
+    #   * 3152 Refuse            -> records.archive_applicant()
+    #   * 3019 Request Signature -> records._send_applicant_sign_request()
+    #   * 2933 Send Email        -> records.action_send_email()
+    # All 4 install-safe (state=code lazy eval). Runtime failures possible
+    # if underlying methods unavailable (hr_recruitment_extract for OCR,
+    # hr_recruitment_sign for signature). Documented in server_actions.xml
+    # header comment.
     # v0.0.18: hotfix for v0.0.17 install failure.
     # ParseError: Element '<xpath expr="//field[@name='wage_type']">' cannot
     # be located in parent view. views/hr_contract_studio_ported.xml line 17.
