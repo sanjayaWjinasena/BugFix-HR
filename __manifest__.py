@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.17',
+    'version': '17.0.0.0.18',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.18: hotfix for v0.0.17 install failure.
+    # ParseError: Element '<xpath expr="//field[@name='wage_type']">' cannot
+    # be located in parent view. views/hr_contract_studio_ported.xml line 17.
+    # Root cause: wage_type field on hr.contract is owned by hr_payroll,
+    # not the base hr_contract module. Same class of failure as MRP v0.0.18
+    # (see memory feedback-cross-repo-field-ref). hr_payroll IS installed
+    # on repair-test-101 but wasn't in our depends chain, so at install-
+    # time arch composition the wage_type xpath anchor was absent.
+    # Fix: add hr_payroll to depends. yearly_benefits group also comes
+    # from hr_payroll (both anchors used in view 4930).
     # v0.0.17: 2 Studio views + 3 CU boolean compute methods.
     #   * models/hr_applicant.py: 3 new store=False computed booleans
     #     (x_studio_cu_line_manager, x_studio_cu_leadership, x_studio_cu_recruiter)
@@ -94,7 +104,7 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_recruitment'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_payroll', 'hr_recruitment'],
     'data': [
         'data/server_actions.xml',
         'data/automations.xml',
