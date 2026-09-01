@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.14',
+    'version': '17.0.0.0.15',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.15: hr.applicant port - 12 of 15 x_studio_ fields.
+    # See models/hr_applicant.py. Fields shipped:
+    #   * 3 selections: x_studio_priority (Line Manager),
+    #     x_studio_2nd_selection (Leadership), x_studio_appreciation
+    #   * 4 integer mark percentages: x_studio_marks_1,
+    #     x_studio_interview_marks_1/2/3
+    #   * 1 float x_studio_total_marks (Studio declared computed/stored
+    #     but no visible compute method - shipped as plain stored Float)
+    #   * 4 M2O approver roles: x_studio_recruiter (res.users),
+    #     x_studio_line_manager_name, x_studio_leadership_name,
+    #     x_studio_hr_responsible (hr.employee)
+    # DEFERRED: 3 x_studio_cu_* current-user permission booleans and
+    # view 5550 (uses those booleans as readonly gates). Need to write
+    # a proper compute method matching current user against the M2O
+    # role fields. Documented inline in models/hr_applicant.py.
+    # Also NOT shipped this version: 13 server actions on hr.applicant
+    # (mix of automations + interactive + cron - Digitize document, OCR
+    # validation, Refuse, Request Signature, Send Email, plus 6
+    # base_automation validators). Port in follow-up versions.
     # v0.0.14: hr.attendance port - 7 x_studio_ fields, 0 views.
     # See models/hr_attendance.py. All fields declared from Clear-DB scout:
     #   * x_studio_check_in_auto     (Boolean, copy=True)
