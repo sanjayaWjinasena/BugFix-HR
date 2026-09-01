@@ -1,13 +1,27 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.23',
+    'version': '17.0.0.0.24',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.24: 3 remaining Studio views (the audit gap).
+    #   * views/hr_employee_studio_ported.xml: view 4929 (form, 721b).
+    #     Adds 8 x_studio_ fields to hr.employee form. All fields
+    #     pre-existing in models/hr_employee.py.
+    #   * views/hr_expense_studio_ported.xml: view 4949 (form, 1185b).
+    #     Attribute-only overrides on 5 base hr.expense fields. Zero
+    #     field ports. NEW DEP: hr_expense.
+    #   * views/hr_payslip_studio_ported.xml: view 9511 (tree, 552b).
+    #     Reorders 2 x_dest_* columns via xpath position='move'. Zero
+    #     field ports (all x_dest_* fields owned by bank-data module).
+    #     NEW DEP: bank-data.
+    # Closes the last audit gap. All 9 Studio priority-99 views on hr.*
+    # models now landed (6 as BugFix-HR ports + 2 by standard hr_job +
+    # 1 by earlier v0.0.12 port). HR migration substantively complete.
     # v0.0.23: hotfix for v0.0.21 server-action names.
     # Comprehensive HR migration audit discovered that the 7 server
     # actions shipped in v0.0.21 all had their `name` field overwritten
@@ -177,7 +191,7 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_payroll', 'hr_recruitment'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data'],
     'data': [
         'data/server_actions.xml',
         'data/automations.xml',
@@ -186,6 +200,9 @@
         'views/hr_recruitment_stage_studio_ported.xml',
         'views/hr_contract_studio_ported.xml',
         'views/hr_applicant_studio_ported.xml',
+        'views/hr_employee_studio_ported.xml',
+        'views/hr_expense_studio_ported.xml',
+        'views/hr_payslip_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,

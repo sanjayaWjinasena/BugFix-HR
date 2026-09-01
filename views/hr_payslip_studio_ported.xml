@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-HR v0.0.24: view 9511 hr.payslip tree Studio inherit (552b).
+    Byte-verbatim from Clear-DB.
+
+    Reorders 2 x_dest_* columns (x_dest_branch, x_dest_bank_micr) to
+    appear BEFORE x_dest_account in the payslip bank-data tree, and
+    sets optional='show' + clears string on both. Uses xpath
+    position='move' to reposition existing fields.
+
+    New dep this version: bank-data (view inherits
+    bank-data.view_hr_payslip_bank_data_tree). Module is installed on
+    repair-test-101 and provides the x_dest_account/x_dest_branch/
+    x_dest_bank_micr fields on hr.payslip via its own porting.
+
+    0 hardcoded refs. 0 sentinels needed. No new field ports (all
+    x_dest_* fields owned by bank-data module).
+-->
+<odoo>
+
+    <record id="ported_view_9511_hr_payslip_bank_data_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: hr.payslip.tree.bank.data.jinasena customization</field>
+        <field name="model">hr.payslip</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="bank-data.view_hr_payslip_bank_data_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='x_dest_account']" position="before">
+                    <xpath expr="//field[@name='x_dest_branch']" position="move"/>
+                    <xpath expr="//field[@name='x_dest_bank_micr']" position="move"/>
+                </xpath>
+                <xpath expr="//field[@name='x_dest_bank_micr']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                    <attribute name="string"/>
+                </xpath>
+                <xpath expr="//field[@name='x_dest_branch']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                    <attribute name="string"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

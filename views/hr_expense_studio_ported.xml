@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-HR v0.0.24: view 4949 hr.expense form Studio inherit (1185b).
+    Byte-verbatim from Clear-DB.
+
+    Attribute-only overrides on 6 base hr.expense fields
+    (product_id, price_unit, quantity, date, account_id) to change
+    their readonly/invisible logic based on is_editable + state +
+    product_has_cost. Zero field additions.
+
+    New dep this version: hr_expense (view inherits
+    hr_expense.hr_expense_view_form).
+
+    0 hardcoded refs. 0 sentinels needed (all modifier refs are on
+    standard hr.expense fields already in the base view).
+-->
+<odoo>
+
+    <record id="ported_view_4949_hr_expense_form" model="ir.ui.view">
+        <field name="name">Odoo Studio: hr.expense.view.form customization</field>
+        <field name="model">hr.expense</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='price_unit']" position="attributes">
+                    <attribute name="invisible">product_has_cost == False</attribute>
+                    <attribute name="readonly">(state != 'draft') or (product_has_cost == True)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='quantity']" position="attributes">
+                    <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='account_id']" position="attributes">
+                    <attribute name="readonly">(not is_editable) or (state != 'draft')</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
