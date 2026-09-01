@@ -1,13 +1,29 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.16',
+    'version': '17.0.0.0.17',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.17: 2 Studio views + 3 CU boolean compute methods.
+    #   * models/hr_applicant.py: 3 new store=False computed booleans
+    #     (x_studio_cu_line_manager, x_studio_cu_leadership, x_studio_cu_recruiter)
+    #     each with @api.depends on the corresponding M2O role field.
+    #     Compute logic: rec.cu_X = (rec.x_studio_X_name == env.user).
+    #     Re-evaluates per user session (env.user changes).
+    #   * views/hr_contract_studio_ported.xml: view 4930 (form extension,
+    #     785b). 12 fields into 3 groups (identity/payroll/benefits).
+    #     Zero missing refs, zero sentinels needed.
+    #   * views/hr_applicant_studio_ported.xml: view 5550 (form extension,
+    #     ~1718b). Recruitment scoring UI with CU-gated readonly. Uses
+    #     xpath position="move" to reposition user_id + attribute overrides.
+    # NEW DEPS added for proper fresh-install load order:
+    #   * hr_contract (view 4930 inherits hr_contract.hr_contract_view_form)
+    #   * hr_attendance (v0.0.14 shipped hr.attendance fields without this
+    #     dep - retroactively added for fresh-install correctness).
     # v0.0.16: hr.contract port - all 21 x_studio_ fields, no view/actions.
     # See models/hr_contract.py. Fields split:
     #   * 3 Char identity: x_studio_initial, x_studio_surname, x_studio_occupation_grade
@@ -78,13 +94,15 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_recruitment'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_recruitment'],
     'data': [
         'data/server_actions.xml',
         'data/automations.xml',
         'data/act_windows.xml',
         'reports/reports.xml',
         'views/hr_recruitment_stage_studio_ported.xml',
+        'views/hr_contract_studio_ported.xml',
+        'views/hr_applicant_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,

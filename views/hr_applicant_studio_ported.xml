@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-HR v0.0.17: view 5550 hr.applicant form Studio inherit (~1718b).
+    Byte-verbatim from Clear-DB. All 13 field refs resolve on target
+    (10 shipped in v0.0.15 + 3 CU booleans now added with compute methods
+    in v0.0.17 hr_applicant.py).
+
+    Adds recruitment scoring UI after date_closed field:
+      * Line Manager selection + marks (readonly unless current user is
+        assigned Line Manager via x_studio_cu_line_manager gate)
+      * Leadership selection + marks (readonly unless current user is
+        assigned Leadership via x_studio_cu_leadership gate)
+      * Recruiter marks (readonly unless current user is assigned
+        Recruiter via x_studio_cu_recruiter gate)
+      * Total marks progressbar (readonly summary)
+      * 3 invisible sentinel-style CU fields declared so their values
+        are available to the readonly= modifiers.
+
+    Also repositions the base user_id field via xpath position="move"
+    and force_save+invisible+readonly attribute overrides.
+
+    0 hardcoded refs. 0 studio_approval attributes.
+-->
+<odoo>
+
+    <record id="ported_view_5550_hr_applicant_form" model="ir.ui.view">
+        <field name="name">Odoo Studio: Jobs - Recruitment Form customization</field>
+        <field name="model">hr.applicant</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='date_closed']" position="after">
+                    <field name="x_studio_priority" string="Line Manager Selection" readonly="x_studio_cu_line_manager == False"/>
+                    <field name="x_studio_2nd_selection" string="Leadership Selection" readonly="x_studio_cu_leadership == False"/>
+                    <field name="x_studio_marks_1" string="Recruiter Assignment Marks %" readonly="x_studio_cu_recruiter == False"/>
+                    <field name="x_studio_line_manager_name" string="Line Manager Name"/>
+                    <field name="x_studio_interview_marks_1" string="Line Manager Marks %" readonly="x_studio_cu_line_manager == False"/>
+                    <field name="x_studio_cu_line_manager" string="CU - Line Manager" force_save="True" readonly="1" invisible="1"/>
+                    <field name="x_studio_leadership_name" string="Leadership Name"/>
+                    <field name="x_studio_interview_marks_2" string="Leadership Marks %" readonly="x_studio_cu_leadership == False"/>
+                    <field name="x_studio_cu_leadership" string="CU - Leadership" force_save="True" readonly="1" invisible="1"/>
+                    <xpath expr="//field[@name='user_id']" position="move"/>
+                    <field name="x_studio_recruiter" string="Recruiter"/>
+                    <field name="x_studio_interview_marks_3" string="Recruiter Marks %" readonly="x_studio_cu_recruiter == False"/>
+                    <field name="x_studio_total_marks" string="Total Marks" widget="progressbar" force_save="True" readonly="1"/>
+                    <field name="x_studio_cu_recruiter" string="CU - Recruiter" force_save="True" readonly="1" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="force_save">True</attribute>
+                    <attribute name="invisible">1</attribute>
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

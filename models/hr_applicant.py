@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class HrApplicant(models.Model):
@@ -33,12 +33,36 @@ class HrApplicant(models.Model):
     x_studio_leadership_name = fields.Many2one('res.users', string='Leadership Name', ondelete='set null')
     x_studio_hr_responsible = fields.Many2one('hr.employee', string='HR Responsible', ondelete='set null', copy=True)
 
-    # DEFERRED (see manifest v0.0.15 changelog):
-    #   * x_studio_cu_leadership   Boolean (current-user leadership check)
-    #   * x_studio_cu_line_manager Boolean (current-user line manager check)
-    #   * x_studio_cu_recruiter    Boolean (current-user recruiter check)
-    # Studio pattern: store=False + depends=<self>. Real semantics = "does
-    # current user match one of the M2O role fields above". Need to write
-    # a proper compute method that checks env.user against these fields.
-    # View 5550 blocked on these (uses readonly="x_studio_cu_line_manager
-    # == False" gating). Port in a follow-up version.
+    # Current-user permission gates (3 computed booleans, store=False).
+    # Compute = does env.user match the corresponding M2O role field on
+    # this record. Used by view 5550 as readonly gates on the mark-entry
+    # and selection fields (so only the assigned approver can edit their
+    # section). Studio's original declaration used depends=<self> as a
+    # placeholder; real depends is on the M2O + env.user (per-session).
+    x_studio_cu_line_manager = fields.Boolean(
+        string='CU - Line Manager', store=False,
+        compute='_compute_cu_line_manager')
+    x_studio_cu_leadership = fields.Boolean(
+        string='CU - Leadership', store=False,
+        compute='_compute_cu_leadership')
+    x_studio_cu_recruiter = fields.Boolean(
+        string='CU - Recruiter', store=False,
+        compute='_compute_cu_recruiter')
+
+    @api.depends('x_studio_line_manager_name')
+    def _compute_cu_line_manager(self):
+        me = self.env.user
+        for rec in self:
+            rec.x_studio_cu_line_manager = (rec.x_studio_line_manager_name == me)
+
+    @api.depends('x_studio_leadership_name')
+    def _compute_cu_leadership(self):
+        me = self.env.user
+        for rec in self:
+            rec.x_studio_cu_leadership = (rec.x_studio_leadership_name == me)
+
+    @api.depends('x_studio_recruiter')
+    def _compute_cu_recruiter(self):
+        me = self.env.user
+        for rec in self:
+            rec.x_studio_cu_recruiter = (rec.x_studio_recruiter == me)
