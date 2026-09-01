@@ -68,4 +68,40 @@
     <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_1522_hr_validate_stages')])]"/>
   </record>
 
+  <!-- v0.0.23 hotfix: Odoo overwrites the `name` of ir.actions.server
+       records with state='code' to 'Execute Code' at data-load time
+       (likely via an internal onchange or a base.automation side-effect
+       during action_server_ids binding). Force-write the intended names
+       AFTER all base.automation records are created. Idempotent on
+       upgrade &#8212; always resets to the correct name. -->
+
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2579_hr_applicant')],
+      {'name': 'HR - Applicant'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2580_hr_applicant_2')],
+      {'name': 'HR - Applicant 2'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2581_hr_validate_recruiter_marks')],
+      {'name': 'HR - Validate Recruiter Marks'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2582_hr_validate_line_manager_marks')],
+      {'name': 'HR - Validate Line Manager Marks'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2583_hr_validate_leadership_marks')],
+      {'name': 'HR - Validate Leadership Marks'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_2584_hr_validate_assignment_marks')],
+      {'name': 'HR - Validate Assignment Marks'}
+  ]"/>
+  <function model="ir.actions.server" name="write" eval="[
+      [ref('BugFix-HR.server_action_1522_hr_validate_stages')],
+      {'name': 'HR - Validate Stages'}
+  ]"/>
+
 </odoo>

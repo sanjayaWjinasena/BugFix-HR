@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.22',
+    'version': '17.0.0.0.23',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.23: hotfix for v0.0.21 server-action names.
+    # Comprehensive HR migration audit discovered that the 7 server
+    # actions shipped in v0.0.21 all had their `name` field overwritten
+    # to 'Execute Code' by Odoo internal logic (likely _onchange_state
+    # or base.automation side-effect at action_server_ids binding time).
+    # Records were functional (base.automations triggered correct code)
+    # but harder to identify in the backend server-actions list.
+    # Fix: 7 <function> tags at end of data/automations.xml force-write
+    # the intended names AFTER all base.automation records are created.
+    # Idempotent on upgrade.
     # v0.0.22: compute methods for 3 unstored Float fields.
     #   * x_studio_total_marks on hr.applicant: REAL compute -- simple sum
     #     of the 4 mark percentages (matches Studio's depends declaration).
