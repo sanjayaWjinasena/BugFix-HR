@@ -1,13 +1,38 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.20',
+    'version': '17.0.0.0.21',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.21: 7 hr.applicant base_automation records + backing server actions.
+    # These fire on field-change (6) or create-or-write (1) triggers and
+    # implement custom validation/workflow logic that is NOT provided by
+    # standard modules (unlike v0.0.19's interactive actions which were
+    # rolled back as duplicates).
+    #   * 262 HR - Applicant             on_change x_studio_priority
+    #                                     -> if 'No', set stage_id=1
+    #   * 263 HR - Applicant 2           on_change x_studio_2nd_selection
+    #                                     -> if 'Yes', set stage_id=0 (Studio bug preserved)
+    #   * 264 Validate Recruiter Marks   on_change x_studio_interview_marks_3
+    #                                     -> raise if >100
+    #   * 265 Validate Line Manager Marks on_change x_studio_interview_marks_1
+    #                                     -> raise if >100
+    #   * 266 Validate Leadership Marks  on_change x_studio_interview_marks_2
+    #                                     -> raise if >100
+    #   * 267 Validate Assignment Marks  on_change x_studio_marks_1
+    #                                     -> raise if >100
+    #   * 93  Validate Stages            on_create_or_write
+    #                                     -> check env.user has x_studio_recr_stages
+    #                                        permission for the stage being set
+    # Uses ref='BugFix-HR.field_hr_applicant__X' to bind on_change_field_ids
+    # cleanly (xmlids from v0.0.15 field port).
+    # Action 93 references res.users.x_studio_recr_stages (M2M pinned to
+    # studio_usermodel_migration on target env) -- runtime-safe due to
+    # state=code lazy eval.
     # v0.0.20: ROLLBACK of v0.0.19's 4 hr.applicant Action-menu server
     # actions (Digitize, Refuse, Request Signature, Send Email).
     # Discovered post-ship that standard Odoo modules already provide

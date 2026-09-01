@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- 7 automations ports for BugFix-HR (auto-generated from Clear-DB snapshot) -->
-  
-  
-  
-  
-  
-  
-  
+  <!-- BugFix-HR base.automation triggers ported from Clear-DB.
+       Each record binds a Studio server action to a field-change or
+       create/write trigger on hr.applicant. -->
+
+  <!-- v0.0.21: 7 hr.applicant base_automation records -->
+
+  <record id="base_automation_262_hr_applicant" model="base.automation">
+    <field name="name">HR - Applicant</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_priority')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2579_hr_applicant')])]"/>
+  </record>
+
+  <record id="base_automation_263_hr_applicant_2" model="base.automation">
+    <field name="name">HR - Applicant 2</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_2nd_selection')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2580_hr_applicant_2')])]"/>
+  </record>
+
+  <record id="base_automation_264_hr_validate_recruiter_marks" model="base.automation">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_interview_marks_3')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2581_hr_validate_recruiter_marks')])]"/>
+  </record>
+
+  <record id="base_automation_265_hr_validate_line_manager_marks" model="base.automation">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_interview_marks_1')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2582_hr_validate_line_manager_marks')])]"/>
+  </record>
+
+  <record id="base_automation_266_hr_validate_leadership_marks" model="base.automation">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_interview_marks_2')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2583_hr_validate_leadership_marks')])]"/>
+  </record>
+
+  <record id="base_automation_267_hr_validate_assignment_marks" model="base.automation">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_marks_1')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2584_hr_validate_assignment_marks')])]"/>
+  </record>
+
+  <record id="base_automation_93_hr_validate_stages" model="base.automation">
+    <field name="name">HR - Validate Stages</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_1522_hr_validate_stages')])]"/>
+  </record>
+
 </odoo>

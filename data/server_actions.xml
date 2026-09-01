@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- BugFix-HR server actions ported from Clear-DB.
-       Empty stub after v0.0.20 rollback of v0.0.19's 4 hr.applicant
-       Action-menu ports. Standard Odoo modules (hr_recruitment,
-       hr_recruitment_extract, hr_recruitment_sign, mail) already
-       provide identical bindings, so Studio ports were pure
-       duplicates. See DEFERRED.md for the intentional-skip rationale. -->
+       See DEFERRED.md for the v0.0.19/v0.0.20 rollback rationale
+       (4 hr.applicant interactive actions permanently skipped as
+       duplicates of standard Odoo bindings). -->
+
+  <!-- v0.0.21: 7 base_automation server actions on hr.applicant.
+       Each is bound to a base.automation trigger record in data/automations.xml.
+       No binding_model_id needed (these fire on field/write triggers, not
+       Action menu clicks). Byte-verbatim code from Clear-DB. -->
+
+  <record id="server_action_2579_hr_applicant" model="ir.actions.server">
+    <field name="name">HR - Applicant</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_priority == 'No':
+  record['stage_id'] = 1]]></field>
+  </record>
+
+  <record id="server_action_2580_hr_applicant_2" model="ir.actions.server">
+    <field name="name">HR - Applicant 2</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_2nd_selection == 'Yes':
+  record['stage_id'] = 0]]></field>
+  </record>
+
+  <record id="server_action_2581_hr_validate_recruiter_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_3 > 100.00:
+  raise UserError("Recruiter Marks should be Less than or Equls to 100.")]]></field>
+  </record>
+
+  <record id="server_action_2582_hr_validate_line_manager_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_1 > 100.00:
+  raise UserError("Line Manager Marks should be Less than or Equls to 100.")]]></field>
+  </record>
+
+  <record id="server_action_2583_hr_validate_leadership_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_2 > 100.00:
+  raise UserError("Leadership Marks should be Less than or Equls to 100.")]]></field>
+  </record>
+
+  <record id="server_action_2584_hr_validate_assignment_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.x_studio_marks_1 > 100.0:
+   raise UserError("Assignment Marks should be Less than or Equls to 100.")]]></field>
+  </record>
+
+  <record id="server_action_1522_hr_validate_stages" model="ir.actions.server">
+    <field name="name">HR - Validate Stages</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;hr.applicant&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.stage_id.id != 1:
+  valid_user = env['res.users'].search([('id', '=', (uid,1)),('x_studio_recr_stages', '=', record.stage_id.id)])
+
+  if not valid_user:
+     raise UserError('Current User is Restricted to the Selected Stage.')]]></field>
+  </record>
+
 </odoo>
