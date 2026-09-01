@@ -1,13 +1,28 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.21',
+    'version': '17.0.0.0.22',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.22: compute methods for 3 unstored Float fields.
+    #   * x_studio_total_marks on hr.applicant: REAL compute -- simple sum
+    #     of the 4 mark percentages (matches Studio's depends declaration).
+    #     Was plain stored Float in v0.0.15; now computed+stored so it
+    #     auto-recalculates on marks-field changes. View 5550 displays it
+    #     with widget='progressbar' (max useful = 400).
+    #   * x_studio_ot_hours on hr.contract: STUB compute returning 0.0.
+    #     Real logic depends on hr.attendance.x_studio_over_time having
+    #     its own compute (currently also 0). Depends on employee_id.
+    #   * x_studio_paye_tax_amount on hr.contract: STUB compute returning
+    #     0.0. Real logic needs Sri Lankan PAYE tax brackets via
+    #     x_paye_tax + x_paye_tax_tag custom models (Studio-only, not
+    #     ported). Depends on wage/structure_type_id/employee_id.
+    # Both stubs are documented in-code and in DEFERRED.md with the
+    # prerequisite chain to un-defer.
     # v0.0.21: 7 hr.applicant base_automation records + backing server actions.
     # These fire on field-change (6) or create-or-write (1) triggers and
     # implement custom validation/workflow logic that is NOT provided by

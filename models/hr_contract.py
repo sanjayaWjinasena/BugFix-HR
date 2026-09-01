@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class HrContract(models.Model):
@@ -21,12 +21,33 @@ class HrContract(models.Model):
 
     # === OT + Payroll computed/stored (3 Float) ===
     x_studio_ot_rate = fields.Float(string='OT Rate', copy=True)
-    # Studio declared these as store=False with depends but no compute method.
-    # Shipped as plain unstored Float (returns 0.0). Real compute logic
-    # (OT hours from attendance, PAYE tax from wage/structure) needs
-    # follow-up implementation.
-    x_studio_ot_hours = fields.Float(string='OT Hours', store=False, readonly=True)
-    x_studio_paye_tax_amount = fields.Float(string='Paye Tax Amount', store=False, readonly=True)
+
+    # STUB COMPUTE: returns 0.0. Real logic needs hr.attendance
+    # x_studio_over_time to have a compute of its own (currently also
+    # returns 0 - unstored placeholder). Shape of the real compute is
+    # likely: sum(hr.attendance.x_studio_over_time) for the contract's
+    # employee across the current pay period. See DEFERRED.md.
+    x_studio_ot_hours = fields.Float(
+        string='OT Hours', store=False,
+        compute='_compute_ot_hours')
+
+    # STUB COMPUTE: returns 0.0. Real logic needs Sri Lankan PAYE tax
+    # brackets via x_paye_tax + x_paye_tax_tag custom models (still
+    # Studio-only, not ported). Shape of the real compute is likely:
+    # apply progressive tax rates against contract.wage. See DEFERRED.md.
+    x_studio_paye_tax_amount = fields.Float(
+        string='Paye Tax Amount', store=False,
+        compute='_compute_paye_tax_amount')
+
+    @api.depends('employee_id')
+    def _compute_ot_hours(self):
+        for rec in self:
+            rec.x_studio_ot_hours = 0.0
+
+    @api.depends('wage', 'structure_type_id', 'employee_id')
+    def _compute_paye_tax_amount(self):
+        for rec in self:
+            rec.x_studio_paye_tax_amount = 0.0
 
     # === "New Related Field" placeholders (8) ===
     # Studio created these via the "New Related Field" widget but the

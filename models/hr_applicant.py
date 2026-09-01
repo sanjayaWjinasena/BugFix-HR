@@ -21,11 +21,13 @@ class HrApplicant(models.Model):
     x_studio_interview_marks_1 = fields.Integer(string='Line Manager Marks %', copy=True)
     x_studio_interview_marks_2 = fields.Integer(string='Leadership Marks %', copy=True)
     x_studio_interview_marks_3 = fields.Integer(string='Recruiter Marks %', copy=True)
-    # Total Marks: Studio declared as store=True with depends on the 4 marks
-    # fields above, but no visible compute method. Declared as plain stored
-    # Float here (manual entry / external-automation-populated). If a real
-    # compute formula surfaces later, add compute='_compute_total_marks'.
-    x_studio_total_marks = fields.Float(string='Total Marks')
+    # Total Marks: real compute as simple sum of the 4 mark percentages
+    # (matches Studio's depends declaration). View 5550 displays this
+    # with widget='progressbar' so max useful value is 400 (4 * 100%).
+    # If a weighted formula surfaces later, adjust _compute_total_marks.
+    x_studio_total_marks = fields.Float(
+        string='Total Marks', store=True,
+        compute='_compute_total_marks')
 
     # Approver roles (M2O to res.users / hr.employee)
     x_studio_recruiter = fields.Many2one('res.users', string='Recruiter', ondelete='set null')
@@ -66,3 +68,14 @@ class HrApplicant(models.Model):
         me = self.env.user
         for rec in self:
             rec.x_studio_cu_recruiter = (rec.x_studio_recruiter == me)
+
+    @api.depends('x_studio_marks_1', 'x_studio_interview_marks_1',
+                 'x_studio_interview_marks_2', 'x_studio_interview_marks_3')
+    def _compute_total_marks(self):
+        for rec in self:
+            rec.x_studio_total_marks = float(
+                (rec.x_studio_marks_1 or 0)
+                + (rec.x_studio_interview_marks_1 or 0)
+                + (rec.x_studio_interview_marks_2 or 0)
+                + (rec.x_studio_interview_marks_3 or 0)
+            )
