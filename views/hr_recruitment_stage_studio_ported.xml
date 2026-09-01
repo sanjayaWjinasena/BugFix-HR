@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-HR v0.0.12: hr.recruitment.stage Studio inherit.
+    Byte-verbatim from Clear-DB view 5549 (tree, 90b).
+
+    Note: this view is unrelated to the x_color field port also in v0.0.12
+    (view just adds an `id` column to the tree; `id` is builtin, always
+    resolvable). Field port and view port are independent artefacts on
+    the same model.
+-->
+<odoo>
+
+    <record id="ported_view_5549_hr_recruitment_stage_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: hr.recruitment.stage.tree customization</field>
+        <field name="model">hr.recruitment.stage</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_recruitment_stage_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='hired_stage']" position="after">
+                    <field name="id" optional="show"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
