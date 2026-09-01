@@ -1,13 +1,34 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.15',
+    'version': '17.0.0.0.16',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.16: hr.contract port - all 21 x_studio_ fields, no view/actions.
+    # See models/hr_contract.py. Fields split:
+    #   * 3 Char identity: x_studio_initial, x_studio_surname, x_studio_occupation_grade
+    #   * 7 Monetary compensation: x_studio_ex_gratia, x_studio_gbud_a,
+    #     x_studio_gbud_l2, x_studio_government_budget_a (duplicate label
+    #     with gbud_a - Studio quirk preserved), x_studio_standing_order_1,
+    #     x_studio_std_ord2, x_studio_travelling_allowance
+    #   * 1 Float stored: x_studio_ot_rate
+    #   * 2 Float unstored (Studio compute w/o method - ship as plain
+    #     unstored Float returning 0.0): x_studio_ot_hours (depends=employee_id),
+    #     x_studio_paye_tax_amount (depends=wage,structure_type_id,employee_id).
+    #     Real compute logic (OT from attendance, PAYE from wage/structure)
+    #     needs follow-up.
+    #   * 8 "New Related Field" placeholders (x_studio_related_field_XXXXX):
+    #     Studio artifacts with no `related=` configured. Shipped verbatim
+    #     as plain Char/M2O/Integer for data-copy fidelity.
+    # NOT shipped this version:
+    #   * View 4930 (form extension, 785b - uses 5 of the 21 fields).
+    #   * 5 server actions: Create Salary Attachment (interactive),
+    #     Index contract(s) (interactive), Signature request (interactive),
+    #     Generate Missing Work Entries (cron), HR Contract update state (cron).
     # v0.0.15: hr.applicant port - 12 of 15 x_studio_ fields.
     # See models/hr_applicant.py. Fields shipped:
     #   * 3 selections: x_studio_priority (Line Manager),
