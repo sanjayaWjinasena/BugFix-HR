@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_6913_hr_expense_sheet,hr.expense.sheet,hr_expense.model_hr_expense_sheet,,1,0,0,0
+access_7009_hr_expense_sheet,hr.expense.sheet,hr_expense.model_hr_expense_sheet,,1,0,0,0
+access_6915_hr_expense_sheet,hr.expense.sheet,hr_expense.model_hr_expense_sheet,,1,0,0,0
+access_7073_hr_payroll_structure,hr.payroll.structure,hr_payroll.model_hr_payroll_structure,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_6874_jin___administrator,Jin - Administrator,hr_payroll.model_hr_payslip_run,stock.group_stock_manager,1,1,1,1
+access_6268_inv___administrator,Inv - Administrator,BugFix-HR.model_hr_recruitment_stage,stock.group_stock_manager,1,1,1,1
+access_7071_hr_salary_attachment,hr.salary.attachment,hr_payroll.model_hr_salary_attachment,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_7074_hr_salary_rule,hr.salary.rule,hr_payroll.model_hr_salary_rule,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_7076_hr_salary_rule_category,hr.salary.rule.category,hr_payroll.model_hr_salary_rule_category,,1,1,1,0
+access_5949_work_entries_report,Work Entries Report,hr_payroll.model_hr_work_entry_report,,1,1,1,1
+access_5948_hr_work_entry_type,HR Work Entry Type,hr_payroll.model_hr_work_entry_type,,1,1,1,0
