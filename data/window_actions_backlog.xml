@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-HR backlog: 18 window actions -->
-<odoo>
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- BugFix-HR backlog: 18 window actions --><odoo>
 
   <record id="act_window_1333_applications" model="ir.actions.act_window">
     <field name="name">Applications</field>
@@ -198,25 +197,7 @@
         </field>
   </record>
 
-  <record id="act_window_3546_bulk_inputs" model="ir.actions.act_window">
-    <field name="name">Bulk Inputs</field>
-    <field name="res_model">hr.payslip.bulk.input</field>
-    <field name="view_mode">tree,form</field>
-    <field name="context">{}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                    This is your new action.
-                </p>
-                <p>By default, it contains a list and a form view and possibly
-                    other view types depending on the options you chose for your model.
-                </p>
-                <p>
-                    You can start customizing these screens by clicking on the Studio icon on the
-                    top right corner (you can also customize this help message there).
-                </p>
-            </field>
-  </record>
-
-  <record id="act_window_2369_rules" model="ir.actions.act_window">
+  <!-- STRIPPED act_window_3546_bulk_inputs: model hr.payslip.bulk.input not on target --><record id="act_window_2369_rules" model="ir.actions.act_window">
     <field name="name">Rules</field>
     <field name="res_model">hr.salary.rule</field>
     <field name="view_mode">kanban,tree,form</field>
@@ -264,58 +245,4 @@
     <field name="help" type="html"><p>This report performs analysis on your work entries.</p></field>
   </record>
 
-  <record id="act_window_1559_paye_tax" model="ir.actions.act_window">
-    <field name="name">Paye Tax</field>
-    <field name="res_model">x_paye_tax</field>
-    <field name="view_mode">tree,form</field>
-    <field name="context">{}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                    This is your new action.
-                </p>
-                <p>By default, it contains a list and a form view and possibly
-                    other view types depending on the options you chose for your model.
-                </p>
-                <p>
-                    You can start customizing these screens by clicking on the Studio icon on the
-                    top right corner (you can also customize this help message there).
-                </p>
-            </field>
-  </record>
-
-  <record id="act_window_1560_paye_tax_tags" model="ir.actions.act_window">
-    <field name="name">Paye Tax Tags</field>
-    <field name="res_model">x_paye_tax_tag</field>
-    <field name="view_mode">tree,form</field>
-    <field name="context">{}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                    This is your new action.
-                </p>
-                <p>By default, it contains a list and a form view and possibly
-                    other view types depending on the options you chose for your model.
-                </p>
-                <p>
-                    You can start customizing these screens by clicking on the Studio icon on the
-                    top right corner (you can also customize this help message there).
-                </p>
-            </field>
-  </record>
-
-  <record id="act_window_2559_update_ot" model="ir.actions.act_window">
-    <field name="name">Update OT</field>
-    <field name="res_model">x_update_ot</field>
-    <field name="view_mode">tree,form</field>
-    <field name="context">{}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                    This is your new action.
-                </p>
-                <p>By default, it contains a list and a form view and possibly
-                    other view types depending on the options you chose for your model.
-                </p>
-                <p>
-                    You can start customizing these screens by clicking on the Studio icon on the
-                    top right corner (you can also customize this help message there).
-                </p>
-            </field>
-  </record>
-
-</odoo>
+  <!-- STRIPPED act_window_1559_paye_tax: model x_paye_tax not on target --><!-- STRIPPED act_window_1560_paye_tax_tags: model x_paye_tax_tag not on target --><!-- STRIPPED act_window_2559_update_ot: model x_update_ot not on target --></odoo>
