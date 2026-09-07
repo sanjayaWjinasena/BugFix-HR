@@ -73,25 +73,7 @@
             </field>
   </record>
 
-  <record id="act_window_2816_hr_expense" model="ir.actions.act_window">
-    <field name="name">hr.expense</field>
-    <field name="res_model">hr.expense</field>
-    <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
-    <field name="context">{}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                    This is your new action.
-                </p>
-                <p>By default, it contains a list and a form view and possibly
-                    other view types depending on the options you chose for your model.
-                </p>
-                <p>
-                    You can start customizing these screens by clicking on the Studio icon on the
-                    top right corner (you can also customize this help message there).
-                </p>
-            </field>
-  </record>
-
-  <record id="act_window_1274_my_reports" model="ir.actions.act_window">
+  <!-- STRIPPED act_window_2816_hr_expense: model out-of-deps for BugFix-HR: hr.expense (owned by documents_hr_expense) --><record id="act_window_1274_my_reports" model="ir.actions.act_window">
     <field name="name">My Reports</field>
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
@@ -159,45 +141,7 @@
             </field>
   </record>
 
-  <record id="act_window_793_all_time_off" model="ir.actions.act_window">
-    <field name="name">All Time Off</field>
-    <field name="res_model">hr.leave</field>
-    <field name="view_mode">tree,kanban,gantt,form,calendar,activity</field>
-    <field name="domain">['|', ('employee_id.company_id', 'in', allowed_company_ids),
-                                    '&amp;', ('multi_employee', '=', True),
-                                    '&amp;', ('state', 'in', ['draft', 'confirm', 'validate1']),
-                                    ('employee_ids.company_id', 'in', allowed_company_ids)]</field>
-    <field name="context">{
-            'search_default_waiting_for_me': 1,
-            'search_default_waiting_for_me_manager': 2,
-            'hide_employee_name': 1,
-            'holiday_status_display_name': False}</field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                Meet the time off dashboard.
-            </p><p>
-                A great way to keep track on employee’s PTOs, sick days, and approval status.
-            </p>
-        </field>
-  </record>
-
-  <record id="act_window_1881_time_off" model="ir.actions.act_window">
-    <field name="name">Time Off</field>
-    <field name="res_model">hr.leave</field>
-    <field name="view_mode">tree,kanban,form,calendar,activity</field>
-    <field name="domain">[(1, '=', 1)]</field>
-    <field name="context">{
-            'hide_employee_name': 1,
-            'holiday_status_display_name': False}
-        </field>
-    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
-                Meet the time off dashboard.
-            </p><p>
-                A great way to keep track on employee’s PTOs, sick days, and approval status.
-            </p>
-        </field>
-  </record>
-
-  <!-- STRIPPED act_window_3546_bulk_inputs: model hr.payslip.bulk.input not on target --><record id="act_window_2369_rules" model="ir.actions.act_window">
+  <!-- STRIPPED act_window_793_all_time_off: model out-of-deps for BugFix-HR: hr.leave (owned by documents_hr_holidays) --><!-- STRIPPED act_window_1881_time_off: model out-of-deps for BugFix-HR: hr.leave (owned by documents_hr_holidays) --><!-- STRIPPED act_window_3546_bulk_inputs: model hr.payslip.bulk.input not on target --><record id="act_window_2369_rules" model="ir.actions.act_window">
     <field name="name">Rules</field>
     <field name="res_model">hr.salary.rule</field>
     <field name="view_mode">kanban,tree,form</field>
