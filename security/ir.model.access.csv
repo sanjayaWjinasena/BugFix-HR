@@ -14,3 +14,13 @@ access_x_paye_tax_tag_admin,x_paye_tax_tag admin,BugFix-HR.model_x_paye_tax_tag,
 access_x_paye_tax_admin,x_paye_tax admin,BugFix-HR.model_x_paye_tax,base.group_system,1,1,1,1
 access_x_update_ot_line_7eea7_admin,x_update_ot_line_7eea7 admin,BugFix-HR.model_x_update_ot_line_7eea7,base.group_system,1,1,1,1
 access_x_update_ot_admin,x_update_ot admin,BugFix-HR.model_x_update_ot,base.group_system,1,1,1,1
+access_1428_paye_tax_group_user,Paye Tax group_user,BugFix-HR.model_x_paye_tax,base.group_user,1,0,0,0
+access_1427_paye_tax_group_system,Paye Tax group_system,BugFix-HR.model_x_paye_tax,base.group_system,1,1,1,1
+access_7070_update_ot_group_user,Update OT group_user,BugFix-HR.model_x_update_ot,base.group_user,1,1,1,0
+access_7069_update_ot_group_system,Update OT group_system,BugFix-HR.model_x_update_ot,base.group_system,1,1,1,1
+access_1426_paye_tax_tags_group_user,Paye Tax Tags group_user,BugFix-HR.model_x_paye_tax_tag,base.group_user,1,1,1,0
+access_1425_paye_tax_tags_group_system,Paye Tax Tags group_system,BugFix-HR.model_x_paye_tax_tag,base.group_system,1,1,1,1
+access_7066_update_ot_lines_group_user,Update Ot  Lines group_user,BugFix-HR.model_x_update_ot_line_7eea7,base.group_user,1,1,1,0
+access_7068_update_ot_lines_group_user,Update Ot  Lines group_user,BugFix-HR.model_x_update_ot_line_7eea7,base.group_user,1,1,1,0
+access_7065_update_ot_lines_group_system,Update Ot  Lines group_system,BugFix-HR.model_x_update_ot_line_7eea7,base.group_system,1,1,1,1
+access_7067_update_ot_lines_group_system,Update Ot  Lines group_system,BugFix-HR.model_x_update_ot_line_7eea7,base.group_system,1,1,1,1
