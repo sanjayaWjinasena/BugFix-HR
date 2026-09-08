@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: 8 ir.default records routed from Phase D2 sweep -->
+<odoo>
+  <data noupdate="1">
+
+    <record id="default_231_x_paye_tax_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_232_x_paye_tax_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_410_x_update_ot_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_update_ot__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_411_x_update_ot_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_update_ot__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_431_hr_applicant_x_studio_marks_1" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_hr_applicant__x_studio_marks_1"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_432_hr_applicant_x_studio_interview_marks_1" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_hr_applicant__x_studio_interview_marks_1"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_433_hr_applicant_x_studio_interview_marks_2" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_hr_applicant__x_studio_interview_marks_2"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_434_hr_applicant_x_studio_interview_marks_3" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_hr_applicant__x_studio_interview_marks_3"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+  </data>
+</odoo>

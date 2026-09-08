@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.32',
+    'version': '17.0.0.0.33',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -213,6 +213,7 @@
         'data/record_rules_gap.xml',
         'data/server_actions_gap.xml',
         'data/window_actions_gap.xml',
+        'data/ir_defaults_gap.xml',
     ],
     'installable': True,
     'auto_install': False,
