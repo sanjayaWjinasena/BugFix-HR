@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.27',
+    'version': '17.0.0.0.28',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -208,6 +208,7 @@
         'data/server_actions_backlog.xml',
         'data/automations_backlog.xml',
         'data/window_actions_backlog.xml',
+        'data/menus_from_routing.xml',
     ],
     'installable': True,
     'auto_install': False,

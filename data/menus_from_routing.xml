@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- BugFix-HR: menu sweep from routing audit (4 candidates) --><!-- Uses <menuitem> shortcut with dev-verified parent + action refs --><odoo>
+
+  <menuitem id="menu_1114_rules" name="Rules" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root" action="BugFix-HR.act_window_2369_rules" sequence="8"/>
+  <menuitem id="menu_1115_rules" name="Rules" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root" action="BugFix-HR.act_window_2369_rules" sequence="9"/>
+  <menuitem id="menu_825_custom_configuration" name="Custom Configuration" parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration" sequence="3"/>
+  <menuitem id="menu_1477_bank_data" name="Bank Data" parent="hr_payroll.menu_hr_payroll_report" sequence="5"/>
+
+</odoo>
