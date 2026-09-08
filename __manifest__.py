@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.28',
+    'version': '17.0.0.0.29',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -191,7 +191,9 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data'
+        'base_automation',
+    ],
     'data': [
         'security/ir.model.access.csv',
         'data/server_actions.xml',
@@ -209,6 +211,7 @@
         'data/automations_backlog.xml',
         'data/window_actions_backlog.xml',
         'data/menus_from_routing.xml',
+        'data/gap_automations.xml',
     ],
     'installable': True,
     'auto_install': False,

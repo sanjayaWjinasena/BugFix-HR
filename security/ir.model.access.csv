@@ -10,3 +10,7 @@ access_7074_hr_salary_rule,hr.salary.rule,hr_payroll.model_hr_salary_rule,hr_pay
 access_7076_hr_salary_rule_category,hr.salary.rule.category,hr_payroll.model_hr_salary_rule_category,,1,1,1,0
 access_5949_work_entries_report,Work Entries Report,hr_payroll.model_hr_work_entry_report,,1,1,1,1
 access_5948_hr_work_entry_type,HR Work Entry Type,hr_payroll.model_hr_work_entry_type,,1,1,1,0
+access_x_paye_tax_tag_admin,x_paye_tax_tag admin,BugFix-HR.model_x_paye_tax_tag,base.group_system,1,1,1,1
+access_x_paye_tax_admin,x_paye_tax admin,BugFix-HR.model_x_paye_tax,base.group_system,1,1,1,1
+access_x_update_ot_line_7eea7_admin,x_update_ot_line_7eea7 admin,BugFix-HR.model_x_update_ot_line_7eea7,base.group_system,1,1,1,1
+access_x_update_ot_admin,x_update_ot admin,BugFix-HR.model_x_update_ot,base.group_system,1,1,1,1
