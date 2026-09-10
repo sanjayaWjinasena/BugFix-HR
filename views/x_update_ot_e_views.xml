@@ -9,8 +9,8 @@
       <field name="arch" type="xml">
         <form><field name="create_uid" invisible="1"/>
   <header>  
-    <button type="action" name="2562" string="Update All" class="btn-primary" invisible="create_uid == False"/>
-    <button type="action" name="2563" string="Clear All" class="btn-primary" invisible="create_uid == False"/>
+    <!-- STRIPPED action button aid=2562 unresolvable -->
+    <!-- STRIPPED action button aid=2563 unresolvable -->
     
   </header>
   <header/>
