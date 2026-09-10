@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase F5 - 9 server actions -->
+<odoo>
+  <record id="sa_f5_x_update_ot_jin_company_id_in_update_ot" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Update OT</field>
+    <field name="model_id" search="[('model', '=', 'x_update_ot')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+    <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+    <field name="model_id" search="[('model', '=', 'x_paye_tax')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_end_date < record.x_studio_start_date:
+  raise UserError('End Date must be Greater than Start Date.')
+
+
+
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_x_update_ot_update_ot_seq_no" model="ir.actions.server">
+    <field name="name">Update OT Seq.No</field>
+    <field name="model_id" search="[('model', '=', 'x_update_ot')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+seq = env['ir.sequence'].next_by_code('ot.update.seq')
+record.write({'x_name': seq})
+
+
+
+
+
+
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_applicant_2" model="ir.actions.server">
+    <field name="name">HR - Applicant 2</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_2nd_selection == 'Yes':
+  record['stage_id'] = 0]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_applicant" model="ir.actions.server">
+    <field name="name">HR - Applicant</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_priority == 'No':
+  record['stage_id'] = 1
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_validate_assignment_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_marks_1 > 100.0:
+   raise UserError("Assignment Marks should be Less than or Equls to 100.")]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_validate_leadership_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_2 > 100.00:
+  raise UserError("Leadership Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_validate_line_manager_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_1 > 100.00:
+  raise UserError("Line Manager Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_hr_applicant_hr_validate_recruiter_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_interview_marks_3 > 100.00:
+  raise UserError("Recruiter Marks should be Less than or Equls to 100.")
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+</odoo>
