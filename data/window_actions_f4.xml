@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase F4 - 1 window actions -->
+<odoo>
+  <record id="aw_f4_hr_contract_etf_schedule" model="ir.actions.act_window">
+    <field name="name">ETF Schedule</field>
+    <field name="res_model">hr.contract</field>
+    <field name="view_mode">kanban,tree,form,activity</field>
+  </record>
+</odoo>
