@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase F6 - 2 menus -->
+<odoo>
+  <menuitem id="menu_f6_update_ot" name="Update OT" parent="hr_attendance.menu_hr_attendance_root" action="BugFix-HR.act_window_2559_update_ot" sequence="100"/>
+  <menuitem id="menu_f6_etf_schedule" name="ETF Schedule" parent="hr_payroll.menu_hr_payroll_report" action="BugFix-HR.act_window_2367_etf_schedule" sequence="3"/>
+</odoo>
