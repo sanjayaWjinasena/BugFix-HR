@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase E - 1 views for hr.attendance -->
+<odoo>
+  <data>
+    <record id="view_5520_odoo_studio_hr_attendance_tree_customization_e" model="ir.ui.view">
+      <field name="name">Odoo Studio: hr.attendance.tree customization</field>
+      <field name="model">hr.attendance</field>
+      <field name="type">tree</field>
+      <field name="priority">160</field>
+      <field name="inherit_id" ref="hr_attendance.hr_attendance_employee_simple_tree_view"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='worked_hours']" position="after">
+    <field optional="hide" name="x_studio_company_id" string="Company"/>
+    <field optional="hide" name="x_studio_ot_entry" string="OT Entry" readonly="1"/>
+    <field optional="hide" name="x_studio_ot_approved" string="OT Approved" readonly="0"/>
+    <field optional="hide" name="x_studio_ot_approved_by" string="OT Approved By" readonly="1"/>
+  </xpath>
+  <xpath expr="//field[@name='overtime_hours']" position="attributes">
+    <attribute name="optional">hide</attribute>
+  </xpath>
+  <xpath expr="//field[@name='out_latitude']" position="after">
+    <field optional="show" name="x_studio_over_time" widget="float_time"/>
+  </xpath>
+</data>
+      </field>
+    </record>
+
+  </data>
+</odoo>

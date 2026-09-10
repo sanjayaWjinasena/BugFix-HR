@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase E - 1 views for hr.employee -->
+<odoo>
+  <data>
+    <record id="view_8349_odoo_studio_hr_employee_tree_customization_e" model="ir.ui.view">
+      <field name="name">Odoo Studio: hr.employee.tree customization</field>
+      <field name="model">hr.employee</field>
+      <field name="type">tree</field>
+      <field name="priority">160</field>
+      <field name="inherit_id" ref="hr.view_employee_tree"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='work_phone']" position="replace">
+    <field name="registration_number" optional="show"/>
+  </xpath>
+</data>
+      </field>
+    </record>
+
+  </data>
+</odoo>

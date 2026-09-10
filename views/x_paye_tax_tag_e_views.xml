@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase E - 3 views for x_paye_tax_tag -->
+<odoo>
+  <data>
+    <record id="view_3235_default_form_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+      <field name="name">Default form view for x_paye_tax_tag</field>
+      <field name="model">x_paye_tax_tag</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+  <header/>
+  <sheet string="Paye Tax Tags">
+    <div class="oe_title">
+                <h1>
+                    <field name="x_name" required="1" placeholder="Name..."/>
+                </h1>
+            </div>
+    <group name="studio_group_cd5063">
+      <group name="studio_group_cd5063_left"/>
+      <group name="studio_group_cd5063_right"/>
+    </group>
+  </sheet>
+</form>
+      </field>
+    </record>
+
+    <record id="view_3234_default_list_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+      <field name="name">Default list view for x_paye_tax_tag</field>
+      <field name="model">x_paye_tax_tag</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+  <field name="x_name"/>
+  <field name="x_color" widget="color_picker"/>
+</tree>
+      </field>
+    </record>
+
+    <record id="view_3236_default_search_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+      <field name="name">Default search view for x_paye_tax_tag</field>
+      <field name="model">x_paye_tax_tag</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+        <search>
+  <field name="x_name"/>
+</search>
+      </field>
+    </record>
+
+  </data>
+</odoo>
