@@ -18,9 +18,7 @@
     <field optional="hide" name="x_studio_ot_approved_by" string="OT Approved By" readonly="1"/>
   </xpath>
   <!-- STRIPPED overtime_hours xpath: not on parent view -->
-  <xpath expr="//field[@name='out_latitude']" position="after">
-    <field optional="show" name="x_studio_over_time" widget="float_time"/>
-  </xpath>
+  <!-- STRIPPED out_latitude xpath: not on parent view -->
 </data>
       </field>
     </record>
