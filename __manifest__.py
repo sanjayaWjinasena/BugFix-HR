@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.44',
+    'version': '17.0.0.0.45',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -193,11 +193,10 @@
     # of BugFix-HR after the strip cycle.
     'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data', 'base_automation'],
     'data': [
-        'views/views_final.xml',
         'data/server_actions_f5.xml',
         'data/window_actions_f4.xml',
-        'security/ir.model.access.csv',
         'data/server_actions.xml',
+        'security/ir.model.access.csv',
         'data/automations.xml',
         'data/act_windows.xml',
         'reports/reports.xml',
@@ -222,10 +221,11 @@
         'views/x_paye_tax_e_views.xml',
         'views/x_paye_tax_tag_e_views.xml',
         'views/x_update_ot_e_views.xml',
+        'views/views_final.xml',
         'views/x_update_ot_line_7eea7_e_views.xml',
         'data/menus_f6.xml',
         'data/menus_from_routing.xml',
-],
+    ],
     'installable': True,
     'auto_install': False,
     'application': True,
