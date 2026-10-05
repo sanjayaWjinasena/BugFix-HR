@@ -226,6 +226,8 @@
         'data/menus_f6.xml',
         'data/menus_from_routing.xml',
     ],
+    # Staging_Migration: repo-own existing Studio models before data loads.
+    'pre_init_hook': 'pre_init_hook',
     'installable': True,
     'auto_install': False,
     'application': True,
