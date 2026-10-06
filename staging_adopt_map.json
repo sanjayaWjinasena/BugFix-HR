@@ -31,22 +31,6 @@
 ]
 ]
 },
-"access_5948_hr_work_entry_type": {
-"ir.model.access": [
-[
-5948,
-"2023-11-30 03:45:41"
-]
-]
-},
-"access_5949_work_entries_report": {
-"ir.model.access": [
-[
-5949,
-"2023-11-30 03:47:20"
-]
-]
-},
 "access_6268_inv___administrator": {
 "ir.model.access": [
 [
@@ -60,30 +44,6 @@
 [
 6874,
 "2024-04-01 04:43:19"
-]
-]
-},
-"access_6913_hr_expense_sheet": {
-"ir.model.access": [
-[
-6913,
-"2024-04-17 12:57:48"
-]
-]
-},
-"access_6915_hr_expense_sheet": {
-"ir.model.access": [
-[
-6915,
-"2024-04-17 14:16:11"
-]
-]
-},
-"access_7009_hr_expense_sheet": {
-"ir.model.access": [
-[
-7009,
-"2024-05-03 08:40:31"
 ]
 ]
 },
@@ -164,14 +124,6 @@
 [
 7074,
 "2024-06-17 10:29:37"
-]
-]
-},
-"access_7076_hr_salary_rule_category": {
-"ir.model.access": [
-[
-7076,
-"2024-06-20 03:54:25"
 ]
 ]
 },
