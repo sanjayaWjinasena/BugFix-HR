@@ -1,0 +1,1094 @@
+{
+"access_1425_paye_tax_tags_group_system": {
+"ir.model.access": [
+[
+1425,
+"2022-02-02 03:35:01"
+]
+]
+},
+"access_1426_paye_tax_tags_group_user": {
+"ir.model.access": [
+[
+1426,
+"2022-02-02 03:35:01"
+]
+]
+},
+"access_1427_paye_tax_group_system": {
+"ir.model.access": [
+[
+1427,
+"2022-02-02 03:35:01"
+]
+]
+},
+"access_1428_paye_tax_group_user": {
+"ir.model.access": [
+[
+1428,
+"2022-02-02 03:35:01"
+]
+]
+},
+"access_5948_hr_work_entry_type": {
+"ir.model.access": [
+[
+5948,
+"2023-11-30 03:45:41"
+]
+]
+},
+"access_5949_work_entries_report": {
+"ir.model.access": [
+[
+5949,
+"2023-11-30 03:47:20"
+]
+]
+},
+"access_6268_inv___administrator": {
+"ir.model.access": [
+[
+6268,
+"2024-01-03 09:54:28"
+]
+]
+},
+"access_6874_jin___administrator": {
+"ir.model.access": [
+[
+6874,
+"2024-04-01 04:43:19"
+]
+]
+},
+"access_6913_hr_expense_sheet": {
+"ir.model.access": [
+[
+6913,
+"2024-04-17 12:57:48"
+]
+]
+},
+"access_6915_hr_expense_sheet": {
+"ir.model.access": [
+[
+6915,
+"2024-04-17 14:16:11"
+]
+]
+},
+"access_7009_hr_expense_sheet": {
+"ir.model.access": [
+[
+7009,
+"2024-05-03 08:40:31"
+]
+]
+},
+"access_7065_update_ot_lines_group_system": {
+"ir.model.access": [
+[
+7065,
+"2024-05-26 15:44:48"
+],
+[
+7067,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7066_update_ot_lines_group_user": {
+"ir.model.access": [
+[
+7066,
+"2024-05-26 15:44:48"
+],
+[
+7068,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7067_update_ot_lines_group_system": {
+"ir.model.access": [
+[
+7067,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7068_update_ot_lines_group_user": {
+"ir.model.access": [
+[
+7068,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7069_update_ot_group_system": {
+"ir.model.access": [
+[
+7069,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7070_update_ot_group_user": {
+"ir.model.access": [
+[
+7070,
+"2024-05-26 15:44:48"
+]
+]
+},
+"access_7071_hr_salary_attachment": {
+"ir.model.access": [
+[
+7071,
+"2024-06-17 09:51:36"
+]
+]
+},
+"access_7073_hr_payroll_structure": {
+"ir.model.access": [
+[
+7073,
+"2024-06-17 10:07:59"
+]
+]
+},
+"access_7074_hr_salary_rule": {
+"ir.model.access": [
+[
+7074,
+"2024-06-17 10:29:37"
+]
+]
+},
+"access_7076_hr_salary_rule_category": {
+"ir.model.access": [
+[
+7076,
+"2024-06-20 03:54:25"
+]
+]
+},
+"act_window_1274_my_reports": {
+"ir.actions.act_window": [
+[
+1274,
+"2021-09-28 17:58:14"
+]
+]
+},
+"act_window_1333_applications": {
+"ir.actions.act_window": [
+[
+1333,
+"2021-10-11 08:28:57"
+]
+]
+},
+"act_window_1338_applications": {
+"ir.actions.act_window": [
+[
+1338,
+"2021-10-11 08:28:57"
+]
+]
+},
+"act_window_1559_paye_tax": {
+"ir.actions.act_window": [
+[
+1559,
+"2022-02-02 03:35:01"
+]
+]
+},
+"act_window_1560_paye_tax_tags": {
+"ir.actions.act_window": [
+[
+1560,
+"2022-02-02 03:35:01"
+]
+]
+},
+"act_window_1966_work_entries_analysis": {
+"ir.actions.act_window": [
+[
+1966,
+"2023-02-02 11:35:16"
+]
+]
+},
+"act_window_2367_etf_schedule": {
+"ir.actions.act_window": [
+[
+2367,
+"2023-09-04 16:33:03"
+]
+]
+},
+"act_window_2369_rules": {
+"ir.actions.act_window": [
+[
+2370,
+"2023-09-06 14:22:04"
+],
+[
+2369,
+"2023-09-06 14:21:22"
+]
+]
+},
+"act_window_2370_rules": {
+"ir.actions.act_window": [
+[
+2370,
+"2023-09-06 14:22:04"
+]
+]
+},
+"act_window_2557_hr_attendance_overtime": {
+"ir.actions.act_window": [
+[
+2557,
+"2024-05-15 07:24:32"
+]
+]
+},
+"act_window_2559_update_ot": {
+"ir.actions.act_window": [
+[
+2559,
+"2024-05-26 15:44:48"
+]
+]
+},
+"act_window_2585_hr_expense_sheet": {
+"ir.actions.act_window": [
+[
+2585,
+"2024-07-04 07:22:00"
+],
+[
+2817,
+"2024-10-09 05:05:55"
+],
+[
+2596,
+"2024-07-10 01:30:20"
+]
+]
+},
+"act_window_2596_hr_expense_sheet": {
+"ir.actions.act_window": [
+[
+2596,
+"2024-07-10 01:30:20"
+]
+]
+},
+"act_window_2817_hr_expense_sheet": {
+"ir.actions.act_window": [
+[
+2817,
+"2024-10-09 05:05:55"
+]
+]
+},
+"base_automation_253_jin_update_ot_seq_no": {
+"base.automation": [
+[
+253,
+"2024-05-26 16:06:24"
+]
+]
+},
+"base_automation_254_update_ot": {
+"base.automation": [
+[
+254,
+"2024-05-26 16:24:38"
+]
+]
+},
+"base_automation_262_hr_applicant": {
+"base.automation": [
+[
+262,
+"2024-07-04 02:50:37"
+]
+]
+},
+"base_automation_263_hr_applicant_2": {
+"base.automation": [
+[
+263,
+"2024-07-04 02:55:37"
+]
+]
+},
+"base_automation_264_hr_validate_recruiter_marks": {
+"base.automation": [
+[
+264,
+"2024-07-04 02:56:30"
+]
+]
+},
+"base_automation_265_hr_validate_line_manager_marks": {
+"base.automation": [
+[
+265,
+"2024-07-04 03:00:26"
+]
+]
+},
+"base_automation_266_hr_validate_leadership_marks": {
+"base.automation": [
+[
+266,
+"2024-07-04 03:01:47"
+]
+]
+},
+"base_automation_267_hr_validate_assignment_marks": {
+"base.automation": [
+[
+267,
+"2024-07-04 03:02:36"
+]
+]
+},
+"base_automation_333_jin_company_id_in_update_ot": {
+"base.automation": [
+[
+333,
+"2024-10-09 07:55:12"
+]
+]
+},
+"base_automation_93_hr_validate_stages": {
+"base.automation": [
+[
+93,
+"2022-01-06 04:25:36"
+]
+]
+},
+"base_automation_94_payroll_validate_from_to_dates_in_paye_tax": {
+"base.automation": [
+[
+94,
+"2022-02-02 03:51:26"
+]
+]
+},
+"default_231_x_paye_tax_x_active": {
+"ir.default": [
+[
+231,
+"2022-02-02 03:35:01"
+]
+]
+},
+"default_232_x_paye_tax_x_studio_sequence": {
+"ir.default": [
+[
+232,
+"2022-02-02 03:35:01"
+]
+]
+},
+"default_410_x_update_ot_x_active": {
+"ir.default": [
+[
+410,
+"2024-05-26 15:44:48"
+]
+]
+},
+"default_411_x_update_ot_x_studio_sequence": {
+"ir.default": [
+[
+411,
+"2024-05-26 15:44:48"
+]
+]
+},
+"default_431_hr_applicant_x_studio_marks_1": {
+"ir.default": [
+[
+431,
+"2024-07-03 15:32:11"
+]
+]
+},
+"default_432_hr_applicant_x_studio_interview_marks_1": {
+"ir.default": [
+[
+432,
+"2024-07-04 00:33:47"
+]
+]
+},
+"default_433_hr_applicant_x_studio_interview_marks_2": {
+"ir.default": [
+[
+433,
+"2024-07-04 00:38:21"
+]
+]
+},
+"default_434_hr_applicant_x_studio_interview_marks_3": {
+"ir.default": [
+[
+434,
+"2024-07-04 00:43:34"
+]
+]
+},
+"menu_1114_rules": {
+"ir.ui.menu": [
+[
+1114,
+"2023-09-06 14:21:22"
+],
+[
+1115,
+"2023-09-06 14:22:04"
+]
+]
+},
+"menu_1115_rules": {
+"ir.ui.menu": [
+[
+1115,
+"2023-09-06 14:22:04"
+]
+]
+},
+"menu_1477_bank_data": {
+"ir.ui.menu": [
+[
+1477,
+"2025-03-10 06:01:24"
+]
+]
+},
+"menu_825_custom_configuration": {
+"ir.ui.menu": [
+[
+825,
+"2022-02-02 03:35:01"
+]
+]
+},
+"menu_f6_etf_schedule": {
+"ir.ui.menu": [
+[
+1475,
+"2025-03-10 05:59:29"
+],
+[
+1113,
+"2023-09-04 16:33:03"
+]
+]
+},
+"menu_f6_update_ot": {
+"ir.ui.menu": [
+[
+1233,
+"2024-05-26 15:44:48"
+]
+]
+},
+"ported_view_4929_hr_employee_form": {
+"ir.ui.view": [
+[
+4929,
+"2023-04-20 00:42:19"
+]
+]
+},
+"ported_view_4930_hr_contract_form": {
+"ir.ui.view": [
+[
+4930,
+"2023-04-20 00:50:12"
+]
+]
+},
+"ported_view_4949_hr_expense_form": {
+"ir.ui.view": [
+[
+4949,
+"2023-05-12 09:23:04"
+]
+]
+},
+"ported_view_5549_hr_recruitment_stage_tree": {
+"ir.ui.view": [
+[
+5549,
+"2024-07-03 15:18:13"
+]
+]
+},
+"ported_view_5550_hr_applicant_form": {
+"ir.ui.view": [
+[
+5550,
+"2024-07-03 15:27:26"
+]
+]
+},
+"ported_view_9511_hr_payslip_bank_data_tree": {
+"ir.ui.view": [
+[
+9511,
+"2026-04-09 08:47:14"
+]
+]
+},
+"rule_318_hr_contract_multi_company": {
+"ir.rule": [
+[
+318,
+"2021-09-28 17:58:07"
+]
+]
+},
+"rule_324_manager_expense_sheet": {
+"ir.rule": [
+[
+324,
+"2021-09-28 17:58:14"
+]
+]
+},
+"rule_325_approver_expense_sheet": {
+"ir.rule": [
+[
+325,
+"2021-09-28 17:58:14"
+]
+]
+},
+"rule_326_employee_expense_sheet": {
+"ir.rule": [
+[
+326,
+"2021-09-28 17:58:14"
+]
+]
+},
+"rule_328_expense_report_multi_company_rule": {
+"ir.rule": [
+[
+328,
+"2021-09-28 17:58:14"
+]
+]
+},
+"rule_333_applicant_multi_company_rule": {
+"ir.rule": [
+[
+333,
+"2021-10-11 08:28:57"
+]
+]
+},
+"rule_336_hr_rr": {
+"ir.rule": [
+[
+336,
+"2022-01-05 06:28:37"
+]
+]
+},
+"rule_344_hr_payroll_structure_multi_company": {
+"ir.rule": [
+[
+344,
+"2022-02-02 03:32:58"
+]
+]
+},
+"rule_350_hr_payslip_batch_multi_company": {
+"ir.rule": [
+[
+350,
+"2022-02-02 03:32:58"
+]
+]
+},
+"rule_384_employee_multi_company_rule": {
+"ir.rule": [
+[
+384,
+"2023-02-02 11:26:13"
+]
+]
+},
+"rule_421_hr_salary_attachment_multi_company": {
+"ir.rule": [
+[
+421,
+"2023-02-02 11:35:16"
+]
+]
+},
+"rule_627_jin_multi_company_update_ot": {
+"ir.rule": [
+[
+627,
+"2024-10-09 07:57:40"
+]
+]
+},
+"rule_633_employee_can_t_modify_expense_sheet_that_is_not_in_draft_sta": {
+"ir.rule": [
+[
+633,
+"2025-03-03 04:10:49"
+]
+]
+},
+"rule_649_hr_contract_employee_manager": {
+"ir.rule": [
+[
+649,
+"2025-03-18 10:02:24"
+]
+]
+},
+"rule_650_hr_contract_contract_manager": {
+"ir.rule": [
+[
+650,
+"2025-03-18 10:02:24"
+]
+]
+},
+"rule_680_applicant_interviewer": {
+"ir.rule": [
+[
+680,
+"2025-03-18 10:04:18"
+]
+]
+},
+"rule_725_hr_salary_rule_multi_company": {
+"ir.rule": [
+[
+725,
+"2025-03-18 10:10:20"
+]
+]
+},
+"rule_747_attendance_officer_restrict_overtime_to_managed_employees": {
+"ir.rule": [
+[
+747,
+"2025-03-18 10:17:59"
+]
+]
+},
+"rule_748_attendance_admin_full_access": {
+"ir.rule": [
+[
+748,
+"2025-03-18 10:17:59"
+]
+]
+},
+"rule_749_attendance_base_user_read_his_own_overtime": {
+"ir.rule": [
+[
+749,
+"2025-03-18 10:17:59"
+]
+]
+},
+"rule_772_user_all_applicants": {
+"ir.rule": [
+[
+772,
+"2025-03-18 10:22:32"
+]
+]
+},
+"sa_f5_hr_applicant_hr_applicant": {
+"ir.actions.server": [
+[
+2579,
+"2024-07-04 02:50:37"
+]
+]
+},
+"sa_f5_hr_applicant_hr_applicant_2": {
+"ir.actions.server": [
+[
+2580,
+"2024-07-04 02:55:37"
+]
+]
+},
+"sa_f5_hr_applicant_hr_validate_assignment_marks": {
+"ir.actions.server": [
+[
+2584,
+"2024-07-04 03:02:36"
+]
+]
+},
+"sa_f5_hr_applicant_hr_validate_leadership_marks": {
+"ir.actions.server": [
+[
+2583,
+"2024-07-04 03:01:47"
+]
+]
+},
+"sa_f5_hr_applicant_hr_validate_line_manager_marks": {
+"ir.actions.server": [
+[
+2582,
+"2024-07-04 03:00:26"
+]
+]
+},
+"sa_f5_hr_applicant_hr_validate_recruiter_marks": {
+"ir.actions.server": [
+[
+2581,
+"2024-07-04 02:56:30"
+]
+]
+},
+"sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax": {
+"ir.actions.server": [
+[
+1561,
+"2022-02-02 03:51:26"
+]
+]
+},
+"sa_f5_x_update_ot_jin_company_id_in_update_ot": {
+"ir.actions.server": [
+[
+2823,
+"2024-10-09 07:55:12"
+]
+]
+},
+"sa_f5_x_update_ot_update_ot_seq_no": {
+"ir.actions.server": [
+[
+2560,
+"2024-05-26 16:06:24"
+]
+]
+},
+"server_action_1522_hr_validate_stages": {
+"ir.actions.server": [
+[
+1522,
+"2022-01-06 04:25:36"
+]
+]
+},
+"server_action_1561_payroll_validate_from_to_dates_in_paye_tax": {
+"ir.actions.server": [
+[
+1561,
+"2022-02-02 03:51:26"
+]
+]
+},
+"server_action_2560_update_ot_seq_no": {
+"ir.actions.server": [
+[
+2560,
+"2024-05-26 16:06:24"
+]
+]
+},
+"server_action_2561_update_ot": {
+"ir.actions.server": [
+[
+2561,
+"2024-05-26 16:24:38"
+]
+]
+},
+"server_action_2562_update_ot_update_all": {
+"ir.actions.server": [
+[
+2562,
+"2024-05-27 02:45:24"
+]
+]
+},
+"server_action_2563_update_ot_clear_all": {
+"ir.actions.server": [
+[
+2563,
+"2024-05-27 02:50:35"
+]
+]
+},
+"server_action_2564_update_ot": {
+"ir.actions.server": [
+[
+2561,
+"2024-05-26 16:24:38"
+],
+[
+2564,
+"2024-05-27 03:40:38"
+]
+]
+},
+"server_action_2565_update_ot_test": {
+"ir.actions.server": [
+[
+2565,
+"2024-05-29 08:32:05"
+]
+]
+},
+"server_action_2579_hr_applicant": {
+"ir.actions.server": [
+[
+2579,
+"2024-07-04 02:50:37"
+]
+]
+},
+"server_action_2580_hr_applicant_2": {
+"ir.actions.server": [
+[
+2580,
+"2024-07-04 02:55:37"
+]
+]
+},
+"server_action_2581_hr_validate_recruiter_marks": {
+"ir.actions.server": [
+[
+2581,
+"2024-07-04 02:56:30"
+]
+]
+},
+"server_action_2582_hr_validate_line_manager_marks": {
+"ir.actions.server": [
+[
+2582,
+"2024-07-04 03:00:26"
+]
+]
+},
+"server_action_2583_hr_validate_leadership_marks": {
+"ir.actions.server": [
+[
+2583,
+"2024-07-04 03:01:47"
+]
+]
+},
+"server_action_2584_hr_validate_assignment_marks": {
+"ir.actions.server": [
+[
+2584,
+"2024-07-04 03:02:36"
+]
+]
+},
+"server_action_2823_jin_company_id_in_update_ot": {
+"ir.actions.server": [
+[
+2823,
+"2024-10-09 07:55:12"
+]
+]
+},
+"view_3234_default_list_view_for_x_paye_tax_tag_e": {
+"ir.ui.view": [
+[
+3234,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_3235_default_form_view_for_x_paye_tax_tag_e": {
+"ir.ui.view": [
+[
+3235,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_3236_default_search_view_for_x_paye_tax_tag_e": {
+"ir.ui.view": [
+[
+3236,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_3237_default_list_view_for_x_paye_tax_e": {
+"ir.ui.view": [
+[
+3237,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_3238_default_form_view_for_x_paye_tax_e": {
+"ir.ui.view": [
+[
+3238,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_3239_default_search_view_for_x_paye_tax_e": {
+"ir.ui.view": [
+[
+3239,
+"2022-02-02 03:35:01"
+]
+]
+},
+"view_5520_odoo_studio_hr_attendance_tree_customization_e": {
+"ir.ui.view": [
+[
+5520,
+"2024-05-26 14:47:05"
+]
+]
+},
+"view_5521_default_list_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5521,
+"2024-05-26 15:44:48"
+],
+[
+5524,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5522_default_form_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5522,
+"2024-05-26 15:44:48"
+],
+[
+5525,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5523_default_search_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5523,
+"2024-05-26 15:44:48"
+],
+[
+5526,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5524_default_list_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5524,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5525_default_form_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5525,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5526_default_search_view_for_x_update_ot_line_7eea7_e": {
+"ir.ui.view": [
+[
+5526,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5527_default_list_view_for_x_update_ot_e": {
+"ir.ui.view": [
+[
+5527,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5528_default_form_view_for_x_update_ot_e": {
+"ir.ui.view": [
+[
+5528,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5529_default_search_view_for_x_update_ot_e": {
+"ir.ui.view": [
+[
+5529,
+"2024-05-26 15:44:48"
+]
+]
+},
+"view_5551_odoo_studio_hr_job_form_customization_e": {
+"ir.ui.view": [
+[
+5551,
+"2024-07-04 00:21:41"
+]
+]
+},
+"view_8349_odoo_studio_hr_employee_tree_customization_e": {
+"ir.ui.view": [
+[
+8349,
+"2025-07-22 05:20:11"
+]
+]
+},
+"view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization": {
+"ir.ui.view": [
+[
+3240,
+"2022-02-02 03:46:56"
+]
+]
+},
+"view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization": {
+"ir.ui.view": [
+[
+5530,
+"2024-05-26 15:46:33"
+]
+]
+}
+}
