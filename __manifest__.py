@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 {
+    # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
     'name': 'Jinasena : Module : HR',
     'version': '17.0.0.0.48',
     'summary': 'Studio-to-Python port for BugFix-HR',
@@ -215,7 +216,7 @@
         'data/record_rules_gap.xml',
         'data/server_actions_gap.xml',
         'data/window_actions_gap.xml',
-        'data/ir_defaults_gap.xml',
+        # 'data/ir_defaults_gap.xml',  # upgrade-testing: data, not shipped
         'views/hr_attendance_e_views.xml',
         'views/hr_employee_e_views.xml',
         'views/hr_job_e_views.xml',
