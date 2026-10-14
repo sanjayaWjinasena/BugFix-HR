@@ -130,9 +130,8 @@ Adds a three-party scoring workflow to the applicant form: Recruiter, Line Manag
   <details><summary>code (3 lines)</summary>
 
 ```python
-
-if record.x_studio_priority == 'No':
-  record['stage_id'] = 1
+if record.x_studio_priority == "No":
+    record["stage_id"] = 1
 ```
   </details>
 - **Execute Code** (`server_action_2580_hr_applicant_2`, type `code`)
@@ -142,9 +141,8 @@ if record.x_studio_priority == 'No':
   <details><summary>code (3 lines)</summary>
 
 ```python
-
-if record.x_studio_2nd_selection == 'Yes':
-  record['stage_id'] = 0
+if record.x_studio_2nd_selection == "Yes":
+    record["stage_id"] = 0
 ```
   </details>
 - **Execute Code** (`server_action_2581_hr_validate_recruiter_marks`, type `code`)
@@ -154,9 +152,8 @@ if record.x_studio_2nd_selection == 'Yes':
   <details><summary>code (3 lines)</summary>
 
 ```python
-
 if record.x_studio_interview_marks_3 > 100.00:
-  raise UserError("Recruiter Marks should be Less than or Equls to 100.")
+    raise UserError("Recruiter Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **Execute Code** (`server_action_2582_hr_validate_line_manager_marks`, type `code`)
@@ -166,9 +163,8 @@ if record.x_studio_interview_marks_3 > 100.00:
   <details><summary>code (3 lines)</summary>
 
 ```python
-
 if record.x_studio_interview_marks_1 > 100.00:
-  raise UserError("Line Manager Marks should be Less than or Equls to 100.")
+    raise UserError("Line Manager Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **Execute Code** (`server_action_2583_hr_validate_leadership_marks`, type `code`)
@@ -178,9 +174,8 @@ if record.x_studio_interview_marks_1 > 100.00:
   <details><summary>code (3 lines)</summary>
 
 ```python
-
 if record.x_studio_interview_marks_2 > 100.00:
-  raise UserError("Leadership Marks should be Less than or Equls to 100.")
+    raise UserError("Leadership Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **Execute Code** (`server_action_2584_hr_validate_assignment_marks`, type `code`)
@@ -190,9 +185,8 @@ if record.x_studio_interview_marks_2 > 100.00:
   <details><summary>code (3 lines)</summary>
 
 ```python
-
 if record.x_studio_marks_1 > 100.0:
-   raise UserError("Assignment Marks should be Less than or Equls to 100.")
+    raise UserError("Assignment Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **HR - Applicant** (`sa_f5_hr_applicant_hr_applicant`, type `code`)
@@ -202,8 +196,8 @@ if record.x_studio_marks_1 > 100.0:
   <details><summary>code (2 lines)</summary>
 
 ```python
-if record.x_studio_priority == 'No':
-  record['stage_id'] = 1
+if record.x_studio_priority == "No":
+    record["stage_id"] = 1
 ```
   </details>
 - **HR - Applicant 2** (`sa_f5_hr_applicant_hr_applicant_2`, type `code`)
@@ -213,8 +207,8 @@ if record.x_studio_priority == 'No':
   <details><summary>code (2 lines)</summary>
 
 ```python
-if record.x_studio_2nd_selection == 'Yes':
-  record['stage_id'] = 0
+if record.x_studio_2nd_selection == "Yes":
+    record["stage_id"] = 0
 ```
   </details>
 - **HR - Validate Assignment Marks** (`sa_f5_hr_applicant_hr_validate_assignment_marks`, type `code`)
@@ -225,7 +219,7 @@ if record.x_studio_2nd_selection == 'Yes':
 
 ```python
 if record.x_studio_marks_1 > 100.0:
-   raise UserError("Assignment Marks should be Less than or Equls to 100.")
+    raise UserError("Assignment Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **HR - Validate Leadership Marks** (`sa_f5_hr_applicant_hr_validate_leadership_marks`, type `code`)
@@ -236,7 +230,7 @@ if record.x_studio_marks_1 > 100.0:
 
 ```python
 if record.x_studio_interview_marks_2 > 100.00:
-  raise UserError("Leadership Marks should be Less than or Equls to 100.")
+    raise UserError("Leadership Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **HR - Validate Line Manager Marks** (`sa_f5_hr_applicant_hr_validate_line_manager_marks`, type `code`)
@@ -247,7 +241,7 @@ if record.x_studio_interview_marks_2 > 100.00:
 
 ```python
 if record.x_studio_interview_marks_1 > 100.00:
-  raise UserError("Line Manager Marks should be Less than or Equls to 100.")
+    raise UserError("Line Manager Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **HR - Validate Recruiter Marks** (`sa_f5_hr_applicant_hr_validate_recruiter_marks`, type `code`)
@@ -258,7 +252,7 @@ if record.x_studio_interview_marks_1 > 100.00:
 
 ```python
 if record.x_studio_interview_marks_3 > 100.00:
-  raise UserError("Recruiter Marks should be Less than or Equls to 100.")
+    raise UserError("Recruiter Marks should be Less than or Equls to 100.")
 ```
   </details>
 - **HR - Validate Stages** (`server_action_1522_hr_validate_stages`, type `code`)
@@ -269,10 +263,12 @@ if record.x_studio_interview_marks_3 > 100.00:
 
 ```python
 if record.stage_id.id != 1:
-  valid_user = env['res.users'].search([('id', '=', (uid,1)),('x_studio_recr_stages', '=', record.stage_id.id)])
+    valid_user = env["res.users"].search(
+        [("id", "=", (uid, 1)), ("x_studio_recr_stages", "=", record.stage_id.id)]
+    )
 
-  if not valid_user:
-     raise UserError('Current User is Restricted to the Selected Stage.')
+    if not valid_user:
+        raise UserError("Current User is Restricted to the Selected Stage.")
 ```
   </details>
 **Automations (7):**
@@ -779,9 +775,8 @@ A row of the PAYE tax table used in payroll configuration: each row has a Code, 
   <details><summary>code (3 lines)</summary>
 
 ```python
-
 if record.x_studio_end_date < record.x_studio_start_date:
-  raise UserError('End Date must be Greater than Start Date.')
+    raise UserError("End Date must be Greater than Start Date.")
 ```
   </details>
 - **PAYROLL - Validate From To Dates in Paye Tax** (`sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax`, type `code`)
@@ -792,7 +787,7 @@ if record.x_studio_end_date < record.x_studio_start_date:
 
 ```python
 if record.x_studio_end_date < record.x_studio_start_date:
-  raise UserError('End Date must be Greater than Start Date.')
+    raise UserError("End Date must be Greater than Start Date.")
 ```
   </details>
 **Automations (1):**
@@ -929,10 +924,9 @@ An overtime approval document. When the user sets the As on Date, an automation 
   <details><summary>code (4 lines)</summary>
 
 ```python
-
-#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
-seq = env['ir.sequence'].next_by_code('ot.update.seq')
-record.write({'x_name': seq})
+# record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+seq = env["ir.sequence"].next_by_code("ot.update.seq")
+record.write({"x_name": seq})
 ```
   </details>
 - **Execute Code** (`server_action_2561_update_ot`, type `code`)
@@ -942,40 +936,48 @@ record.write({'x_name': seq})
   <details><summary>code (34 lines)</summary>
 
 ```python
-
 if record.x_studio_as_on_date:
+    company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
 
-  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+    company = env["res.company"].browse(company_id)
 
-  company = env['res.company'].browse(company_id)
+    temp_rec_1 = env["x_update_ot_line_7eea7"].search(
+        [("x_update_ot_id", "=", record._origin.id)]
+    )
 
-  
+    if temp_rec_1:
+        for del_temp_rec_1 in temp_rec_1:
+            del_temp_rec_1.unlink()
 
-  temp_rec_1 = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', record._origin.id)])
+    target_date = record.x_studio_as_on_date
 
-  if temp_rec_1:
+    target_date = target_date.strftime("%Y-%m-%d")
 
-    for del_temp_rec_1 in temp_rec_1:
+    date_start = f"{target_date} 00:00:00"
 
-      del_temp_rec_1.unlink()
+    date_end = f"{target_date} 23:59:59"
 
-  
+    attendance = env["hr.attendance"].search(
+        [
+            ("check_in", ">=", date_start),
+            ("check_in", "<=", date_end),
+            ("check_out", "=", False),
+            ("x_studio_ot_approved", "=", False),
+            ("x_studio_company_id", "=", company.id),
+        ]
+    )
 
-  target_date = record.x_studio_as_on_date
-
-  target_date = target_date.strftime('%Y-%m-%d')
-
-  date_start = f'{target_date} 00:00:00'
-
-  date_end = f'{target_date} 23:59:59'
-
-  
-
-  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('x_studio_company_id', '=', company.id)])
-
-  for attdns in attendance:
-
-    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'x_name':record.x_name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
+    for attdns in attendance:
+        create_estimated_sub_model = env["x_update_ot_line_7eea7"].create(
+            {
+                "x_update_ot_id": record.id,
+                "x_name": record.x_name,
+                "x_studio_employee_id": attdns.employee_id.id,
+                "x_studio_check_in": attdns.check_in,
+                "x_studio_check_out": attdns.check_out,
+                "x_studio_attendance_id": attdns.id,
+            }
+        )
 ```
   </details>
 - **Execute Code** (`server_action_2823_jin_company_id_in_update_ot`, type `code`)
@@ -985,11 +987,10 @@ if record.x_studio_as_on_date:
   <details><summary>code (5 lines)</summary>
 
 ```python
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
-
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 - **JIN - Company Id in Update OT** (`sa_f5_x_update_ot_jin_company_id_in_update_ot`, type `code`)
@@ -999,10 +1000,10 @@ record['x_studio_company_id'] = company.id
   <details><summary>code (4 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 - **Update OT** (`server_action_2564_update_ot`, type `code`)
@@ -1012,44 +1013,57 @@ record['x_studio_company_id'] = company.id
   <details><summary>code (38 lines)</summary>
 
 ```python
-
 target_date = datetime.date.today()
 
-target_date = target_date.strftime('%Y-%m-%d')
+target_date = target_date.strftime("%Y-%m-%d")
 
-date_start = f'{target_date} 00:00:00'
+date_start = f"{target_date} 00:00:00"
 
-date_end = f'{target_date} 23:59:59'
+date_end = f"{target_date} 23:59:59"
 
-#check_out = f'{target_date} 11:00:00'
+# check_out = f'{target_date} 11:00:00'
 
-#check_in = f'{target_date} 11:00:01'
+# check_in = f'{target_date} 11:00:01'
 
-check_out = f'{target_date} 01:00:00'
+check_out = f"{target_date} 01:00:00"
 
-check_in = f'{target_date} 01:00:01'
+check_in = f"{target_date} 01:00:01"
 
 
-
-update_ot = env['x_update_ot'].search([('create_date', '>=', date_start),('create_date', '<=', date_end)],order='id desc',limit=1)
+update_ot = env["x_update_ot"].search(
+    [("create_date", ">=", date_start), ("create_date", "<=", date_end)],
+    order="id desc",
+    limit=1,
+)
 
 if update_ot:
+    update_ot_lines = env["x_update_ot_line_7eea7"].search(
+        [("x_update_ot_id", "=", update_ot.id), ("x_studio_approve_ot", "=", True)]
+    )
 
-  update_ot_lines = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', update_ot.id),('x_studio_approve_ot', '=', True)])
+    for lines in update_ot_lines:
+        attendance = env["hr.attendance"].search(
+            [("id", "=", lines.x_studio_attendance_id.id)], limit=1
+        )
 
-  for lines in update_ot_lines:
+        if attendance:
+            attendance.write(
+                {
+                    "x_studio_ot_approved": True,
+                    "x_studio_ot_approved_by": lines.create_uid.id,
+                    "check_out": check_out,
+                }
+            )
 
-    attendance = env['hr.attendance'].search([('id', '=', lines.x_studio_attendance_id.id)],limit=1)
+            attendance_new_line = env["hr.attendance"].create(
+                {
+                    "employee_id": attendance.employee_id.id,
+                    "check_in": check_in,
+                    "x_studio_ot_entry": True,
+                }
+            )
 
-    if attendance:
-
-      attendance.write({'x_studio_ot_approved':True, 'x_studio_ot_approved_by':lines.create_uid.id, 'check_out':check_out}) 
-
-      attendance_new_line = env['hr.attendance'].create({'employee_id':attendance.employee_id.id,'check_in':check_in,'x_studio_ot_entry':True})
-
-  
-
-  update_ot.unlink()
+    update_ot.unlink()
 ```
   </details>
 - **Update OT - Clear All** (`server_action_2563_update_ot_clear_all`, type `code`)
@@ -1059,13 +1073,12 @@ if update_ot:
   <details><summary>code (7 lines)</summary>
 
 ```python
-
 if record.id:
-  if record.x_update_ot_line_ids_d5449:
-    for lines in record.x_update_ot_line_ids_d5449:
-      lines.write({'x_studio_approve_ot': False}) 
-  else:
-    raise UserError('There are no employee records to clear.')
+    if record.x_update_ot_line_ids_d5449:
+        for lines in record.x_update_ot_line_ids_d5449:
+            lines.write({"x_studio_approve_ot": False})
+    else:
+        raise UserError("There are no employee records to clear.")
 ```
   </details>
 - **Update OT - Test** (`server_action_2565_update_ot_test`, type `code`)
@@ -1075,60 +1088,70 @@ if record.id:
   <details><summary>code (54 lines)</summary>
 
 ```python
-
 target_date = datetime.datetime.now()
 
-target_date = target_date.strftime('%Y-%m-%d')
+target_date = target_date.strftime("%Y-%m-%d")
 
-date_start = f'{target_date} 00:00:00'
+date_start = f"{target_date} 00:00:00"
 
-date_end = f'{target_date} 23:59:59'
+date_end = f"{target_date} 23:59:59"
 
-#check_out = f'{target_date} 11:00:00'
+# check_out = f'{target_date} 11:00:00'
 
-#check_in = f'{target_date} 11:00:01'
+# check_in = f'{target_date} 11:00:01'
 
-check_out = f'{target_date} 07:00:00'
+check_out = f"{target_date} 07:00:00"
 
-check_in = f'{target_date} 06:00:01'
-
+check_in = f"{target_date} 06:00:01"
 
 
 test_time = datetime.datetime.now()
 
-attendance = env['hr.attendance'].search([('x_studio_ot_entry', '=', True)],limit=1)
+attendance = env["hr.attendance"].search([("x_studio_ot_entry", "=", True)], limit=1)
 
 if attendance:
+    time_dif = test_time - attendance.check_in
 
-  time_dif = (test_time - attendance.check_in)
+    difference_in_hours = time_dif.total_seconds() / 3600
 
-  difference_in_hours = time_dif.total_seconds() / 3600
-
-  if difference_in_hours > 1.00:
-
-    raise UserError(difference_in_hours)
+    if difference_in_hours > 1.00:
+        raise UserError(difference_in_hours)
 
 
-
-update_ot = env['x_update_ot'].search([('create_date', '>=', date_start),('create_date', '<=', date_end)],order='id desc',limit=1)
+update_ot = env["x_update_ot"].search(
+    [("create_date", ">=", date_start), ("create_date", "<=", date_end)],
+    order="id desc",
+    limit=1,
+)
 
 if update_ot:
+    update_ot_lines = env["x_update_ot_line_7eea7"].search(
+        [("x_update_ot_id", "=", update_ot.id), ("x_studio_approve_ot", "=", True)]
+    )
 
-  update_ot_lines = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', update_ot.id),('x_studio_approve_ot', '=', True)])
+    for lines in update_ot_lines:
+        attendance = env["hr.attendance"].search(
+            [("id", "=", lines.x_studio_attendance_id.id)], limit=1
+        )
 
-  for lines in update_ot_lines:
+        if attendance:
+            attendance.write(
+                {
+                    "x_studio_ot_approved": True,
+                    "x_studio_ot_approved_by": lines.create_uid.id,
+                    "check_out": check_out,
+                }
+            )
 
-    attendance = env['hr.attendance'].search([('id', '=', lines.x_studio_attendance_id.id)],limit=1)
+            attendance_new_line = env["hr.attendance"].create(
+                {
+                    "employee_id": attendance.employee_id.id,
+                    "check_in": check_in,
+                    "x_studio_ot_entry": True,
+                }
+            )
 
-    if attendance:
-
-      attendance.write({'x_studio_ot_approved':True, 'x_studio_ot_approved_by':lines.create_uid.id, 'check_out':check_out}) 
-
-      attendance_new_line = env['hr.attendance'].create({'employee_id':attendance.employee_id.id,'check_in':check_in,'x_studio_ot_entry':True})
-
-  
-
-  update_ot.unlink()
+    update_ot.unlink()
 ```
   </details>
 - **Update OT - Update All** (`server_action_2562_update_ot_update_all`, type `code`)
@@ -1138,13 +1161,12 @@ if update_ot:
   <details><summary>code (7 lines)</summary>
 
 ```python
-
 if record.id:
-  if record.x_update_ot_line_ids_d5449:
-    for lines in record.x_update_ot_line_ids_d5449:
-      lines.write({'x_studio_approve_ot': True}) 
-  else:
-    raise UserError('There are no employee records to update.')
+    if record.x_update_ot_line_ids_d5449:
+        for lines in record.x_update_ot_line_ids_d5449:
+            lines.write({"x_studio_approve_ot": True})
+    else:
+        raise UserError("There are no employee records to update.")
 ```
   </details>
 - **Update OT Seq.No** (`sa_f5_x_update_ot_update_ot_seq_no`, type `code`)
@@ -1154,9 +1176,9 @@ if record.id:
   <details><summary>code (3 lines)</summary>
 
 ```python
-#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
-seq = env['ir.sequence'].next_by_code('ot.update.seq')
-record.write({'x_name': seq})
+# record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+seq = env["ir.sequence"].next_by_code("ot.update.seq")
+record.write({"x_name": seq})
 ```
   </details>
 **Automations (3):**
