@@ -228,7 +228,5 @@
         'data/menus_f6.xml',
         'data/menus_from_routing.xml',
     ],
-    'installable': True,
-    'auto_install': False,
     'application': True,
 }
