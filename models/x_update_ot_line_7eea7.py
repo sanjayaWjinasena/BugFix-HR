@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import fields, models
+
 
 class X_update_ot_line_7eea7(models.Model):
     _name = 'x_update_ot_line_7eea7'
@@ -13,4 +13,4 @@ class X_update_ot_line_7eea7(models.Model):
     x_studio_check_out = fields.Datetime(string='Check Out')
     x_studio_employee_id = fields.Many2one(comodel_name='hr.employee', string='Employee ID')
     x_studio_sequence = fields.Integer(string='Sequence')
-    x_update_ot_id = fields.Many2one(comodel_name='x_update_ot', string='X Update Ot')
+    x_update_ot_id = fields.Many2one(comodel_name='x_update_ot')

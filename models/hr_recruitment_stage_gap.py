@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import fields, models
+
 
 class HrRecruitmentStageGap(models.Model):
     _inherit = 'hr.recruitment.stage'
