@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="act_window_1966_work_entries_analysis" model="ir.actions.act_window">
+    <field name="name">Work Entries Analysis</field>
+    <field name="res_model">hr.work.entry.report</field>
+    <field name="view_mode">pivot</field>
+    <field name="context">{
+            'search_default_filter_date_start': True,
+            'search_default_filter_work_entry_validated': True,
+            'group_default_work_entry_type_id': True
+        }</field>
+    <field name="help" type="html"><p>This report performs analysis on your work entries.</p></field>
+  </record>
+  <!-- STRIPPED act_window_1559_paye_tax: model x_paye_tax not on target -->
+<!-- STRIPPED act_window_1560_paye_tax_tags: model x_paye_tax_tag not on target -->
+<!-- STRIPPED act_window_2559_update_ot: model x_update_ot not on target -->
+</odoo>

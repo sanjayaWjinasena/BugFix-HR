@@ -29,7 +29,7 @@ class HrContract(models.Model):
     # x_studio_over_time to have a compute of its own (currently also
     # returns 0 - unstored placeholder). Shape of the real compute is
     # likely: sum(hr.attendance.x_studio_over_time) for the contract's
-    # employee across the current pay period. See DEFERRED.md.
+    # employee across the current pay period. See docs/DEFERRED.md.
     x_studio_ot_hours = fields.Float(
         string="OT Hours", store=False, compute="_compute_ot_hours"
     )
@@ -37,7 +37,7 @@ class HrContract(models.Model):
     # STUB COMPUTE: returns 0.0. Real logic needs Sri Lankan PAYE tax
     # brackets via x_paye_tax + x_paye_tax_tag custom models (still
     # Studio-only, not ported). Shape of the real compute is likely:
-    # apply progressive tax rates against contract.wage. See DEFERRED.md.
+    # apply progressive tax rates against contract.wage. See docs/DEFERRED.md.
     x_studio_paye_tax_amount = fields.Float(
         string="Paye Tax Amount", store=False, compute="_compute_paye_tax_amount"
     )

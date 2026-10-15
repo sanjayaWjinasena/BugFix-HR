@@ -5,3 +5,9 @@ class HrRecruitmentStage(models.Model):
     _inherit = "hr.recruitment.stage"
 
     x_color = fields.Integer(string="Color", copy=True)
+
+
+class HrRecruitmentStageGap(models.Model):
+    _inherit = "hr.recruitment.stage"
+
+    x_color = fields.Integer(string="Color")

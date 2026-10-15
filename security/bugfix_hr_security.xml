@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-HR backlog: 20 record rules -->
 <odoo>
-
   <record id="rule_333_applicant_multi_company_rule" model="ir.rule">
     <field name="name">Applicant multi company rule</field>
     <field name="model_id" ref="BugFix-HR.model_hr_applicant"/>
@@ -12,7 +10,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_336_hr_rr" model="ir.rule">
     <field name="name">HR - RR</field>
     <field name="model_id" ref="BugFix-HR.model_hr_applicant"/>
@@ -22,7 +19,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_680_applicant_interviewer" model="ir.rule">
     <field name="name">Applicant Interviewer</field>
     <field name="model_id" ref="BugFix-HR.model_hr_applicant"/>
@@ -38,7 +34,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_recruitment.group_hr_recruitment_interviewer')])]"/>
   </record>
-
   <record id="rule_772_user_all_applicants" model="ir.rule">
     <field name="name">User: All Applicants</field>
     <field name="model_id" ref="BugFix-HR.model_hr_applicant"/>
@@ -50,7 +45,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_recruitment.group_hr_recruitment_user')])]"/>
   </record>
-
   <record id="rule_384_employee_multi_company_rule" model="ir.rule">
     <field name="name">Employee multi company rule</field>
     <field name="model_id" ref="hr_attendance.model_hr_attendance_overtime"/>
@@ -61,7 +55,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_747_attendance_officer_restrict_overtime_to_managed_employees" model="ir.rule">
     <field name="name">Attendance Officer: Restrict Overtime to managed employees</field>
     <field name="model_id" ref="hr_attendance.model_hr_attendance_overtime"/>
@@ -81,7 +74,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_attendance.group_hr_attendance_officer')])]"/>
   </record>
-
   <record id="rule_748_attendance_admin_full_access" model="ir.rule">
     <field name="name">Attendance Admin: full access</field>
     <field name="model_id" ref="hr_attendance.model_hr_attendance_overtime"/>
@@ -93,7 +85,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_attendance.group_hr_attendance_manager')])]"/>
   </record>
-
   <record id="rule_749_attendance_base_user_read_his_own_overtime" model="ir.rule">
     <field name="name">Attendance base user: Read his own overtime</field>
     <field name="model_id" ref="hr_attendance.model_hr_attendance_overtime"/>
@@ -105,7 +96,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_attendance.group_hr_attendance_own_reader')])]"/>
   </record>
-
   <record id="rule_318_hr_contract_multi_company" model="ir.rule">
     <field name="name">HR Contract: Multi Company</field>
     <field name="model_id" ref="BugFix-HR.model_hr_contract"/>
@@ -116,7 +106,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_649_hr_contract_employee_manager" model="ir.rule">
     <field name="name">HR Contract: Employee Manager</field>
     <field name="model_id" ref="BugFix-HR.model_hr_contract"/>
@@ -128,7 +117,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_contract.group_hr_contract_employee_manager')])]"/>
   </record>
-
   <record id="rule_650_hr_contract_contract_manager" model="ir.rule">
     <field name="name">HR Contract: Contract Manager</field>
     <field name="model_id" ref="BugFix-HR.model_hr_contract"/>
@@ -140,7 +128,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_contract.group_hr_contract_manager')])]"/>
   </record>
-
   <record id="rule_324_manager_expense_sheet" model="ir.rule">
     <field name="name">Manager Expense Sheet</field>
     <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
@@ -152,7 +139,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_expense.group_hr_expense_user'), ref('account.group_account_user')])]"/>
   </record>
-
   <record id="rule_325_approver_expense_sheet" model="ir.rule">
     <field name="name">Approver Expense Sheet</field>
     <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
@@ -169,7 +155,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('hr_expense.group_hr_expense_team_approver')])]"/>
   </record>
-
   <record id="rule_326_employee_expense_sheet" model="ir.rule">
     <field name="name">Employee Expense Sheet</field>
     <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
@@ -181,7 +166,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('base.group_user')])]"/>
   </record>
-
   <record id="rule_328_expense_report_multi_company_rule" model="ir.rule">
     <field name="name">Expense Report multi company rule</field>
     <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
@@ -192,7 +176,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_633_employee_can_t_modify_expense_sheet_that_is_not_in_draft_sta" model="ir.rule">
     <field name="name">Employee can't modify expense sheet that is not in draft state</field>
     <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
@@ -204,7 +187,6 @@
     <field name="active" eval="True"/>
     <field name="groups" eval="[(6, 0, [ref('base.group_user')])]"/>
   </record>
-
   <record id="rule_344_hr_payroll_structure_multi_company" model="ir.rule">
     <field name="name">HR Payroll Structure: Multi Company</field>
     <field name="model_id" ref="hr_payroll.model_hr_payroll_structure"/>
@@ -215,7 +197,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_350_hr_payslip_batch_multi_company" model="ir.rule">
     <field name="name">HR Payslip Batch: Multi Company</field>
     <field name="model_id" ref="hr_payroll.model_hr_payslip_run"/>
@@ -226,7 +207,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_421_hr_salary_attachment_multi_company" model="ir.rule">
     <field name="name">HR Salary Attachment: Multi Company</field>
     <field name="model_id" ref="hr_payroll.model_hr_salary_attachment"/>
@@ -237,7 +217,6 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
   <record id="rule_725_hr_salary_rule_multi_company" model="ir.rule">
     <field name="name">HR Salary Rule: Multi Company</field>
     <field name="model_id" ref="hr_payroll.model_hr_salary_rule"/>
@@ -248,5 +227,14 @@
     <field name="perm_unlink" eval="True"/>
     <field name="active" eval="True"/>
   </record>
-
+    <record id="rule_627_jin_multi_company_update_ot" model="ir.rule">
+      <field name="name">JIN - Multi-Company - Update OT</field>
+      <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+      <field name="domain_force"> ['|', ('x_studio_company_id', 'in', company_ids), ('x_studio_company_id', '=', False)]</field>
+      <field name="perm_read" eval="True"/>
+      <field name="perm_write" eval="True"/>
+      <field name="perm_create" eval="True"/>
+      <field name="perm_unlink" eval="True"/>
+      <field name="active" eval="True"/>
+    </record>
 </odoo>

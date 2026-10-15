@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    BugFix-HR v0.0.17: view 4930 hr.contract form Studio inherit (785b).
-    Byte-verbatim from Clear-DB. All 12 field refs resolve on target
-    (all shipped in v0.0.16).
-
-    Adds 12 x_studio_ fields to the base hr.contract form in 3 groups:
-      * After employee_id: initial, surname, occupation_grade (identity)
-      * After wage_type: paye_tax_amount, ot_rate, ot_hours (payroll)
-      * Inside 'yearly_benefits' group: gbud_a, gbud_l2, standing_order_1,
-        std_ord2, travelling_allowance, ex_gratia (compensation)
-
-    0 hardcoded refs. 0 sentinels. 0 studio_approval attributes.
--->
 <odoo>
-
+  <record id="aw_f4_hr_contract_etf_schedule" model="ir.actions.act_window">
+    <field name="name">ETF Schedule</field>
+    <field name="res_model">hr.contract</field>
+    <field name="view_mode">kanban,tree,form,activity</field>
+  </record>
     <record id="ported_view_4930_hr_contract_form" model="ir.ui.view">
         <field name="name">Odoo Studio: hr.contract.form customization</field>
         <field name="model">hr.contract</field>
@@ -43,5 +34,26 @@
             </data>
         </field>
     </record>
-
+  <record id="act_window_2367_etf_schedule" model="ir.actions.act_window">
+    <field name="name">ETF Schedule</field>
+    <field name="res_model">hr.contract</field>
+    <field name="view_mode">kanban,tree,form,activity</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+  <record id="act_window_2367_etf_schedule" model="ir.actions.act_window">
+    <field name="name">ETF Schedule</field>
+    <field name="res_model">hr.contract</field>
+    <field name="view_mode">kanban,tree,form,activity</field>
+  </record>
 </odoo>

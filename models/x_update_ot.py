@@ -17,3 +17,16 @@ class X_update_ot(models.Model):
         inverse_name="x_update_ot_id",
         string="New Lines",
     )
+
+
+class XUpdateOtGap(models.Model):
+    _inherit = "x_update_ot"
+    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+
+    x_active = fields.Boolean(string="Active")
+    x_name = fields.Char(string="Name")
+    x_update_ot_line_ids_d5449 = fields.One2many(
+        comodel_name="x_update_ot_line_7eea7",
+        inverse_name="x_update_ot_id",
+        string="New Lines",
+    )

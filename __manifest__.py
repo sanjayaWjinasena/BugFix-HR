@@ -45,7 +45,7 @@
     #     0.0. Real logic needs Sri Lankan PAYE tax brackets via
     #     x_paye_tax + x_paye_tax_tag custom models (Studio-only, not
     #     ported). Depends on wage/structure_type_id/employee_id.
-    # Both stubs are documented in-code and in DEFERRED.md with the
+    # Both stubs are documented in-code and in docs/DEFERRED.md with the
     # prerequisite chain to un-defer.
     # v0.0.21: 7 hr.applicant base_automation records + backing server actions.
     # These fire on field-change (6) or create-or-write (1) triggers and
@@ -82,7 +82,7 @@
     #   * Send Email -> mail / hr_recruitment
     # Studio versions were pure code-wrappers calling the same standard
     # methods. Landing them created duplicate menu items (2 of each).
-    # data/server_actions.xml reverted to empty stub. DEFERRED.md updated
+    # data/server_actions.xml reverted to empty stub. docs/DEFERRED.md updated
     # to remove these 4 from the deferred list -- they are permanently
     # skipped, not deferred.
     # v0.0.19: 4 interactive hr.applicant server actions (usage=ir_actions_server,
@@ -203,39 +203,34 @@
         "base_automation",
     ],
     "data": [
-        "data/server_actions_f5.xml",
-        "data/window_actions_f4.xml",
-        "data/server_actions.xml",
-        "security/ir.model.access.csv",
         "security/removed_handmade_access_rights.xml",
-        "data/automations.xml",
+        "security/bugfix_hr_security.xml",
+        "security/ir.model.access.csv",
+        "data/hr_applicant_data.xml",
+        "data/x_paye_tax_data.xml",
+        "data/x_update_ot_data.xml",
+        "data/ir_actions_server_data.xml",
         "data/act_windows.xml",
-        "reports/reports.xml",
-        "views/hr_recruitment_stage_studio_ported.xml",
-        "views/hr_contract_studio_ported.xml",
-        "views/hr_applicant_studio_ported.xml",
-        "views/hr_employee_studio_ported.xml",
-        "views/hr_expense_studio_ported.xml",
-        "views/hr_payslip_studio_ported.xml",
-        "data/record_rules.xml",
         "data/server_actions_backlog.xml",
         "data/automations_backlog.xml",
-        "data/window_actions_backlog.xml",
-        "data/gap_automations.xml",
-        "data/record_rules_gap.xml",
-        "data/server_actions_gap.xml",
-        "data/window_actions_gap.xml",
-        "data/ir_defaults_gap.xml",  # upgrade-testing: form defaults shipped; record-specific ones commented inside
-        "views/hr_attendance_e_views.xml",
-        "views/hr_employee_e_views.xml",
-        "views/hr_job_e_views.xml",
-        "views/x_paye_tax_e_views.xml",
-        "views/x_paye_tax_tag_e_views.xml",
-        "views/x_update_ot_e_views.xml",
-        "views/views_final.xml",
-        "views/x_update_ot_line_7eea7_e_views.xml",
-        "data/menus_f6.xml",
-        "data/menus_from_routing.xml",
+        "reports/reports.xml",
+        "views/hr_contract_views.xml",
+        "views/hr_recruitment_stage_views.xml",
+        "views/hr_applicant_views.xml",
+        "views/hr_employee_views.xml",
+        "views/hr_expense_views.xml",
+        "views/hr_payslip_views.xml",
+        "views/hr_attendance_overtime_views.xml",
+        "views/hr_expense_sheet_views.xml",
+        "views/hr_salary_rule_views.xml",
+        "views/hr_work_entry_report_views.xml",
+        "views/x_paye_tax_tag_views.xml",
+        "views/x_paye_tax_views.xml",
+        "views/x_update_ot_views.xml",
+        "views/hr_attendance_views.xml",
+        "views/hr_job_views.xml",
+        "views/x_update_ot_line_7eea7_views.xml",
+        "views/bugfix_hr_menus.xml",
     ],
     "application": True,
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+    <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+    <field name="model_id" search="[('model', '=', 'x_paye_tax')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_end_date < record.x_studio_start_date:
+  raise UserError('End Date must be Greater than Start Date.')
+
+
+
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+    <record id="server_action_1561_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+      <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+      <field name="model_id" search="[('model', '=', 'x_paye_tax')]"/>
+      <field name="state">code</field>
+      <field name="usage">base_automation</field>
+      <field name="code"><![CDATA[
+if record.x_studio_end_date < record.x_studio_start_date:
+  raise UserError('End Date must be Greater than Start Date.')
+
+
+
+
+      ]]></field>
+    </record>
+    <record id="base_automation_94_payroll_validate_from_to_dates_in_paye_tax" model="base.automation">
+      <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+      <field name="active" eval="True"/>
+      <field name="model_id" search="[('model', '=', 'x_paye_tax')]"/>
+      <field name="trigger">on_create_or_write</field>
+      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_1561_payroll_validate_from_to_dates_in_paye_tax')])]"/>
+    </record>
+  <record id="server_action_1561_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+    <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+    <field name="model_id" ref="BugFix-HR.model_x_paye_tax"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_end_date < record.x_studio_start_date:
+  raise UserError('End Date must be Greater than Start Date.')
+
+
+
+
+    ]]></field>
+  </record>
+    <data noupdate="1">
+    <record id="default_231_x_paye_tax_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+    <record id="default_232_x_paye_tax_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+    </data>
+</odoo>

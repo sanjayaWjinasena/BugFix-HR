@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-HR: Phase E - 6 views for x_update_ot_line_7eea7 -->
 <odoo>
-  <data>
     <record id="view_5522_default_form_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default form view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -23,7 +21,6 @@
 </form>
       </field>
     </record>
-
     <record id="view_5525_default_form_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default form view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -45,7 +42,6 @@
 </form>
       </field>
     </record>
-
     <record id="view_5521_default_list_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default list view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -57,7 +53,6 @@
 </tree>
       </field>
     </record>
-
     <record id="view_5524_default_list_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default list view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -69,7 +64,6 @@
 </tree>
       </field>
     </record>
-
     <record id="view_5523_default_search_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default search view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -80,7 +74,6 @@
 </search>
       </field>
     </record>
-
     <record id="view_5526_default_search_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
       <field name="name">Default search view for x_update_ot_line_7eea7</field>
       <field name="model">x_update_ot_line_7eea7</field>
@@ -91,6 +84,4 @@
 </search>
       </field>
     </record>
-
-  </data>
 </odoo>

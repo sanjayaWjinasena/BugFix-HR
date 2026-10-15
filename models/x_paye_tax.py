@@ -17,3 +17,11 @@ class X_paye_tax(models.Model):
     x_studio_tax_amount = fields.Float(string="Tax Amount")
     x_studio_to_value = fields.Float(string="To Value")
     x_studio_user_id = fields.Many2one(comodel_name="res.users", string="Responsible")
+
+
+class XPayeTaxGap(models.Model):
+    _inherit = "x_paye_tax"
+    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+
+    x_active = fields.Boolean(string="Active")
+    x_name = fields.Char(string="Code")

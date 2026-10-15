@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- STRIPPED act_window_2816_hr_expense: model out-of-deps for BugFix-HR: hr.expense (owned by documents_hr_expense) -->
+<record id="act_window_1274_my_reports" model="ir.actions.act_window">
+    <field name="name">My Reports</field>
+    <field name="res_model">hr.expense.sheet</field>
+    <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
+    <field name="domain">[('state', '!=', 'cancel')]</field>
+    <field name="context">{'search_default_my_reports': 1, 'search_default_not_refused_reports': 1}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                No expense report found. Let's create one!
+              </p><p>
+                Once you have created your expense, submit it to your manager who will validate it.
+              </p>
+            </field>
+  </record>
+  <record id="act_window_2585_hr_expense_sheet" model="ir.actions.act_window">
+    <field name="name">hr.expense.sheet</field>
+    <field name="res_model">hr.expense.sheet</field>
+    <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+  <record id="act_window_2596_hr_expense_sheet" model="ir.actions.act_window">
+    <field name="name">hr.expense.sheet</field>
+    <field name="res_model">hr.expense.sheet</field>
+    <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+  <record id="act_window_2817_hr_expense_sheet" model="ir.actions.act_window">
+    <field name="name">hr.expense.sheet</field>
+    <field name="res_model">hr.expense.sheet</field>
+    <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+</odoo>

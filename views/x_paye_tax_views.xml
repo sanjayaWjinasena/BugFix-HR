@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-HR: Phase E - 4 views for x_paye_tax -->
 <odoo>
-  <data>
+  <record id="act_window_1559_paye_tax" model="ir.actions.act_window">
+    <field name="name">Paye Tax</field>
+    <field name="res_model">x_paye_tax</field>
+    <field name="view_mode">tree,form</field>
+  </record>
     <record id="view_3238_default_form_view_for_x_paye_tax_e" model="ir.ui.view">
       <field name="name">Default form view for x_paye_tax</field>
       <field name="model">x_paye_tax</field>
@@ -33,7 +36,6 @@
 </form>
       </field>
     </record>
-
     <record id="view_3237_default_list_view_for_x_paye_tax_e" model="ir.ui.view">
       <field name="name">Default list view for x_paye_tax</field>
       <field name="model">x_paye_tax</field>
@@ -47,7 +49,6 @@
 </tree>
       </field>
     </record>
-
     <record id="view_3239_default_search_view_for_x_paye_tax_e" model="ir.ui.view">
       <field name="name">Default search view for x_paye_tax</field>
       <field name="model">x_paye_tax</field>
@@ -65,6 +66,31 @@
 </search>
       </field>
     </record>
-
-  </data>
+    <record id="view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_paye_tax customization</field>
+      <field name="model">x_paye_tax</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//tree[1]" position="attributes">
+    <attribute name="editable">bottom</attribute>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="string">Code</attribute>
+  <attribute name="required">1</attribute></xpath>
+  <xpath expr="//field[@name='x_name']" position="after">
+    <field name="x_studio_start_date" string="Start Date" required="1"/>
+    <field name="x_studio_end_date" string="End Date" required="1"/>
+    <field name="x_studio_from_value" string="From Value" required="1"/>
+    <field name="x_studio_to_value" string="To Value" required="1"/>
+    <field name="x_studio_tax_amount" string="Tax Amount" required="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_studio_user_id']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
 </odoo>
