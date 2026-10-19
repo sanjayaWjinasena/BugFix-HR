@@ -2,7 +2,7 @@
 {
     # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.48',
+    'version': '17.0.0.0.49',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',

@@ -31,10 +31,10 @@ class HrContract(models.Model):
         string='OT Hours', store=False,
         compute='_compute_ot_hours')
 
-    # STUB COMPUTE: returns 0.0. Real logic needs Sri Lankan PAYE tax
-    # brackets via x_paye_tax + x_paye_tax_tag custom models (still
-    # Studio-only, not ported). Shape of the real compute is likely:
-    # apply progressive tax rates against contract.wage. See DEFERRED.md.
+    # v0.0.49: Clear-DB Studio compute ported (bug sheet 16/Oct, Chandika: PAYE always 0).
+    # gross = wage + the contract's default salary structure's non-code Allowance (ALW)
+    # rules; the PAYE amount is the x_paye_tax slab whose from/to range contains gross.
+    # Needs the x_paye_tax slab records (data) to return anything but 0.
     x_studio_paye_tax_amount = fields.Float(
         string='Paye Tax Amount', store=False,
         compute='_compute_paye_tax_amount')
@@ -46,8 +46,35 @@ class HrContract(models.Model):
 
     @api.depends('wage', 'structure_type_id', 'employee_id')
     def _compute_paye_tax_amount(self):
+        PayeTax = self.env['x_paye_tax']
         for rec in self:
-            rec.x_studio_paye_tax_amount = 0.0
+            tot_rule = 0.0
+            paye_tax = 0.0
+            salary_structure = rec.structure_type_id.default_struct_id
+            if salary_structure:
+                # Clear-DB filters category_id = 2, which is Allowance (code ALW) on both databases.
+                rules = self.env['hr.salary.rule'].search([
+                    ('struct_id', '=', salary_structure.id),
+                    ('category_id.code', '=', 'ALW'),
+                    ('amount_select', '!=', 'code'),
+                ])
+                if rules:
+                    localdict = dict(employee=rec.employee_id, contract=rec)
+                    for rule in rules:
+                        localdict['result'] = None
+                        localdict['result_qty'] = 1.0
+                        localdict['result_rate'] = 100
+                        if rule._satisfy_condition(localdict):
+                            amount, qty, rate = rule._compute_rule(localdict)
+                            tot_rule += amount * qty * rate / 100.0
+            gross = rec.wage + tot_rule
+            slab = PayeTax.search([
+                ('x_studio_from_value', '<=', gross),
+                ('x_studio_to_value', '>=', gross),
+            ], limit=1)
+            if slab:
+                paye_tax = slab.x_studio_tax_amount
+            rec.x_studio_paye_tax_amount = paye_tax
 
     # === "New Related Field" placeholders (8) ===
     # Studio created these via the "New Related Field" widget but the
