@@ -1,5 +1,6 @@
 {
-    # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
+    # upgrade-testing branch: data files below are commented out - this branch installs
+    # functions only, no data is seeded.
     "name": "Jinasena : Module : HR",
     "version": "17.0.0.0.48",
     "summary": "Studio-to-Python port for BugFix-HR",
@@ -55,7 +56,7 @@
     #   * 262 HR - Applicant             on_change x_studio_priority
     #                                     -> if 'No', set stage_id=1
     #   * 263 HR - Applicant 2           on_change x_studio_2nd_selection
-    #                                     -> if 'Yes', set stage_id=0 (Studio bug preserved)
+    # -> if 'Yes', set stage_id=0 (Studio bug preserved)
     #   * 264 Validate Recruiter Marks   on_change x_studio_interview_marks_3
     #                                     -> raise if >100
     #   * 265 Validate Line Manager Marks on_change x_studio_interview_marks_1
