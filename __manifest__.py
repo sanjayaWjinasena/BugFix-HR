@@ -2,7 +2,7 @@
 {
     # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.49',
+    'version': '17.0.0.0.51',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -192,7 +192,7 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data', 'base_automation'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_holidays', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data', 'base_automation'],
     'data': [
         'data/server_actions_f5.xml',
         'data/window_actions_f4.xml',

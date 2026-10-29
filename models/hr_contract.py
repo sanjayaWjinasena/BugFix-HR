@@ -18,6 +18,10 @@ class HrContract(models.Model):
     x_studio_standing_order_1 = fields.Monetary(string='Standing Order 1', copy=True)
     x_studio_std_ord2 = fields.Monetary(string='Standing Order 2', copy=True)
     x_studio_travelling_allowance = fields.Monetary(string='Travelling Allowance', copy=True)
+    x_studio_special_allowance = fields.Monetary(string='Special Allowance', copy=True)
+    x_studio_production_incentive = fields.Monetary(string='Production Incentive', copy=True)
+    x_studio_asian_alliance_insurance = fields.Monetary(string='Asian Alliance Insurance', copy=True)
+    x_studio_union_insurance = fields.Monetary(string='Union Insurance', copy=True)
 
     # === OT + Payroll computed/stored (3 Float) ===
     x_studio_ot_rate = fields.Float(string='OT Rate', copy=True)
