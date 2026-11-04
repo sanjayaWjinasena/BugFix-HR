@@ -3,15 +3,15 @@ from odoo import fields, models
 
 class X_paye_tax(models.Model):
     _name = "x_paye_tax"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Paye Tax"
 
-    x_active = fields.Boolean(string="Active")
-    x_name = fields.Char(string="Code")
+    active = fields.Boolean(string="Active")
+    name = fields.Char(string="Code")
     x_studio_end_date = fields.Date(string="End Date")
     x_studio_from_value = fields.Float(string="From Value")
-    x_studio_sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer(string="Sequence")
     x_studio_start_date = fields.Date(string="Start Date")
     x_studio_tag_ids = fields.Many2many(comodel_name="x_paye_tax_tag", string="Tags")
     x_studio_tax_amount = fields.Float(string="Tax Amount")
@@ -21,7 +21,7 @@ class X_paye_tax(models.Model):
 
 class XPayeTaxGap(models.Model):
     _inherit = "x_paye_tax"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    x_active = fields.Boolean(string="Active")
-    x_name = fields.Char(string="Code")
+    active = fields.Boolean(string="Active")
+    name = fields.Char(string="Code")

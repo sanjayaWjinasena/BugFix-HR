@@ -7,7 +7,7 @@
     <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id]]></field>
+record['accounting_company_id'] = company.id]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
@@ -15,9 +15,9 @@ record['x_studio_company_id'] = company.id]]></field>
     <field name="name">Update OT Seq.No</field>
     <field name="model_id" search="[('model', '=', 'x_update_ot')]"/>
     <field name="state">code</field>
-    <field name="code"><![CDATA[#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+    <field name="code"><![CDATA[#record['name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
 seq = env['ir.sequence'].next_by_code('ot.update.seq')
-record.write({'x_name': seq})
+record.write({'name': seq})
 
 
 
@@ -34,9 +34,9 @@ record.write({'x_name': seq})
       <field name="state">code</field>
       <field name="usage">base_automation</field>
       <field name="code"><![CDATA[
-#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+#record['name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
 seq = env['ir.sequence'].next_by_code('ot.update.seq')
-record.write({'x_name': seq})
+record.write({'name': seq})
 
 
 
@@ -87,11 +87,11 @@ if record.x_studio_as_on_date:
 
   
 
-  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('x_studio_company_id', '=', company.id)])
+  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('accounting_company_id', '=', company.id)])
 
   for attdns in attendance:
 
-    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'x_name':record.x_name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
+    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'name':record.name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
 
     
       ]]></field>
@@ -112,7 +112,7 @@ if record.x_studio_as_on_date:
 company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record['accounting_company_id'] = company.id
       ]]></field>
     </record>
     <record id="base_automation_333_jin_company_id_in_update_ot" model="base.automation">
@@ -128,9 +128,9 @@ record['x_studio_company_id'] = company.id
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[
-#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+#record['name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
 seq = env['ir.sequence'].next_by_code('ot.update.seq')
-record.write({'x_name': seq})
+record.write({'name': seq})
 
 
 
@@ -174,11 +174,11 @@ if record.x_studio_as_on_date:
 
   
 
-  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('x_studio_company_id', '=', company.id)])
+  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('accounting_company_id', '=', company.id)])
 
   for attdns in attendance:
 
-    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'x_name':record.x_name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
+    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'name':record.name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
 
     
     ]]></field>
@@ -366,16 +366,16 @@ if update_ot:
 company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record['accounting_company_id'] = company.id
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_410_x_update_ot_x_active" model="ir.default">
-      <field name="field_id" ref="BugFix-HR.field_x_update_ot__x_active"/>
+    <record id="default_410_x_update_ot_active" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_update_ot__active"/>
       <field name="json_value">true</field>
     </record>
-    <record id="default_411_x_update_ot_x_studio_sequence" model="ir.default">
-      <field name="field_id" ref="BugFix-HR.field_x_update_ot__x_studio_sequence"/>
+    <record id="default_411_x_update_ot_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_update_ot__sequence"/>
       <field name="json_value">10</field>
     </record>
     </data>

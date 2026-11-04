@@ -49,12 +49,12 @@ if record.x_studio_end_date < record.x_studio_start_date:
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_231_x_paye_tax_x_active" model="ir.default">
-      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_active"/>
+    <record id="default_231_x_paye_tax_active" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__active"/>
       <field name="json_value">true</field>
     </record>
-    <record id="default_232_x_paye_tax_x_studio_sequence" model="ir.default">
-      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__x_studio_sequence"/>
+    <record id="default_232_x_paye_tax_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-HR.field_x_paye_tax__sequence"/>
       <field name="json_value">10</field>
     </record>
     </data>

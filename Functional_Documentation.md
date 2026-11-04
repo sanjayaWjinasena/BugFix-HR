@@ -108,7 +108,7 @@ Adds a three-party scoring workflow to the applicant form: Recruiter, Line Manag
 | `x_studio_leadership_name` | Leadership Name | many2one → `res.users` | User acting as leadership reviewer for the applicant, chosen on the applicant form; only this user may edit the leadership selection and marks (via CU - Leadership). | stored | `model res.users` (base) | `hr.applicant._compute_cu_leadership()`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
 | `x_studio_line_manager_name` | Line Manager Name | many2one → `res.users` | User acting as line manager for the applicant, chosen on the applicant form; only this user may edit the line manager selection and marks (via CU - Line Manager). | stored | `model res.users` (base) | `hr.applicant._compute_cu_line_manager()`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
 | `x_studio_marks_1` | Recruiter Assignment Marks % | integer | Recruiter's assignment mark in percent, editable only by the assigned Recruiter; has an ir.default value, an automation rejects values above 100, and it is added into Total Marks. | stored |  | `automation BugFix-HR.base_automation_267_hr_validate_assignment_marks`<br>`default BugFix-HR.default_431_hr_applicant_x_studio_marks_1`<br>`hr.applicant._compute_total_marks()`<br>`server action BugFix-HR.sa_f5_hr_applicant_hr_validate_assignment_marks`<br>`server action BugFix-HR.server_action_2584_hr_validate_assignment_marks`<details><summary>+1 more</summary>`view BugFix-HR.ported_view_5550_hr_applicant_form`</details> |
-| `x_studio_priority` | Line Manager Selection | selection: Yes=Yes; May Be=May Be; No=No | Line manager's decision on the applicant (Yes / May Be / No), editable only by the assigned Line Manager. An automation moves the applicant to the recruitment stage with id 1 when it is set to No. | stored |  | `automation BugFix-HR.base_automation_262_hr_applicant`<br>`server action BugFix-HR.sa_f5_hr_applicant_hr_applicant`<br>`server action BugFix-HR.server_action_2579_hr_applicant`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
+| `custom_reports_priority` | Line Manager Selection | selection: Yes=Yes; May Be=May Be; No=No | Line manager's decision on the applicant (Yes / May Be / No), editable only by the assigned Line Manager. An automation moves the applicant to the recruitment stage with id 1 when it is set to No. | stored |  | `automation BugFix-HR.base_automation_262_hr_applicant`<br>`server action BugFix-HR.sa_f5_hr_applicant_hr_applicant`<br>`server action BugFix-HR.server_action_2579_hr_applicant`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
 | `x_studio_recruiter` | Recruiter | many2one → `res.users` | User acting as recruiter for the applicant, chosen on the applicant form; only this user may edit the assignment and recruiter marks (via CU - Recruiter). | stored | `model res.users` (base) | `hr.applicant._compute_cu_recruiter()`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
 | `x_studio_total_marks` | Total Marks | float | Sum of the four mark percentages (assignment, line manager, leadership, recruiter), computed automatically; shown read-only as a progress bar on the applicant form. | computed by `_compute_total_marks`; stored | `hr.applicant._compute_total_marks()` | `hr.applicant._compute_total_marks()`<br>`view BugFix-HR.ported_view_5550_hr_applicant_form` |
 
@@ -125,12 +125,12 @@ Adds a three-party scoring workflow to the applicant form: Recruiter, Line Manag
 
 - **Execute Code** (`server_action_2579_hr_applicant`, type `code`)
   - Function: Code run by the 'HR - Applicant' automation: if Line Manager Selection is No, moves the applicant to the recruitment stage with id 1 (hard-coded).
-  - Depends on: `hr.applicant.x_studio_priority`, `model hr.applicant` (hr_recruitment)
+  - Depends on: `hr.applicant.custom_reports_priority`, `model hr.applicant` (hr_recruitment)
   - Used by: `automation BugFix-HR.base_automation_262_hr_applicant`
   <details><summary>code (3 lines)</summary>
 
 ```python
-if record.x_studio_priority == "No":
+if record.custom_reports_priority == "No":
     record["stage_id"] = 1
 ```
   </details>
@@ -191,12 +191,12 @@ if record.x_studio_marks_1 > 100.0:
   </details>
 - **HR - Applicant** (`sa_f5_hr_applicant_hr_applicant`, type `code`)
   - Function: If Line Manager Selection is No, moves the applicant to the recruitment stage with database id 1 (hard-coded).
-  - Depends on: `hr.applicant.x_studio_priority`, `model hr.applicant` (hr_recruitment)
+  - Depends on: `hr.applicant.custom_reports_priority`, `model hr.applicant` (hr_recruitment)
   - Used by: — (not linked to a button, menu or automation)
   <details><summary>code (2 lines)</summary>
 
 ```python
-if record.x_studio_priority == "No":
+if record.custom_reports_priority == "No":
     record["stage_id"] = 1
 ```
   </details>
@@ -275,7 +275,7 @@ if record.stage_id.id != 1:
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| HR - Applicant | `base_automation_262_hr_applicant` |  | When a watched field changes in the form on Applicant, runs _Execute Code_. | `hr.applicant.x_studio_priority`<br>`model hr.applicant` (hr_recruitment)<br>`server action BugFix-HR.server_action_2579_hr_applicant` |  |
+| HR - Applicant | `base_automation_262_hr_applicant` |  | When a watched field changes in the form on Applicant, runs _Execute Code_. | `hr.applicant.custom_reports_priority`<br>`model hr.applicant` (hr_recruitment)<br>`server action BugFix-HR.server_action_2579_hr_applicant` |  |
 | HR - Applicant 2 | `base_automation_263_hr_applicant_2` |  | When a watched field changes in the form on Applicant, runs _Execute Code_. | `hr.applicant.x_studio_2nd_selection`<br>`model hr.applicant` (hr_recruitment)<br>`server action BugFix-HR.server_action_2580_hr_applicant_2` |  |
 | HR - Validate Assignment Marks | `base_automation_267_hr_validate_assignment_marks` |  | When a watched field changes in the form on Applicant, runs _Execute Code_. | `hr.applicant.x_studio_marks_1`<br>`model hr.applicant` (hr_recruitment)<br>`server action BugFix-HR.server_action_2584_hr_validate_assignment_marks` |  |
 | HR - Validate Leadership Marks | `base_automation_266_hr_validate_leadership_marks` |  | When a watched field changes in the form on Applicant, runs _Execute Code_. | `hr.applicant.x_studio_interview_marks_2`<br>`model hr.applicant` (hr_recruitment)<br>`server action BugFix-HR.server_action_2583_hr_validate_leadership_marks` |  |
@@ -294,7 +294,7 @@ if record.stage_id.id != 1:
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: Jobs - Recruitment Form customization | `ported_view_5550_hr_applicant_form` | form | after `//field[@name='date_closed']`: add field x_studio_priority, field x_studio_2nd_selection, field x_studio_marks_1, field x_studio_line_manager_name, field x_studio_interview_marks_1, field x_studio_cu_line_manager, field x_studio_leadership_name, field x_studio_interview_marks_2, field x_studio_cu_leadership, xpath, field x_studio_recruiter, field x_studio_interview_marks_3 …; set force_save=True, invisible=1, readonly=1 on `//field[@name='user_id']` | Applicant form: after Closed date adds Line Manager/Leadership selections, the four marks, the Recruiter/Line Manager/Leadership users and Total Marks (progress bar); each selection/mark is editable only by its assigned user. Hides the standard Recruiter (`user_id`). | `hr.applicant.x_studio_2nd_selection`<br>`hr.applicant.x_studio_cu_leadership`<br>`hr.applicant.x_studio_cu_line_manager`<br>`hr.applicant.x_studio_cu_recruiter`<br>`hr.applicant.x_studio_interview_marks_1`<details><summary>+9 more</summary>`hr.applicant.x_studio_interview_marks_2`<br>`hr.applicant.x_studio_interview_marks_3`<br>`hr.applicant.x_studio_leadership_name`<br>`hr.applicant.x_studio_line_manager_name`<br>`hr.applicant.x_studio_marks_1`<br>`hr.applicant.x_studio_priority`<br>`hr.applicant.x_studio_recruiter`<br>`hr.applicant.x_studio_total_marks`<br>`view hr_recruitment.hr_applicant_view_form` (hr_recruitment)</details> |  |
+| Odoo Studio: Jobs - Recruitment Form customization | `ported_view_5550_hr_applicant_form` | form | after `//field[@name='date_closed']`: add field custom_reports_priority, field x_studio_2nd_selection, field x_studio_marks_1, field x_studio_line_manager_name, field x_studio_interview_marks_1, field x_studio_cu_line_manager, field x_studio_leadership_name, field x_studio_interview_marks_2, field x_studio_cu_leadership, xpath, field x_studio_recruiter, field x_studio_interview_marks_3 …; set force_save=True, invisible=1, readonly=1 on `//field[@name='user_id']` | Applicant form: after Closed date adds Line Manager/Leadership selections, the four marks, the Recruiter/Line Manager/Leadership users and Total Marks (progress bar); each selection/mark is editable only by its assigned user. Hides the standard Recruiter (`user_id`). | `hr.applicant.x_studio_2nd_selection`<br>`hr.applicant.x_studio_cu_leadership`<br>`hr.applicant.x_studio_cu_line_manager`<br>`hr.applicant.x_studio_cu_recruiter`<br>`hr.applicant.x_studio_interview_marks_1`<details><summary>+9 more</summary>`hr.applicant.x_studio_interview_marks_2`<br>`hr.applicant.x_studio_interview_marks_3`<br>`hr.applicant.x_studio_leadership_name`<br>`hr.applicant.x_studio_line_manager_name`<br>`hr.applicant.x_studio_marks_1`<br>`hr.applicant.custom_reports_priority`<br>`hr.applicant.x_studio_recruiter`<br>`hr.applicant.x_studio_total_marks`<br>`view hr_recruitment.hr_applicant_view_form` (hr_recruitment)</details> |  |
 
 **Record rules (4):**
 
@@ -325,7 +325,7 @@ Adds overtime tracking fields used by the Update OT process: Company, OT Entry, 
 |---|---|---|---|---|---|---|
 | `x_studio_check_in_auto` | Check In Auto | boolean | Flag marking a check-in as created automatically; stored only, not shown in any view or used by any logic in this repo. | stored |  |  |
 | `x_studio_check_out_auto` | Check Out Auto | boolean | Flag marking a check-out as created automatically; stored only, not shown in any view or used by any logic in this repo. | stored |  |  |
-| `x_studio_company_id` | Company | many2one → `res.company` | Company of the attendance record; optional (hidden) column in the attendance list, and the Update OT action loads only attendances of the current company. | stored | `model res.company` (base) | `view BugFix-HR.view_5520_odoo_studio_hr_attendance_tree_customization_e` |
+| `accounting_company_id` | Company | many2one → `res.company` | Company of the attendance record; optional (hidden) column in the attendance list, and the Update OT action loads only attendances of the current company. | stored | `model res.company` (base) | `view BugFix-HR.view_5520_odoo_studio_hr_attendance_tree_customization_e` |
 | `x_studio_ot_approved` | OT Approved | boolean | Set when overtime for this attendance has been approved through the Update OT process; optional list column. Update OT only loads open attendances not yet approved. | stored |  | `view BugFix-HR.view_5520_odoo_studio_hr_attendance_tree_customization_e` |
 | `x_studio_ot_approved_by` | OT Approved By | many2one → `res.users` | User who approved the overtime (the creator of the Update OT line), written by the Update OT action; read-only optional list column. | stored | `model res.users` (base) | `view BugFix-HR.view_5520_odoo_studio_hr_attendance_tree_customization_e` |
 | `x_studio_ot_entry` | OT Entry | boolean | Marks an attendance created automatically by the Update OT action as the overtime continuation check-in; read-only optional list column. | stored |  | `view BugFix-HR.view_5520_odoo_studio_hr_attendance_tree_customization_e` |
@@ -335,7 +335,7 @@ Adds overtime tracking fields used by the Update OT process: Company, OT Entry, 
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: hr.attendance.tree customization | `view_5520_odoo_studio_hr_attendance_tree_customization_e` | tree | after `//field[@name='worked_hours']`: add field x_studio_company_id, field x_studio_ot_entry, field x_studio_ot_approved, field x_studio_ot_approved_by | Attendance list: adds optional (hidden by default) columns Company, OT Entry (read-only), OT Approved and OT Approved By (read-only) after Worked Hours. | `hr.attendance.x_studio_company_id`<br>`hr.attendance.x_studio_ot_approved_by`<br>`hr.attendance.x_studio_ot_approved`<br>`hr.attendance.x_studio_ot_entry`<br>`view hr_attendance.hr_attendance_employee_simple_tree_view` (hr_attendance) |  |
+| Odoo Studio: hr.attendance.tree customization | `view_5520_odoo_studio_hr_attendance_tree_customization_e` | tree | after `//field[@name='worked_hours']`: add field accounting_company_id, field x_studio_ot_entry, field x_studio_ot_approved, field x_studio_ot_approved_by | Attendance list: adds optional (hidden by default) columns Company, OT Entry (read-only), OT Approved and OT Approved By (read-only) after Worked Hours. | `hr.attendance.accounting_company_id`<br>`hr.attendance.x_studio_ot_approved_by`<br>`hr.attendance.x_studio_ot_approved`<br>`hr.attendance.x_studio_ot_entry`<br>`view hr_attendance.hr_attendance_employee_simple_tree_view` (hr_attendance) |  |
 
 ### `hr.attendance.overtime` — Attendance Overtime
 
@@ -630,7 +630,7 @@ Adds a Color field (unused in this repo) and shows the record ID as an optional 
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `x_color` | Color | integer | Colour index for the recruitment stage; not used by any view or logic in this repo. | stored |  |  |
+| `color` | Color | integer | Colour index for the recruitment stage; not used by any view or logic in this repo. | stored |  |  |
 
 **Views (1):**
 
@@ -713,7 +713,7 @@ This repo adds no fields or logic to this model. It ships only the Work Entries 
 
 ### `x_paye_tax` — Paye Tax
 
-*Created by this repo.* Python: `models/x_paye_tax.py`, `models/x_paye_tax_gap.py`. Record name field: `x_name`.
+*Created by this repo.* Python: `models/x_paye_tax.py`, `models/x_paye_tax_gap.py`. Record name field: `name`.
 
 **Summary:**
 
@@ -755,11 +755,11 @@ A row of the PAYE tax table used in payroll configuration: each row has a Code, 
 | `website_message_ids` | Website Messages | one2many → `mail.message` | Chatter messages on the record that are visible on the website/portal; standard mail field. | stored | `model mail.message` (mail) |  |
 | `write_date` | Last Updated on | datetime | Date and time the Paye Tax record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Paye Tax record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `x_active` | Active | boolean | Archive flag: unchecking it archives the Paye Tax record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-HR.default_231_x_paye_tax_x_active`<br>`view BugFix-HR.view_3238_default_form_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3239_default_search_view_for_x_paye_tax_e` |
-| `x_name` | Code | char | Code of the PAYE tax row (required); first column of the editable Paye Tax list and title of the form. | stored |  | `view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3238_default_form_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3239_default_search_view_for_x_paye_tax_e` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the Paye Tax record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-HR.default_231_x_paye_tax_active`<br>`view BugFix-HR.view_3238_default_form_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3239_default_search_view_for_x_paye_tax_e` |
+| `name` | Code | char | Code of the PAYE tax row (required); first column of the editable Paye Tax list and title of the form. | stored |  | `view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3238_default_form_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3239_default_search_view_for_x_paye_tax_e` |
 | `x_studio_end_date` | End Date | date | Last date the PAYE tax row applies (required in the list); an automation raises an error if it is before the Start Date. | stored |  | `server action BugFix-HR.sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax`<br>`server action BugFix-HR.server_action_1561_payroll_validate_from_to_dates_in_paye_tax`<br>`view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
 | `x_studio_from_value` | From Value | float | Lower bound of the value range the PAYE tax row applies to; required column in the Paye Tax list. | stored |  | `view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
-| `x_studio_sequence` | Sequence | integer | Ordering number of the Paye Tax record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-HR.default_232_x_paye_tax_x_studio_sequence`<br>`view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e` |
+| `sequence` | Sequence | integer | Ordering number of the Paye Tax record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-HR.default_232_x_paye_tax_sequence`<br>`view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e` |
 | `x_studio_start_date` | Start Date | date | First date the PAYE tax row applies (required in the list); validated by an automation against the End Date. | stored |  | `server action BugFix-HR.sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax`<br>`server action BugFix-HR.server_action_1561_payroll_validate_from_to_dates_in_paye_tax`<br>`view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
 | `x_studio_tag_ids` | Tags | many2many → `x_paye_tax_tag` | Paye Tax Tags classifying the row, shown as coloured chips on the list and form; searchable. | stored | `model x_paye_tax_tag` | `view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3238_default_form_view_for_x_paye_tax_e`<br>`view BugFix-HR.view_3239_default_search_view_for_x_paye_tax_e` |
 | `x_studio_tax_amount` | Tax Amount | float | Tax amount of the PAYE tax row; required column in the Paye Tax list. | stored |  | `view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
@@ -806,10 +806,10 @@ if record.x_studio_end_date < record.x_studio_start_date:
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for x_paye_tax | `view_3238_default_form_view_for_x_paye_tax_e` | form | full form layout with 7 fields | Paye Tax form: Archived ribbon, Code as title, Responsible and Tags, with chatter (followers, messages, activities). | `x_paye_tax.activity_ids`<br>`x_paye_tax.message_follower_ids`<br>`x_paye_tax.message_ids`<br>`x_paye_tax.x_active`<br>`x_paye_tax.x_name`<details><summary>+2 more</summary>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id`</details> |  |
-| Default list view for x_paye_tax | `view_3237_default_list_view_for_x_paye_tax_e` | tree | full tree layout with 4 fields | Base Paye Tax list: drag handle, Code, Responsible and Tags columns. | `x_paye_tax.x_name`<br>`x_paye_tax.x_studio_sequence`<br>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id` | `view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
-| Default search view for x_paye_tax | `view_3239_default_search_view_for_x_paye_tax_e` | search | full search layout with 3 fields | Paye Tax search: search by Code, Responsible and Tags; filters My Paye Tax and Archived; group by Responsible. | `x_paye_tax.x_active`<br>`x_paye_tax.x_name`<br>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id` |  |
-| Odoo Studio: Default list view for x_paye_tax customization | `view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` | tree | set editable=bottom on `//tree[1]`; set string=Code, required=1 on `//field[@name='x_name']`; after `//field[@name='x_name']`: add field x_studio_start_date, field x_studio_end_date, field x_studio_from_value, field x_studio_to_value, field x_studio_tax_amount; set column_invisible=1 on `//field[@name='x_studio_user_id']` | Paye Tax list customization: makes the list inline-editable, relabels Name as Code, adds required Start Date, End Date, From Value, To Value and Tax Amount columns, and hides Responsible. | `view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e`<br>`x_paye_tax.x_studio_end_date`<br>`x_paye_tax.x_studio_from_value`<br>`x_paye_tax.x_studio_start_date`<br>`x_paye_tax.x_studio_tax_amount`<details><summary>+1 more</summary>`x_paye_tax.x_studio_to_value`</details> |  |
+| Default form view for x_paye_tax | `view_3238_default_form_view_for_x_paye_tax_e` | form | full form layout with 7 fields | Paye Tax form: Archived ribbon, Code as title, Responsible and Tags, with chatter (followers, messages, activities). | `x_paye_tax.activity_ids`<br>`x_paye_tax.message_follower_ids`<br>`x_paye_tax.message_ids`<br>`x_paye_tax.active`<br>`x_paye_tax.name`<details><summary>+2 more</summary>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id`</details> |  |
+| Default list view for x_paye_tax | `view_3237_default_list_view_for_x_paye_tax_e` | tree | full tree layout with 4 fields | Base Paye Tax list: drag handle, Code, Responsible and Tags columns. | `x_paye_tax.name`<br>`x_paye_tax.sequence`<br>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id` | `view BugFix-HR.view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` |
+| Default search view for x_paye_tax | `view_3239_default_search_view_for_x_paye_tax_e` | search | full search layout with 3 fields | Paye Tax search: search by Code, Responsible and Tags; filters My Paye Tax and Archived; group by Responsible. | `x_paye_tax.active`<br>`x_paye_tax.name`<br>`x_paye_tax.x_studio_tag_ids`<br>`x_paye_tax.x_studio_user_id` |  |
+| Odoo Studio: Default list view for x_paye_tax customization | `view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization` | tree | set editable=bottom on `//tree[1]`; set string=Code, required=1 on `//field[@name='name']`; after `//field[@name='name']`: add field x_studio_start_date, field x_studio_end_date, field x_studio_from_value, field x_studio_to_value, field x_studio_tax_amount; set column_invisible=1 on `//field[@name='x_studio_user_id']` | Paye Tax list customization: makes the list inline-editable, relabels Name as Code, adds required Start Date, End Date, From Value, To Value and Tax Amount columns, and hides Responsible. | `view BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e`<br>`x_paye_tax.x_studio_end_date`<br>`x_paye_tax.x_studio_from_value`<br>`x_paye_tax.x_studio_start_date`<br>`x_paye_tax.x_studio_tax_amount`<details><summary>+1 more</summary>`x_paye_tax.x_studio_to_value`</details> |  |
 
 **Access rights (3):**
 
@@ -821,7 +821,7 @@ if record.x_studio_end_date < record.x_studio_start_date:
 
 ### `x_paye_tax_tag` — Paye Tax Tags
 
-*Created by this repo.* Python: `models/x_paye_tax_tag.py`, `models/x_paye_tax_tag_gap.py`. Record name field: `x_name`.
+*Created by this repo.* Python: `models/x_paye_tax_tag.py`, `models/x_paye_tax_tag_gap.py`. Record name field: `name`.
 
 **Summary:**
 
@@ -839,8 +839,8 @@ A tag used to classify Paye Tax rows, holding a name and a colour. Tags are main
 | `id` | ID | integer | Unique database ID of the Paye Tax Tags record, assigned automatically by Odoo. | stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Paye Tax Tags record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Paye Tax Tags record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `x_color` | Color | integer | Colour index of the Paye Tax Tags record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-HR.view_3234_default_list_view_for_x_paye_tax_tag_e` |
-| `x_name` | Name | char | Name of the PAYE tax tag (required); shown in the tag list, form and search. | stored; required |  | `view BugFix-HR.view_3234_default_list_view_for_x_paye_tax_tag_e`<br>`view BugFix-HR.view_3235_default_form_view_for_x_paye_tax_tag_e`<br>`view BugFix-HR.view_3236_default_search_view_for_x_paye_tax_tag_e` |
+| `color` | Color | integer | Colour index of the Paye Tax Tags record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-HR.view_3234_default_list_view_for_x_paye_tax_tag_e` |
+| `name` | Name | char | Name of the PAYE tax tag (required); shown in the tag list, form and search. | stored; required |  | `view BugFix-HR.view_3234_default_list_view_for_x_paye_tax_tag_e`<br>`view BugFix-HR.view_3235_default_form_view_for_x_paye_tax_tag_e`<br>`view BugFix-HR.view_3236_default_search_view_for_x_paye_tax_tag_e` |
 
 **Window actions (1):**
 
@@ -852,9 +852,9 @@ A tag used to classify Paye Tax rows, holding a name and a colour. Tags are main
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for x_paye_tax_tag | `view_3235_default_form_view_for_x_paye_tax_tag_e` | form | full form layout with 1 fields | Paye Tax Tag form showing only the tag Name as title. | `x_paye_tax_tag.x_name` |  |
-| Default list view for x_paye_tax_tag | `view_3234_default_list_view_for_x_paye_tax_tag_e` | tree | full tree layout with 2 fields | Inline-editable Paye Tax Tag list with Name and a colour picker. | `x_paye_tax_tag.x_color`<br>`x_paye_tax_tag.x_name` |  |
-| Default search view for x_paye_tax_tag | `view_3236_default_search_view_for_x_paye_tax_tag_e` | search | full search layout with 1 fields | Paye Tax Tag search view: search by Name. | `x_paye_tax_tag.x_name` |  |
+| Default form view for x_paye_tax_tag | `view_3235_default_form_view_for_x_paye_tax_tag_e` | form | full form layout with 1 fields | Paye Tax Tag form showing only the tag Name as title. | `x_paye_tax_tag.name` |  |
+| Default list view for x_paye_tax_tag | `view_3234_default_list_view_for_x_paye_tax_tag_e` | tree | full tree layout with 2 fields | Inline-editable Paye Tax Tag list with Name and a colour picker. | `x_paye_tax_tag.color`<br>`x_paye_tax_tag.name` |  |
+| Default search view for x_paye_tax_tag | `view_3236_default_search_view_for_x_paye_tax_tag_e` | search | full search layout with 1 fields | Paye Tax Tag search view: search by Name. | `x_paye_tax_tag.name` |  |
 
 **Access rights (3):**
 
@@ -866,7 +866,7 @@ A tag used to classify Paye Tax rows, holding a name and a colour. Tags are main
 
 ### `x_update_ot` — Update OT
 
-*Created by this repo.* Python: `models/x_update_ot.py`, `models/x_update_ot_gap.py`. Record name field: `x_name`.
+*Created by this repo.* Python: `models/x_update_ot.py`, `models/x_update_ot_gap.py`. Record name field: `name`.
 
 **Summary:**
 
@@ -908,30 +908,30 @@ An overtime approval document. When the user sets the As on Date, an automation 
 | `website_message_ids` | Website Messages | one2many → `mail.message` | Chatter messages on the record that are visible on the website/portal; standard mail field. | stored | `model mail.message` (mail) |  |
 | `write_date` | Last Updated on | datetime | Date and time the Update OT record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Update OT record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `x_active` | Active | boolean | Archive flag: unchecking it archives the Update OT record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-HR.default_410_x_update_ot_x_active`<br>`view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<br>`view BugFix-HR.view_5529_default_search_view_for_x_update_ot_e` |
-| `x_name` | Name | char | Reference number of the Update OT document, generated from the `ot.update.seq` sequence by an automation; read-only on the form. | stored |  | `server action BugFix-HR.sa_f5_x_update_ot_update_ot_seq_no`<br>`server action BugFix-HR.server_action_2560_update_ot_seq_no`<br>`server action BugFix-HR.server_action_2561_update_ot`<br>`view BugFix-HR.view_5527_default_list_view_for_x_update_ot_e`<br>`view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<details><summary>+2 more</summary>`view BugFix-HR.view_5529_default_search_view_for_x_update_ot_e`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization`</details> |
+| `active` | Active | boolean | Archive flag: unchecking it archives the Update OT record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-HR.default_410_x_update_ot_active`<br>`view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<br>`view BugFix-HR.view_5529_default_search_view_for_x_update_ot_e` |
+| `name` | Name | char | Reference number of the Update OT document, generated from the `ot.update.seq` sequence by an automation; read-only on the form. | stored |  | `server action BugFix-HR.sa_f5_x_update_ot_update_ot_seq_no`<br>`server action BugFix-HR.server_action_2560_update_ot_seq_no`<br>`server action BugFix-HR.server_action_2561_update_ot`<br>`view BugFix-HR.view_5527_default_list_view_for_x_update_ot_e`<br>`view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<details><summary>+2 more</summary>`view BugFix-HR.view_5529_default_search_view_for_x_update_ot_e`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization`</details> |
 | `x_studio_as_on_date` | As on Date | date | Date (required) whose open attendances are loaded: when set, an automation deletes existing lines and loads every attendance checked in that day with no check-out and no OT approval for the current company. | stored |  | `server action BugFix-HR.server_action_2561_update_ot`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
-| `x_studio_company_id` | Company | many2one → `res.company` | Company of the document, set automatically to the user's current company by an automation; read-only and used by the multi-company record rule and to filter attendances. | stored | `model res.company` (base) | `record rule BugFix-HR.rule_627_jin_multi_company_update_ot`<br>`server action BugFix-HR.sa_f5_x_update_ot_jin_company_id_in_update_ot`<br>`server action BugFix-HR.server_action_2561_update_ot`<br>`server action BugFix-HR.server_action_2823_jin_company_id_in_update_ot`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
-| `x_studio_sequence` | Sequence | integer | Ordering number of the Update OT record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-HR.default_411_x_update_ot_x_studio_sequence`<br>`view BugFix-HR.view_5527_default_list_view_for_x_update_ot_e`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
+| `accounting_company_id` | Company | many2one → `res.company` | Company of the document, set automatically to the user's current company by an automation; read-only and used by the multi-company record rule and to filter attendances. | stored | `model res.company` (base) | `record rule BugFix-HR.rule_627_jin_multi_company_update_ot`<br>`server action BugFix-HR.sa_f5_x_update_ot_jin_company_id_in_update_ot`<br>`server action BugFix-HR.server_action_2561_update_ot`<br>`server action BugFix-HR.server_action_2823_jin_company_id_in_update_ot`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
+| `sequence` | Sequence | integer | Ordering number of the Update OT record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-HR.default_411_x_update_ot_sequence`<br>`view BugFix-HR.view_5527_default_list_view_for_x_update_ot_e`<br>`view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
 | `x_update_ot_line_ids_d5449` | New Lines | one2many → `x_update_ot_line_7eea7` | Employee attendance lines loaded for the As on Date, shown on the Employee Attendance tab where users tick Approve OT; target of the Update All / Clear All actions. | stored | `model x_update_ot_line_7eea7` | `server action BugFix-HR.server_action_2562_update_ot_update_all`<br>`server action BugFix-HR.server_action_2563_update_ot_clear_all`<br>`view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e` |
 
 **Server actions (9):**
 
 - **Execute Code** (`server_action_2560_update_ot_seq_no`, type `code`)
   - Function: Code run by an automation: writes the next `ot.update.seq` sequence number into the Update OT document's Name.
-  - Depends on: `model ir.sequence` (base), `model x_update_ot`, `x_update_ot.x_name`
+  - Depends on: `model ir.sequence` (base), `model x_update_ot`, `x_update_ot.name`
   - Used by: `automation BugFix-HR.base_automation_253_jin_update_ot_seq_no`
   <details><summary>code (4 lines)</summary>
 
 ```python
-# record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+# record['name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
 seq = env["ir.sequence"].next_by_code("ot.update.seq")
-record.write({"x_name": seq})
+record.write({"name": seq})
 ```
   </details>
 - **Execute Code** (`server_action_2561_update_ot`, type `code`)
   - Function: Run by an automation when As on Date is set: deletes the document's existing lines, then creates one line per attendance of the current company checked in on that date with no check-out and no OT approval.
-  - Depends on: `model hr.attendance` (hr_attendance), `model res.company` (base), `model x_update_ot_line_7eea7`, `model x_update_ot`, `x_update_ot.x_name`<details><summary>+2 more</summary>`x_update_ot.x_studio_as_on_date`, `x_update_ot.x_studio_company_id`</details>
+  - Depends on: `model hr.attendance` (hr_attendance), `model res.company` (base), `model x_update_ot_line_7eea7`, `model x_update_ot`, `x_update_ot.name`<details><summary>+2 more</summary>`x_update_ot.x_studio_as_on_date`, `x_update_ot.accounting_company_id`</details>
   - Used by: `automation BugFix-HR.base_automation_254_update_ot`
   <details><summary>code (34 lines)</summary>
 
@@ -963,7 +963,7 @@ if record.x_studio_as_on_date:
             ("check_in", "<=", date_end),
             ("check_out", "=", False),
             ("x_studio_ot_approved", "=", False),
-            ("x_studio_company_id", "=", company.id),
+            ("accounting_company_id", "=", company.id),
         ]
     )
 
@@ -971,7 +971,7 @@ if record.x_studio_as_on_date:
         create_estimated_sub_model = env["x_update_ot_line_7eea7"].create(
             {
                 "x_update_ot_id": record.id,
-                "x_name": record.x_name,
+                "name": record.name,
                 "x_studio_employee_id": attdns.employee_id.id,
                 "x_studio_check_in": attdns.check_in,
                 "x_studio_check_out": attdns.check_out,
@@ -982,7 +982,7 @@ if record.x_studio_as_on_date:
   </details>
 - **Execute Code** (`server_action_2823_jin_company_id_in_update_ot`, type `code`)
   - Function: Code run by an automation: sets the Update OT document's Company to the user's currently active company.
-  - Depends on: `model res.company` (base), `model x_update_ot`, `x_update_ot.x_studio_company_id`
+  - Depends on: `model res.company` (base), `model x_update_ot`, `x_update_ot.accounting_company_id`
   - Used by: `automation BugFix-HR.base_automation_333_jin_company_id_in_update_ot`
   <details><summary>code (5 lines)</summary>
 
@@ -990,12 +990,12 @@ if record.x_studio_as_on_date:
 company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
 company = env["res.company"].browse(company_id)
 
-record["x_studio_company_id"] = company.id
+record["accounting_company_id"] = company.id
 ```
   </details>
 - **JIN - Company Id in Update OT** (`sa_f5_x_update_ot_jin_company_id_in_update_ot`, type `code`)
   - Function: Sets the Update OT document's Company to the user's currently active company (first allowed company in context).
-  - Depends on: `model res.company` (base), `model x_update_ot`, `x_update_ot.x_studio_company_id`
+  - Depends on: `model res.company` (base), `model x_update_ot`, `x_update_ot.accounting_company_id`
   - Used by: — (not linked to a button, menu or automation)
   <details><summary>code (4 lines)</summary>
 
@@ -1003,7 +1003,7 @@ record["x_studio_company_id"] = company.id
 company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
 company = env["res.company"].browse(company_id)
 
-record["x_studio_company_id"] = company.id
+record["accounting_company_id"] = company.id
 ```
   </details>
 - **Update OT** (`server_action_2564_update_ot`, type `code`)
@@ -1171,14 +1171,14 @@ if record.id:
   </details>
 - **Update OT Seq.No** (`sa_f5_x_update_ot_update_ot_seq_no`, type `code`)
   - Function: Gives the Update OT document its reference: writes the next number of the `ot.update.seq` sequence into Name.
-  - Depends on: `model ir.sequence` (base), `model x_update_ot`, `x_update_ot.x_name`
+  - Depends on: `model ir.sequence` (base), `model x_update_ot`, `x_update_ot.name`
   - Used by: — (not linked to a button, menu or automation)
   <details><summary>code (3 lines)</summary>
 
 ```python
-# record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+# record['name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
 seq = env["ir.sequence"].next_by_code("ot.update.seq")
-record.write({"x_name": seq})
+record.write({"name": seq})
 ```
   </details>
 **Automations (3):**
@@ -1199,10 +1199,10 @@ record.write({"x_name": seq})
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for x_update_ot | `view_5528_default_form_view_for_x_update_ot_e` | form | full form layout with 7 fields | Base Update OT form: Archived ribbon, Reference title, Details tab with the OT lines and chatter. The Update All / Clear All header buttons were stripped (action ids unresolvable). | `x_update_ot.activity_ids`<br>`x_update_ot.message_follower_ids`<br>`x_update_ot.message_ids`<br>`x_update_ot.x_active`<br>`x_update_ot.x_name`<details><summary>+1 more</summary>`x_update_ot.x_update_ot_line_ids_d5449`</details> | `view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
-| Default list view for x_update_ot | `view_5527_default_list_view_for_x_update_ot_e` | tree | full tree layout with 2 fields | Update OT list: drag handle and Name (reference) columns. | `x_update_ot.x_name`<br>`x_update_ot.x_studio_sequence` |  |
-| Default search view for x_update_ot | `view_5529_default_search_view_for_x_update_ot_e` | search | full search layout with 1 fields | Update OT search: search by Name; Archived filter. | `x_update_ot.x_active`<br>`x_update_ot.x_name` |  |
-| Odoo Studio: Default form view for x_update_ot customization | `view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` | form | set force_save=True, readonly=1, required= on `//field[@name='x_name']`; set string=Parameters on `//group[@name='studio_group_2e1c8d_left']`; inside `//group[@name='studio_group_2e1c8d_left']`: add field x_studio_as_on_date; set string=Log on `//group[@name='studio_group_2e1c8d_right']`; inside `//group[@name='studio_group_2e1c8d_right']`: add field create_uid, field create_date, field x_studio_company_id; set string=Employee Attendance on `//page[@name='lines']`; inside `//field[@name='x_update_ot_line_ids_d5449']`: add tree | Update OT form customization: Name becomes read-only; adds a required As on Date under 'Parameters', Created by/on and Company under 'Log'; renames Details to Employee Attendance with a lines table where only Approve OT is editable. | `view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<br>`x_update_ot.x_name`<br>`x_update_ot.x_studio_as_on_date`<br>`x_update_ot.x_studio_company_id`<br>`x_update_ot.x_studio_sequence` |  |
+| Default form view for x_update_ot | `view_5528_default_form_view_for_x_update_ot_e` | form | full form layout with 7 fields | Base Update OT form: Archived ribbon, Reference title, Details tab with the OT lines and chatter. The Update All / Clear All header buttons were stripped (action ids unresolvable). | `x_update_ot.activity_ids`<br>`x_update_ot.message_follower_ids`<br>`x_update_ot.message_ids`<br>`x_update_ot.active`<br>`x_update_ot.name`<details><summary>+1 more</summary>`x_update_ot.x_update_ot_line_ids_d5449`</details> | `view BugFix-HR.view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` |
+| Default list view for x_update_ot | `view_5527_default_list_view_for_x_update_ot_e` | tree | full tree layout with 2 fields | Update OT list: drag handle and Name (reference) columns. | `x_update_ot.name`<br>`x_update_ot.sequence` |  |
+| Default search view for x_update_ot | `view_5529_default_search_view_for_x_update_ot_e` | search | full search layout with 1 fields | Update OT search: search by Name; Archived filter. | `x_update_ot.active`<br>`x_update_ot.name` |  |
+| Odoo Studio: Default form view for x_update_ot customization | `view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization` | form | set force_save=True, readonly=1, required= on `//field[@name='name']`; set string=Parameters on `//group[@name='studio_group_2e1c8d_left']`; inside `//group[@name='studio_group_2e1c8d_left']`: add field x_studio_as_on_date; set string=Log on `//group[@name='studio_group_2e1c8d_right']`; inside `//group[@name='studio_group_2e1c8d_right']`: add field create_uid, field create_date, field accounting_company_id; set string=Employee Attendance on `//page[@name='lines']`; inside `//field[@name='x_update_ot_line_ids_d5449']`: add tree | Update OT form customization: Name becomes read-only; adds a required As on Date under 'Parameters', Created by/on and Company under 'Log'; renames Details to Employee Attendance with a lines table where only Approve OT is editable. | `view BugFix-HR.view_5528_default_form_view_for_x_update_ot_e`<br>`x_update_ot.name`<br>`x_update_ot.x_studio_as_on_date`<br>`x_update_ot.accounting_company_id`<br>`x_update_ot.sequence` |  |
 
 **Access rights (3):**
 
@@ -1216,11 +1216,11 @@ record.write({"x_name": seq})
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| JIN - Multi-Company - Update OT | `rule_627_jin_multi_company_update_ot` | For everyone (global rule): read/write/create/delete on Update OT only where `['|', ('x_studio_company_id', 'in', company_ids), ('x_studio_company_id', '=', False)]`. | `model x_update_ot`<br>`x_update_ot.x_studio_company_id` |  |
+| JIN - Multi-Company - Update OT | `rule_627_jin_multi_company_update_ot` | For everyone (global rule): read/write/create/delete on Update OT only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model x_update_ot`<br>`x_update_ot.accounting_company_id` |  |
 
 ### `x_update_ot_line_7eea7` — Update Ot  Lines
 
-*Created by this repo.* Python: `models/x_update_ot_line_7eea7.py`, `models/x_update_ot_line_7eea7_gap.py`. Record name field: `x_name`.
+*Created by this repo.* Python: `models/x_update_ot_line_7eea7.py`, `models/x_update_ot_line_7eea7_gap.py`. Record name field: `name`.
 
 **Summary:**
 
@@ -1238,25 +1238,25 @@ A line of an Update OT document, representing one open employee attendance loade
 | `id` | ID | integer | Unique database ID of the Update Ot  Lines record, assigned automatically by Odoo. | stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Update Ot  Lines record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Update Ot  Lines record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `x_name` | Description | char | Description of the OT line (required); the Update OT action fills it with the parent document's reference. Hidden in the lines table. | stored; required |  | `view BugFix-HR.view_5521_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5522_default_form_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5523_default_search_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5524_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5525_default_form_view_for_x_update_ot_line_7eea7_e`<details><summary>+1 more</summary>`view BugFix-HR.view_5526_default_search_view_for_x_update_ot_line_7eea7_e`</details> |
+| `name` | Description | char | Description of the OT line (required); the Update OT action fills it with the parent document's reference. Hidden in the lines table. | stored; required |  | `view BugFix-HR.view_5521_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5522_default_form_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5523_default_search_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5524_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5525_default_form_view_for_x_update_ot_line_7eea7_e`<details><summary>+1 more</summary>`view BugFix-HR.view_5526_default_search_view_for_x_update_ot_line_7eea7_e`</details> |
 | `x_studio_approve_ot` | Approve OT | boolean | Tick to approve overtime for this employee attendance; the Update All / Clear All actions set or clear it on every line, and the Update OT action processes only ticked lines. | stored |  |  |
 | `x_studio_attendance_id` | Attendance Id | many2one → `hr.attendance` | Attendance record the line was loaded from (hidden column); the Update OT action marks this attendance as OT approved. | stored | `model hr.attendance` (hr_attendance) |  |
 | `x_studio_check_in` | Check In | datetime | Check-in time copied from the attendance when the line is loaded; read-only. | stored |  |  |
 | `x_studio_check_out` | Check Out | datetime | Check-out time copied from the attendance when the line is loaded (normally empty, since only open attendances are loaded); read-only. | stored |  |  |
 | `x_studio_employee_id` | Employee ID | many2one → `hr.employee` | Employee of the loaded attendance; read-only in the lines table. | stored | `model hr.employee` (hr) |  |
-| `x_studio_sequence` | Sequence | integer | Ordering number of the Update Ot  Lines record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-HR.view_5521_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5524_default_list_view_for_x_update_ot_line_7eea7_e` |
+| `sequence` | Sequence | integer | Ordering number of the Update Ot  Lines record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-HR.view_5521_default_list_view_for_x_update_ot_line_7eea7_e`<br>`view BugFix-HR.view_5524_default_list_view_for_x_update_ot_line_7eea7_e` |
 | `x_update_ot_id` | X Update Ot | many2one → `x_update_ot` | Parent Update OT document this line belongs to. | stored | `model x_update_ot` |  |
 
 **Views (6):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for x_update_ot_line_7eea7 | `view_5522_default_form_view_for_x_update_ot_line_7eea7_e` | form | full form layout with 1 fields | Default Update OT line form showing only the Description; one of two duplicate default forms for this model. | `x_update_ot_line_7eea7.x_name` |  |
-| Default form view for x_update_ot_line_7eea7 | `view_5525_default_form_view_for_x_update_ot_line_7eea7_e` | form | full form layout with 1 fields | Default Update OT line form showing only the Description; duplicate of the other default form for this model. | `x_update_ot_line_7eea7.x_name` |  |
-| Default list view for x_update_ot_line_7eea7 | `view_5521_default_list_view_for_x_update_ot_line_7eea7_e` | tree | full tree layout with 2 fields | Inline-editable Update OT line list with drag handle and Description; one of two duplicate default lists. | `x_update_ot_line_7eea7.x_name`<br>`x_update_ot_line_7eea7.x_studio_sequence` |  |
-| Default list view for x_update_ot_line_7eea7 | `view_5524_default_list_view_for_x_update_ot_line_7eea7_e` | tree | full tree layout with 2 fields | Update OT line list with drag handle and Description; duplicate of the other default list. | `x_update_ot_line_7eea7.x_name`<br>`x_update_ot_line_7eea7.x_studio_sequence` |  |
-| Default search view for x_update_ot_line_7eea7 | `view_5523_default_search_view_for_x_update_ot_line_7eea7_e` | search | full search layout with 1 fields | Update OT line search: search by Description; one of two duplicate default search views. | `x_update_ot_line_7eea7.x_name` |  |
-| Default search view for x_update_ot_line_7eea7 | `view_5526_default_search_view_for_x_update_ot_line_7eea7_e` | search | full search layout with 1 fields | Update OT line search: search by Description; duplicate of the other default search view. | `x_update_ot_line_7eea7.x_name` |  |
+| Default form view for x_update_ot_line_7eea7 | `view_5522_default_form_view_for_x_update_ot_line_7eea7_e` | form | full form layout with 1 fields | Default Update OT line form showing only the Description; one of two duplicate default forms for this model. | `x_update_ot_line_7eea7.name` |  |
+| Default form view for x_update_ot_line_7eea7 | `view_5525_default_form_view_for_x_update_ot_line_7eea7_e` | form | full form layout with 1 fields | Default Update OT line form showing only the Description; duplicate of the other default form for this model. | `x_update_ot_line_7eea7.name` |  |
+| Default list view for x_update_ot_line_7eea7 | `view_5521_default_list_view_for_x_update_ot_line_7eea7_e` | tree | full tree layout with 2 fields | Inline-editable Update OT line list with drag handle and Description; one of two duplicate default lists. | `x_update_ot_line_7eea7.name`<br>`x_update_ot_line_7eea7.sequence` |  |
+| Default list view for x_update_ot_line_7eea7 | `view_5524_default_list_view_for_x_update_ot_line_7eea7_e` | tree | full tree layout with 2 fields | Update OT line list with drag handle and Description; duplicate of the other default list. | `x_update_ot_line_7eea7.name`<br>`x_update_ot_line_7eea7.sequence` |  |
+| Default search view for x_update_ot_line_7eea7 | `view_5523_default_search_view_for_x_update_ot_line_7eea7_e` | search | full search layout with 1 fields | Update OT line search: search by Description; one of two duplicate default search views. | `x_update_ot_line_7eea7.name` |  |
+| Default search view for x_update_ot_line_7eea7 | `view_5526_default_search_view_for_x_update_ot_line_7eea7_e` | search | full search layout with 1 fields | Update OT line search: search by Description; duplicate of the other default search view. | `x_update_ot_line_7eea7.name` |  |
 
 **Access rights (5):**
 
@@ -1287,10 +1287,10 @@ Records this module creates on install (lookup values, sequences, defaults, comp
 
 | Type | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| `ir.default` | `default_231_x_paye_tax_x_active` | Sets the default of **Active (Paye Tax)** to `true`. | `x_paye_tax.x_active` |  |
-| `ir.default` | `default_232_x_paye_tax_x_studio_sequence` | Sets the default of **Sequence (Paye Tax)** to `10`. | `x_paye_tax.x_studio_sequence` |  |
-| `ir.default` | `default_410_x_update_ot_x_active` | Sets the default of **Active (Update OT)** to `true`. | `x_update_ot.x_active` |  |
-| `ir.default` | `default_411_x_update_ot_x_studio_sequence` | Sets the default of **Sequence (Update OT)** to `10`. | `x_update_ot.x_studio_sequence` |  |
+| `ir.default` | `default_231_x_paye_tax_active` | Sets the default of **Active (Paye Tax)** to `true`. | `x_paye_tax.active` |  |
+| `ir.default` | `default_232_x_paye_tax_sequence` | Sets the default of **Sequence (Paye Tax)** to `10`. | `x_paye_tax.sequence` |  |
+| `ir.default` | `default_410_x_update_ot_active` | Sets the default of **Active (Update OT)** to `true`. | `x_update_ot.active` |  |
+| `ir.default` | `default_411_x_update_ot_sequence` | Sets the default of **Sequence (Update OT)** to `10`. | `x_update_ot.sequence` |  |
 | `ir.default` | `default_431_hr_applicant_x_studio_marks_1` | Sets the default of **Recruiter Assignment Marks % (Applicant)** to `"0"`. | `hr.applicant.x_studio_marks_1` |  |
 | `ir.default` | `default_432_hr_applicant_x_studio_interview_marks_1` | Sets the default of **Line Manager Marks % (Applicant)** to `"0"`. | `hr.applicant.x_studio_interview_marks_1` |  |
 | `ir.default` | `default_433_hr_applicant_x_studio_interview_marks_2` | Sets the default of **Leadership Marks % (Applicant)** to `"0"`. | `hr.applicant.x_studio_interview_marks_2` |  |

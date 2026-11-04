@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='date_closed']" position="after">
-                    <field name="x_studio_priority" string="Line Manager Selection" readonly="x_studio_cu_line_manager == False"/>
+                    <field name="custom_reports_priority" string="Line Manager Selection" readonly="x_studio_cu_line_manager == False"/>
                     <field name="x_studio_2nd_selection" string="Leadership Selection" readonly="x_studio_cu_leadership == False"/>
                     <field name="x_studio_marks_1" string="Recruiter Assignment Marks %" readonly="x_studio_cu_recruiter == False"/>
                     <field name="x_studio_line_manager_name" string="Line Manager Name"/>

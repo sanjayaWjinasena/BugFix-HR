@@ -77,7 +77,7 @@ values are placeholders until real logic lands.
 
 ## History of resolved deferrals
 
-- **hr.recruitment.stage x_color field** (v0.0.12) — shipped.
+- **hr.recruitment.stage color field** (v0.0.12) — shipped.
 - **Rename + icon** (v0.0.13) — 'Jinasena : Module : HR' branding.
 - **hr.attendance 7 fields** (v0.0.14) — shipped.
 - **hr.applicant 12 of 15 fields** (v0.0.15) — 12 shipped, 3 CU

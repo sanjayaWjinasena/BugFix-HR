@@ -6,7 +6,7 @@ class HrAttendance(models.Model):
 
     x_studio_check_in_auto = fields.Boolean(string="Check In Auto", copy=True)
     x_studio_check_out_auto = fields.Boolean(string="Check Out Auto", copy=True)
-    x_studio_company_id = fields.Many2one("res.company", string="Company")
+    accounting_company_id = fields.Many2one("res.company", string="Company")
     x_studio_ot_approved = fields.Boolean(string="OT Approved", copy=True)
     x_studio_ot_approved_by = fields.Many2one(
         "res.users", string="OT Approved By", copy=True

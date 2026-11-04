@@ -13,7 +13,7 @@
     <field name="name">HR - Applicant</field>
     <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
     <field name="state">code</field>
-    <field name="code"><![CDATA[if record.x_studio_priority == 'No':
+    <field name="code"><![CDATA[if record.custom_reports_priority == 'No':
   record['stage_id'] = 1
 ]]></field>
     <field name="usage">base_automation</field>
@@ -71,7 +71,7 @@
     <field name="model_id" search="[('model', '=', 'hr.applicant')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[if record.x_studio_priority == 'No':
+    <field name="code"><![CDATA[if record.custom_reports_priority == 'No':
   record['stage_id'] = 1]]></field>
   </record>
   <record id="server_action_2580_hr_applicant_2" model="ir.actions.server">
@@ -134,7 +134,7 @@
     <field name="active" eval="True"/>
     <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
     <field name="trigger">on_change</field>
-    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__x_studio_priority')])]"/>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-HR.field_hr_applicant__custom_reports_priority')])]"/>
     <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2579_hr_applicant')])]"/>
   </record>
   <record id="base_automation_263_hr_applicant_2" model="base.automation">
@@ -190,7 +190,7 @@
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[
-if record.x_studio_priority == 'No':
+if record.custom_reports_priority == 'No':
   record['stage_id'] = 1
 
     ]]></field>

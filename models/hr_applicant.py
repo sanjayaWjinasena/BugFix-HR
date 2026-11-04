@@ -5,7 +5,7 @@ class HrApplicant(models.Model):
     _inherit = "hr.applicant"
 
     # Recruitment workflow selections
-    x_studio_priority = fields.Selection(
+    custom_reports_priority = fields.Selection(
         [("Yes", "Yes"), ("May Be", "May Be"), ("No", "No")],
         string="Line Manager Selection",
         copy=True,

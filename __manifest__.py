@@ -2,7 +2,7 @@
     # upgrade-testing branch: data files below are commented out - this branch installs
     # functions only, no data is seeded.
     "name": "Jinasena : Module : HR",
-    "version": "17.0.0.0.49",
+    "version": "17.0.0.0.50",
     "summary": "Studio-to-Python port for BugFix-HR",
     "author": "Jinasena Agricultural Machinery (Pvt) Ltd.",
     "category": "Human Resources",
@@ -53,7 +53,7 @@
     # implement custom validation/workflow logic that is NOT provided by
     # standard modules (unlike v0.0.19's interactive actions which were
     # rolled back as duplicates).
-    #   * 262 HR - Applicant             on_change x_studio_priority
+    #   * 262 HR - Applicant             on_change custom_reports_priority
     #                                     -> if 'No', set stage_id=1
     #   * 263 HR - Applicant 2           on_change x_studio_2nd_selection
     # -> if 'Yes', set stage_id=0 (Studio bug preserved)
@@ -145,7 +145,7 @@
     #     Generate Missing Work Entries (cron), HR Contract update state (cron).
     # v0.0.15: hr.applicant port - 12 of 15 x_studio_ fields.
     # See models/hr_applicant.py. Fields shipped:
-    #   * 3 selections: x_studio_priority (Line Manager),
+    #   * 3 selections: custom_reports_priority (Line Manager),
     #     x_studio_2nd_selection (Leadership), x_studio_appreciation
     #   * 4 integer mark percentages: x_studio_marks_1,
     #     x_studio_interview_marks_1/2/3
@@ -166,7 +166,7 @@
     # See models/hr_attendance.py. All fields declared from Clear-DB scout:
     #   * x_studio_check_in_auto     (Boolean, copy=True)
     #   * x_studio_check_out_auto    (Boolean, copy=True)
-    #   * x_studio_company_id        (M2O -> res.company)
+    #   * accounting_company_id        (M2O -> res.company)
     #   * x_studio_ot_approved       (Boolean, copy=True)
     #   * x_studio_ot_approved_by    (M2O -> res.users, copy=True)
     #   * x_studio_ot_entry          (Boolean, copy=True)
@@ -182,14 +182,14 @@
     #   * NEW DEP hr_recruitment (was stripped in v0.0.11 CRITICAL).
     #     Required for hr.recruitment.stage model + the base view
     #     we inherit (hr_recruitment.hr_recruitment_stage_tree).
-    #   * models/hr_recruitment_stage.py: x_color Integer field.
-    #     Clear-DB pin: hr_recruitment.field_hr_recruitment_stage__x_color
+    #   * models/hr_recruitment_stage.py: color Integer field.
+    #     Clear-DB pin: hr_recruitment.field_hr_recruitment_stage__color
     #     (studio_customization is the secondary pin). state=manual on
     #     Clear-DB, will be state=base after our port.
     #   * views/hr_recruitment_stage_studio_ported.xml: Studio view 5549
     #     (tree inherit, 90b). Adds `id` column after `hired_stage`.
-    #     Independent of the x_color field port -- the view doesn't
-    #     reference x_color at all.
+    #     Independent of the color field port -- the view doesn't
+    #     reference color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
     "depends": [

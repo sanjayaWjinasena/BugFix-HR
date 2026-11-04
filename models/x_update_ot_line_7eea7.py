@@ -3,10 +3,10 @@ from odoo import fields, models
 
 class X_update_ot_line_7eea7(models.Model):
     _name = "x_update_ot_line_7eea7"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Update Ot  Lines"
 
-    x_name = fields.Char(string="Description", required=True)
+    name = fields.Char(string="Description", required=True)
     x_studio_approve_ot = fields.Boolean(string="Approve OT")
     x_studio_attendance_id = fields.Many2one(
         comodel_name="hr.attendance", string="Attendance Id"
@@ -16,13 +16,13 @@ class X_update_ot_line_7eea7(models.Model):
     x_studio_employee_id = fields.Many2one(
         comodel_name="hr.employee", string="Employee ID"
     )
-    x_studio_sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer(string="Sequence")
     x_update_ot_id = fields.Many2one(comodel_name="x_update_ot")
 
 
 class XUpdateOtLine7eea7Gap(models.Model):
     _inherit = "x_update_ot_line_7eea7"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    x_name = fields.Char(string="Description", required=True)
+    name = fields.Char(string="Description", required=True)
     x_update_ot_id = fields.Many2one(comodel_name="x_update_ot")

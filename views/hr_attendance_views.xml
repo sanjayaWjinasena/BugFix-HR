@@ -10,7 +10,7 @@
       <field name="arch" type="xml">
         <data>
   <xpath expr="//field[@name='worked_hours']" position="after">
-    <field optional="hide" name="x_studio_company_id" string="Company"/>
+    <field optional="hide" name="accounting_company_id" string="Company"/>
     <field optional="hide" name="x_studio_ot_entry" string="OT Entry" readonly="1"/>
     <field optional="hide" name="x_studio_ot_approved" string="OT Approved" readonly="0"/>
     <field optional="hide" name="x_studio_ot_approved_by" string="OT Approved By" readonly="1"/>
