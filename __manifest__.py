@@ -2,7 +2,7 @@
     # upgrade-testing branch: data files below are commented out - this branch installs
     # functions only, no data is seeded.
     "name": "Jinasena : Module : HR",
-    "version": "17.0.0.0.50",
+    "version": "17.0.0.0.54",
     "summary": "Studio-to-Python port for BugFix-HR",
     "author": "Jinasena Agricultural Machinery (Pvt) Ltd.",
     "category": "Human Resources",
@@ -193,6 +193,7 @@
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
     "depends": [
+        "hr_holidays",
         "base_setup",
         "hr",
         "hr_attendance",
