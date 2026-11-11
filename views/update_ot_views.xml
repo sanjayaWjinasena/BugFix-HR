@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_2559_update_ot" model="ir.actions.act_window">
+  <record id="action_update_ot" model="ir.actions.act_window">
     <field name="name">Update OT</field>
     <field name="res_model">update_ot</field>
     <field name="view_mode">tree,form</field>
   </record>
-    <record id="view_5528_default_form_view_for_x_update_ot_e" model="ir.ui.view">
+    <record id="view_update_ot_form" model="ir.ui.view">
       <field name="name">Default form view for update_ot</field>
       <field name="model">update_ot</field>
       <field name="type">form</field>
@@ -44,7 +44,7 @@
 </form>
       </field>
     </record>
-    <record id="view_5527_default_list_view_for_x_update_ot_e" model="ir.ui.view">
+    <record id="view_update_ot_list" model="ir.ui.view">
       <field name="name">Default list view for update_ot</field>
       <field name="model">update_ot</field>
       <field name="type">tree</field>
@@ -55,7 +55,7 @@
 </tree>
       </field>
     </record>
-    <record id="view_5529_default_search_view_for_x_update_ot_e" model="ir.ui.view">
+    <record id="view_update_ot_search" model="ir.ui.view">
       <field name="name">Default search view for update_ot</field>
       <field name="model">update_ot</field>
       <field name="type">search</field>
@@ -68,12 +68,12 @@
 </search>
       </field>
     </record>
-    <record id="view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization" model="ir.ui.view">
+    <record id="view_default_form_view_for_update_ot_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: Default form view for update_ot customization</field>
       <field name="model">update_ot</field>
       <field name="type">form</field>
       <field name="priority">99</field>
-      <field name="inherit_id" ref="BugFix-HR.view_5528_default_form_view_for_x_update_ot_e"/>
+      <field name="inherit_id" ref="BugFix-HR.view_update_ot_form"/>
       <field name="mode">extension</field>
       <field name="arch" type="xml">
         <data>

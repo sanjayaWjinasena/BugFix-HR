@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_4929_hr_employee_form" model="ir.ui.view">
+    <record id="view_hr_employee_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: hr.employee.form customization</field>
         <field name="model">hr.employee</field>
         <field name="type">form</field>
@@ -23,7 +23,7 @@
             </data>
         </field>
     </record>
-    <record id="view_8349_odoo_studio_hr_employee_tree_customization_e" model="ir.ui.view">
+    <record id="view_hr_employee_tree_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: hr.employee.tree customization</field>
       <field name="model">hr.employee</field>
       <field name="type">tree</field>

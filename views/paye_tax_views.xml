@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_1559_paye_tax" model="ir.actions.act_window">
+  <record id="action_paye_tax" model="ir.actions.act_window">
     <field name="name">Paye Tax</field>
     <field name="res_model">paye_tax</field>
     <field name="view_mode">tree,form</field>
   </record>
-    <record id="view_3238_default_form_view_for_x_paye_tax_e" model="ir.ui.view">
+    <record id="view_paye_tax_form" model="ir.ui.view">
       <field name="name">Default form view for paye_tax</field>
       <field name="model">paye_tax</field>
       <field name="type">form</field>
@@ -36,7 +36,7 @@
 </form>
       </field>
     </record>
-    <record id="view_3237_default_list_view_for_x_paye_tax_e" model="ir.ui.view">
+    <record id="view_paye_tax_list" model="ir.ui.view">
       <field name="name">Default list view for paye_tax</field>
       <field name="model">paye_tax</field>
       <field name="type">tree</field>
@@ -49,7 +49,7 @@
 </tree>
       </field>
     </record>
-    <record id="view_3239_default_search_view_for_x_paye_tax_e" model="ir.ui.view">
+    <record id="view_paye_tax_search" model="ir.ui.view">
       <field name="name">Default search view for paye_tax</field>
       <field name="model">paye_tax</field>
       <field name="type">search</field>
@@ -66,12 +66,12 @@
 </search>
       </field>
     </record>
-    <record id="view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization" model="ir.ui.view">
+    <record id="view_default_list_view_for_paye_tax_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: Default list view for paye_tax customization</field>
       <field name="model">paye_tax</field>
       <field name="type">tree</field>
       <field name="priority">99</field>
-      <field name="inherit_id" ref="BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e"/>
+      <field name="inherit_id" ref="BugFix-HR.view_paye_tax_list"/>
       <field name="mode">extension</field>
       <field name="arch" type="xml">
         <data>

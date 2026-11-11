@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="sa_f5_x_update_ot_jin_company_id_in_update_ot" model="ir.actions.server">
+  <record id="action_update_ot_jin_company_id_in_update_ot" model="ir.actions.server">
     <field name="name">JIN - Company Id in Update OT</field>
     <field name="model_id" search="[('model', '=', 'update_ot')]"/>
     <field name="state">code</field>
@@ -11,7 +11,7 @@ record['accounting_company_id'] = company.id]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
-  <record id="sa_f5_x_update_ot_update_ot_seq_no" model="ir.actions.server">
+  <record id="action_update_ot_update_ot_seq_no" model="ir.actions.server">
     <field name="name">Update OT Seq.No</field>
     <field name="model_id" search="[('model', '=', 'update_ot')]"/>
     <field name="state">code</field>
@@ -28,7 +28,7 @@ record.write({'name': seq})
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
-    <record id="server_action_2560_update_ot_seq_no" model="ir.actions.server">
+    <record id="action_update_ot_seq_no" model="ir.actions.server">
       <field name="name">Update OT Seq.No</field>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="state">code</field>
@@ -46,14 +46,14 @@ record.write({'name': seq})
 
       ]]></field>
     </record>
-    <record id="base_automation_253_jin_update_ot_seq_no" model="base.automation">
+    <record id="automation_update_ot_seq_no" model="base.automation">
       <field name="name">JIN-Update OT Seq.No</field>
       <field name="active" eval="True"/>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="trigger">on_create_or_write</field>
-      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2560_update_ot_seq_no')])]"/>
+      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.action_update_ot_seq_no')])]"/>
     </record>
-    <record id="server_action_2561_update_ot" model="ir.actions.server">
+    <record id="action_update_ot_2" model="ir.actions.server">
       <field name="name">Update OT</field>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="state">code</field>
@@ -96,14 +96,14 @@ if record.as_on_date:
     
       ]]></field>
     </record>
-    <record id="base_automation_254_update_ot" model="base.automation">
+    <record id="automation_update_ot" model="base.automation">
       <field name="name">Update OT</field>
       <field name="active" eval="True"/>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="trigger">on_create_or_write</field>
-      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2561_update_ot')])]"/>
+      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.action_update_ot_2')])]"/>
     </record>
-    <record id="server_action_2823_jin_company_id_in_update_ot" model="ir.actions.server">
+    <record id="action_jin_company_id_in_update_ot" model="ir.actions.server">
       <field name="name">JIN - Company Id in Update OT</field>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="state">code</field>
@@ -115,14 +115,14 @@ company = env['res.company'].browse(company_id)
 record['accounting_company_id'] = company.id
       ]]></field>
     </record>
-    <record id="base_automation_333_jin_company_id_in_update_ot" model="base.automation">
+    <record id="automation_jin_company_id_in_update_ot" model="base.automation">
       <field name="name">JIN - Company Id in Update OT</field>
       <field name="active" eval="True"/>
       <field name="model_id" search="[('model', '=', 'update_ot')]"/>
       <field name="trigger">on_create_or_write</field>
-      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_2823_jin_company_id_in_update_ot')])]"/>
+      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.action_jin_company_id_in_update_ot')])]"/>
     </record>
-  <record id="server_action_2560_update_ot_seq_no" model="ir.actions.server">
+  <record id="action_update_ot_seq_no" model="ir.actions.server">
     <field name="name">Update OT Seq.No</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -140,7 +140,7 @@ record.write({'name': seq})
 
     ]]></field>
   </record>
-  <record id="server_action_2561_update_ot" model="ir.actions.server">
+  <record id="action_update_ot_2" model="ir.actions.server">
     <field name="name">Update OT</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -183,7 +183,7 @@ if record.as_on_date:
     
     ]]></field>
   </record>
-  <record id="server_action_2562_update_ot_update_all" model="ir.actions.server">
+  <record id="action_update_ot_update_all" model="ir.actions.server">
     <field name="name">Update OT - Update All</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -203,7 +203,7 @@ if record.id:
 
     ]]></field>
   </record>
-  <record id="server_action_2563_update_ot_clear_all" model="ir.actions.server">
+  <record id="action_update_ot_clear_all" model="ir.actions.server">
     <field name="name">Update OT - Clear All</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -223,7 +223,7 @@ if record.id:
 
     ]]></field>
   </record>
-  <record id="server_action_2564_update_ot" model="ir.actions.server">
+  <record id="action_update_ot_3" model="ir.actions.server">
     <field name="name">Update OT</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -357,7 +357,7 @@ if update_ot:
       
     ]]></field>
   </record>
-  <record id="server_action_2823_jin_company_id_in_update_ot" model="ir.actions.server">
+  <record id="action_jin_company_id_in_update_ot" model="ir.actions.server">
     <field name="name">JIN - Company Id in Update OT</field>
     <field name="model_id" ref="BugFix-HR.model_update_ot"/>
     <field name="state">code</field>
@@ -370,11 +370,11 @@ record['accounting_company_id'] = company.id
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_410_x_update_ot_active" model="ir.default">
+    <record id="default_update_ot_active" model="ir.default">
       <field name="field_id" ref="BugFix-HR.field_update_ot__active"/>
       <field name="json_value">true</field>
     </record>
-    <record id="default_411_x_update_ot_sequence" model="ir.default">
+    <record id="default_update_ot_sequence" model="ir.default">
       <field name="field_id" ref="BugFix-HR.field_update_ot__sequence"/>
       <field name="json_value">10</field>
     </record>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_1966_work_entries_analysis" model="ir.actions.act_window">
+  <record id="action_work_entries_analysis" model="ir.actions.act_window">
     <field name="name">Work Entries Analysis</field>
     <field name="res_model">hr.work.entry.report</field>
     <field name="view_mode">pivot</field>
@@ -11,7 +11,7 @@
         }</field>
     <field name="help" type="html"><p>This report performs analysis on your work entries.</p></field>
   </record>
-  <!-- STRIPPED act_window_1559_paye_tax: model paye_tax not on target -->
-<!-- STRIPPED act_window_1560_paye_tax_tags: model paye_tax_tag not on target -->
-<!-- STRIPPED act_window_2559_update_ot: model update_ot not on target -->
+  <!-- STRIPPED action_paye_tax: model paye_tax not on target -->
+<!-- STRIPPED action_paye_tax_tags: model paye_tax_tag not on target -->
+<!-- STRIPPED action_update_ot: model update_ot not on target -->
 </odoo>

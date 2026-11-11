@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_5550_hr_applicant_form" model="ir.ui.view">
+    <record id="view_jobs_recruitment_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: Jobs - Recruitment Form customization</field>
         <field name="model">hr.applicant</field>
         <field name="type">form</field>
@@ -32,7 +32,7 @@
             </data>
         </field>
     </record>
-  <record id="act_window_1333_applications" model="ir.actions.act_window">
+  <record id="action_applications" model="ir.actions.act_window">
     <field name="name">Applications</field>
     <field name="res_model">hr.applicant</field>
     <field name="view_mode">kanban,tree,form,graph,calendar,pivot,activity</field>
@@ -49,7 +49,7 @@
             </p>
         </field>
   </record>
-  <record id="act_window_1338_applications" model="ir.actions.act_window">
+  <record id="action_applications_2" model="ir.actions.act_window">
     <field name="name">Applications</field>
     <field name="res_model">hr.applicant</field>
     <field name="view_mode">kanban,tree,form,pivot,graph,calendar,activity</field>

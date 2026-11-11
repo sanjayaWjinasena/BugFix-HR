@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_5549_hr_recruitment_stage_tree" model="ir.ui.view">
+    <record id="view_hr_recruitment_stage_tree_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: hr.recruitment.stage.tree customization</field>
         <field name="model">hr.recruitment.stage</field>
         <field name="type">tree</field>

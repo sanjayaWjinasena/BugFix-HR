@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="sa_f5_x_paye_tax_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+  <record id="action_paye_tax_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
     <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
     <field name="model_id" search="[('model', '=', 'paye_tax')]"/>
     <field name="state">code</field>
@@ -13,7 +13,7 @@
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
-    <record id="server_action_1561_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+    <record id="action_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
       <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
       <field name="model_id" search="[('model', '=', 'paye_tax')]"/>
       <field name="state">code</field>
@@ -32,9 +32,9 @@ if record.end_date < record.start_date:
       <field name="active" eval="True"/>
       <field name="model_id" search="[('model', '=', 'paye_tax')]"/>
       <field name="trigger">on_create_or_write</field>
-      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.server_action_1561_payroll_validate_from_to_dates_in_paye_tax')])]"/>
+      <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-HR.action_payroll_validate_from_to_dates_in_paye_tax')])]"/>
     </record>
-  <record id="server_action_1561_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+  <record id="action_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
     <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
     <field name="model_id" ref="BugFix-HR.model_paye_tax"/>
     <field name="state">code</field>
@@ -49,11 +49,11 @@ if record.end_date < record.start_date:
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_231_x_paye_tax_active" model="ir.default">
+    <record id="default_paye_tax_active" model="ir.default">
       <field name="field_id" ref="BugFix-HR.field_paye_tax__active"/>
       <field name="json_value">true</field>
     </record>
-    <record id="default_232_x_paye_tax_sequence" model="ir.default">
+    <record id="default_paye_tax_sequence" model="ir.default">
       <field name="field_id" ref="BugFix-HR.field_paye_tax__sequence"/>
       <field name="json_value">10</field>
     </record>

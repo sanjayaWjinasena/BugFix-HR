@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- STRIPPED act_window_2816_hr_expense: model out-of-deps for BugFix-HR: hr.expense (owned by documents_hr_expense) -->
-<record id="act_window_1274_my_reports" model="ir.actions.act_window">
+<record id="action_my_reports" model="ir.actions.act_window">
     <field name="name">My Reports</field>
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
@@ -14,7 +14,7 @@
               </p>
             </field>
   </record>
-  <record id="act_window_2585_hr_expense_sheet" model="ir.actions.act_window">
+  <record id="action_hr_expense_sheet" model="ir.actions.act_window">
     <field name="name">hr.expense.sheet</field>
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
@@ -31,7 +31,7 @@
                 </p>
             </field>
   </record>
-  <record id="act_window_2596_hr_expense_sheet" model="ir.actions.act_window">
+  <record id="action_hr_expense_sheet_2" model="ir.actions.act_window">
     <field name="name">hr.expense.sheet</field>
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>
@@ -48,7 +48,7 @@
                 </p>
             </field>
   </record>
-  <record id="act_window_2817_hr_expense_sheet" model="ir.actions.act_window">
+  <record id="action_hr_expense_sheet_3" model="ir.actions.act_window">
     <field name="name">hr.expense.sheet</field>
     <field name="res_model">hr.expense.sheet</field>
     <field name="view_mode">kanban,tree,form,pivot,graph,activity</field>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_2557_hr_attendance_overtime" model="ir.actions.act_window">
+  <record id="action_hr_attendance_overtime" model="ir.actions.act_window">
     <field name="name">hr.attendance.overtime</field>
     <field name="res_model">hr.attendance.overtime</field>
     <field name="view_mode">tree</field>

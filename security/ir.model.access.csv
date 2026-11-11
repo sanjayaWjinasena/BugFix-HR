@@ -1,20 +1,20 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_7073_hr_payroll_structure,hr.payroll.structure,hr_payroll.model_hr_payroll_structure,hr_payroll.group_hr_payroll_manager,1,1,1,0
-access_6874_jin___administrator,Jin - Administrator,hr_payroll.model_hr_payslip_run,stock.group_stock_manager,1,1,1,1
-access_6268_inv___administrator,Inv - Administrator,BugFix-HR.model_hr_recruitment_stage,stock.group_stock_manager,1,1,1,1
-access_7071_hr_salary_attachment,hr.salary.attachment,hr_payroll.model_hr_salary_attachment,hr_payroll.group_hr_payroll_manager,1,1,1,0
-access_7074_hr_salary_rule,hr.salary.rule,hr_payroll.model_hr_salary_rule,hr_payroll.group_hr_payroll_manager,1,1,1,0
-access_x_paye_tax_tag_admin,paye_tax_tag admin,BugFix-HR.model_paye_tax_tag,base.group_system,1,1,1,1
-access_x_paye_tax_admin,paye_tax admin,BugFix-HR.model_paye_tax,base.group_system,1,1,1,1
-access_x_update_ot_line_7eea7_admin,update_ot_line_7eea7 admin,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1
-access_x_update_ot_admin,update_ot admin,BugFix-HR.model_update_ot,base.group_system,1,1,1,1
-access_1428_paye_tax_group_user,Paye Tax group_user,BugFix-HR.model_paye_tax,base.group_user,1,0,0,0
-access_1427_paye_tax_group_system,Paye Tax group_system,BugFix-HR.model_paye_tax,base.group_system,1,1,1,1
-access_7070_update_ot_group_user,Update OT group_user,BugFix-HR.model_update_ot,base.group_user,1,1,1,0
-access_7069_update_ot_group_system,Update OT group_system,BugFix-HR.model_update_ot,base.group_system,1,1,1,1
-access_1426_paye_tax_tags_group_user,Paye Tax Tags group_user,BugFix-HR.model_paye_tax_tag,base.group_user,1,1,1,0
-access_1425_paye_tax_tags_group_system,Paye Tax Tags group_system,BugFix-HR.model_paye_tax_tag,base.group_system,1,1,1,1
-access_7066_update_ot_lines_group_user,Update Ot  Lines group_user,BugFix-HR.model_update_ot_line_7eea7,base.group_user,1,1,1,0
-access_7068_update_ot_lines_group_user,Update Ot  Lines group_user,BugFix-HR.model_update_ot_line_7eea7,base.group_user,1,1,1,0
-access_7065_update_ot_lines_group_system,Update Ot  Lines group_system,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1
-access_7067_update_ot_lines_group_system,Update Ot  Lines group_system,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1
+access_hr_payroll_structure,hr.payroll.structure,hr_payroll.model_hr_payroll_structure,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_jin_administrator,Jin - Administrator,hr_payroll.model_hr_payslip_run,stock.group_stock_manager,1,1,1,1
+access_inv_administrator,Inv - Administrator,BugFix-HR.model_hr_recruitment_stage,stock.group_stock_manager,1,1,1,1
+access_hr_salary_attachment,hr.salary.attachment,hr_payroll.model_hr_salary_attachment,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_hr_salary_rule,hr.salary.rule,hr_payroll.model_hr_salary_rule,hr_payroll.group_hr_payroll_manager,1,1,1,0
+access_paye_tax_tag_admin,paye_tax_tag admin,BugFix-HR.model_paye_tax_tag,base.group_system,1,1,1,1
+access_paye_tax_admin,paye_tax admin,BugFix-HR.model_paye_tax,base.group_system,1,1,1,1
+access_update_ot_line_7eea7_admin,update_ot_line_7eea7 admin,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1
+access_update_ot_admin,update_ot admin,BugFix-HR.model_update_ot,base.group_system,1,1,1,1
+access_paye_tax_group_user,Paye Tax group_user,BugFix-HR.model_paye_tax,base.group_user,1,0,0,0
+access_paye_tax_group_system,Paye Tax group_system,BugFix-HR.model_paye_tax,base.group_system,1,1,1,1
+access_update_ot_group_user,Update OT group_user,BugFix-HR.model_update_ot,base.group_user,1,1,1,0
+access_update_ot_group_system,Update OT group_system,BugFix-HR.model_update_ot,base.group_system,1,1,1,1
+access_paye_tax_tags_group_user,Paye Tax Tags group_user,BugFix-HR.model_paye_tax_tag,base.group_user,1,1,1,0
+access_paye_tax_tags_group_system,Paye Tax Tags group_system,BugFix-HR.model_paye_tax_tag,base.group_system,1,1,1,1
+access_update_ot_lines_group_user,Update Ot  Lines group_user,BugFix-HR.model_update_ot_line_7eea7,base.group_user,1,1,1,0
+access_update_ot_lines_group_user_2,Update Ot  Lines group_user,BugFix-HR.model_update_ot_line_7eea7,base.group_user,1,1,1,0
+access_update_ot_lines_group_system,Update Ot  Lines group_system,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1
+access_update_ot_lines_group_system_2,Update Ot  Lines group_system,BugFix-HR.model_update_ot_line_7eea7,base.group_system,1,1,1,1

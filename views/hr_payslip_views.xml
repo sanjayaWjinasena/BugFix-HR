@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_9511_hr_payslip_bank_data_tree" model="ir.ui.view">
+    <record id="view_hr_payslip_tree_bank_data_jinasena_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: hr.payslip.tree.bank.data.jinasena customization</field>
         <field name="model">hr.payslip</field>
         <field name="type">tree</field>

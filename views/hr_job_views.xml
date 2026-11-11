@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_5551_odoo_studio_hr_job_form_customization_e" model="ir.ui.view">
+    <record id="view_hr_job_form_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: hr.job.form customization</field>
       <field name="model">hr.job</field>
       <field name="type">form</field>

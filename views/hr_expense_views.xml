@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_4949_hr_expense_form" model="ir.ui.view">
+    <record id="view_hr_expense_view_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: hr.expense.view.form customization</field>
         <field name="model">hr.expense</field>
         <field name="type">form</field>

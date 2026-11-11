@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_1560_paye_tax_tags" model="ir.actions.act_window">
+  <record id="action_paye_tax_tags" model="ir.actions.act_window">
     <field name="name">Paye Tax Tags</field>
     <field name="res_model">paye_tax_tag</field>
     <field name="view_mode">tree,form</field>
   </record>
-    <record id="view_3235_default_form_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+    <record id="view_paye_tax_tag_form" model="ir.ui.view">
       <field name="name">Default form view for paye_tax_tag</field>
       <field name="model">paye_tax_tag</field>
       <field name="type">form</field>
@@ -26,7 +26,7 @@
 </form>
       </field>
     </record>
-    <record id="view_3234_default_list_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+    <record id="view_paye_tax_tag_list" model="ir.ui.view">
       <field name="name">Default list view for paye_tax_tag</field>
       <field name="model">paye_tax_tag</field>
       <field name="type">tree</field>
@@ -37,7 +37,7 @@
 </tree>
       </field>
     </record>
-    <record id="view_3236_default_search_view_for_x_paye_tax_tag_e" model="ir.ui.view">
+    <record id="view_paye_tax_tag_search" model="ir.ui.view">
       <field name="name">Default search view for paye_tax_tag</field>
       <field name="model">paye_tax_tag</field>
       <field name="type">search</field>
