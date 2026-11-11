@@ -5,30 +5,22 @@ class HrContract(models.Model):
     _inherit = "hr.contract"
 
     # === Identity / naming (3 Char) ===
-    initial = fields.Char(string="Initial", copy=True)
-    surname = fields.Char(string="Surname", copy=True)
-    occupation_grade = fields.Char(string="Occupation Grade", copy=True)
+    initial = fields.Char(copy=True)
+    surname = fields.Char(copy=True)
+    occupation_grade = fields.Char(copy=True)
 
     # === Monetary compensation fields (7) ===
     ex_gratia = fields.Monetary(string="Ex-gratia", copy=True)
     gbud_a = fields.Monetary(string="Government Budget A", copy=True)
     gbud_l2 = fields.Monetary(string="Government Budget L2", copy=True)
-    government_budget_a = fields.Monetary(
-        string="Government Budget A", copy=True
-    )  # duplicate label - Studio quirk
-    standing_order_1 = fields.Monetary(string="Standing Order 1", copy=True)
+    government_budget_a = fields.Monetary(copy=True)  # duplicate label - Studio quirk
+    standing_order_1 = fields.Monetary(copy=True)
     std_ord2 = fields.Monetary(string="Standing Order 2", copy=True)
-    travelling_allowance = fields.Monetary(
-        string="Travelling Allowance", copy=True
-    )
-    special_allowance = fields.Monetary(string="Special Allowance", copy=True)
-    production_incentive = fields.Monetary(
-        string="Production Incentive", copy=True
-    )
-    asian_alliance_insurance = fields.Monetary(
-        string="Asian Alliance Insurance", copy=True
-    )
-    union_insurance = fields.Monetary(string="Union Insurance", copy=True)
+    travelling_allowance = fields.Monetary(copy=True)
+    special_allowance = fields.Monetary(copy=True)
+    production_incentive = fields.Monetary(copy=True)
+    asian_alliance_insurance = fields.Monetary(copy=True)
+    union_insurance = fields.Monetary(copy=True)
 
     # === OT + Payroll computed/stored (3 Float) ===
     ot_rate = fields.Float(string="OT Rate", copy=True)
@@ -38,17 +30,13 @@ class HrContract(models.Model):
     # returns 0 - unstored placeholder). Shape of the real compute is
     # likely: sum(hr.attendance.over_time) for the contract's
     # employee across the current pay period. See docs/DEFERRED.md.
-    ot_hours = fields.Float(
-        string="OT Hours", store=False, compute="_compute_ot_hours"
-    )
+    ot_hours = fields.Float(string="OT Hours", store=False, compute="_compute_ot_hours")
 
     # v0.0.49: Clear-DB Studio compute ported (bug sheet 16/Oct, Chandika: PAYE always 0).
     # gross = wage + the contract's default salary structure's non-code Allowance (ALW)
     # rules; the PAYE amount is the paye_tax slab whose from/to range contains gross.
     # Needs the paye_tax slab records (data) to return anything but 0.
-    paye_tax_amount = fields.Float(
-        string="Paye Tax Amount", store=False, compute="_compute_paye_tax_amount"
-    )
+    paye_tax_amount = fields.Float(store=False, compute="_compute_paye_tax_amount")
 
     @api.depends("employee_id")
     def _compute_ot_hours(self):

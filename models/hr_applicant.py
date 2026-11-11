@@ -26,29 +26,19 @@ class HrApplicant(models.Model):
 
     # Interview scoring (integer percentages)
     marks_1 = fields.Integer(string="Recruiter Assignment Marks %", copy=True)
-    interview_marks_1 = fields.Integer(
-        string="Line Manager Marks %", copy=True
-    )
+    interview_marks_1 = fields.Integer(string="Line Manager Marks %", copy=True)
     interview_marks_2 = fields.Integer(string="Leadership Marks %", copy=True)
     interview_marks_3 = fields.Integer(string="Recruiter Marks %", copy=True)
     # Total Marks: real compute as simple sum of the 4 mark percentages
     # (matches Studio's depends declaration). View 5550 displays this
     # with widget='progressbar' so max useful value is 400 (4 * 100%).
     # If a weighted formula surfaces later, adjust _compute_total_marks.
-    total_marks = fields.Float(
-        string="Total Marks", store=True, compute="_compute_total_marks"
-    )
+    total_marks = fields.Float(store=True, compute="_compute_total_marks")
 
     # Approver roles (M2O to res.users / hr.employee)
-    recruiter = fields.Many2one(
-        "res.users", string="Recruiter", ondelete="set null"
-    )
-    line_manager_name = fields.Many2one(
-        "res.users", string="Line Manager Name", ondelete="set null"
-    )
-    leadership_name = fields.Many2one(
-        "res.users", string="Leadership Name", ondelete="set null"
-    )
+    recruiter = fields.Many2one("res.users", ondelete="set null")
+    line_manager_name = fields.Many2one("res.users", ondelete="set null")
+    leadership_name = fields.Many2one("res.users", ondelete="set null")
     hr_responsible = fields.Many2one(
         "hr.employee", string="HR Responsible", ondelete="set null", copy=True
     )

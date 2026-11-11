@@ -6,13 +6,13 @@ class X_paye_tax_tag(models.Model):
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Paye Tax Tags"
 
-    color = fields.Integer(string="Color")
-    name = fields.Char(string="Name", required=True)
+    color = fields.Integer()
+    name = fields.Char(required=True)
 
 
 class XPayeTaxTagGap(models.Model):
     _inherit = "paye_tax_tag"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    color = fields.Integer(string="Color")
-    name = fields.Char(string="Name", required=True)
+    color = fields.Integer()
+    name = fields.Char(required=True)

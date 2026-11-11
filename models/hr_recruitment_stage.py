@@ -4,10 +4,10 @@ from odoo import fields, models
 class HrRecruitmentStage(models.Model):
     _inherit = "hr.recruitment.stage"
 
-    color = fields.Integer(string="Color", copy=True)
+    color = fields.Integer(copy=True)
 
 
 class HrRecruitmentStageGap(models.Model):
     _inherit = "hr.recruitment.stage"
 
-    color = fields.Integer(string="Color")
+    color = fields.Integer()

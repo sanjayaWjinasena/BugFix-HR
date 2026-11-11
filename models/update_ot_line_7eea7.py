@@ -11,12 +11,10 @@ class X_update_ot_line_7eea7(models.Model):
     attendance_id = fields.Many2one(
         comodel_name="hr.attendance", string="Attendance Id"
     )
-    check_in = fields.Datetime(string="Check In")
-    check_out = fields.Datetime(string="Check Out")
-    employee_id = fields.Many2one(
-        comodel_name="hr.employee", string="Employee ID"
-    )
-    sequence = fields.Integer(string="Sequence")
+    check_in = fields.Datetime()
+    check_out = fields.Datetime()
+    employee_id = fields.Many2one(comodel_name="hr.employee", string="Employee ID")
+    sequence = fields.Integer()
     update_ot_id = fields.Many2one(comodel_name="update_ot")
 
 

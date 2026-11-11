@@ -7,13 +7,13 @@ class X_update_ot(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Update OT"
 
-    active = fields.Boolean(string="Active")
-    name = fields.Char(string="Name")
+    active = fields.Boolean()
+    name = fields.Char()
     as_on_date = fields.Date(string="As on Date")
     accounting_company_id = fields.Many2one(
         comodel_name="res.company", string="Company"
     )
-    sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer()
     update_ot_line_ids_d5449 = fields.One2many(
         comodel_name="update_ot_line_7eea7",
         inverse_name="update_ot_id",
@@ -25,8 +25,8 @@ class XUpdateOtGap(models.Model):
     _inherit = "update_ot"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    active = fields.Boolean(string="Active")
-    name = fields.Char(string="Name")
+    active = fields.Boolean()
+    name = fields.Char()
     update_ot_line_ids_d5449 = fields.One2many(
         comodel_name="update_ot_line_7eea7",
         inverse_name="update_ot_id",
