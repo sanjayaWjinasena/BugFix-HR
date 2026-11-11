@@ -32,9 +32,9 @@
                                 <field name="travelling_allowance"/>
                                 <field name="ex_gratia"/>
                                 <field name="special_allowance"/>
+                                <field name="production_incentive"/>
                             </group>
                             <group>
-                                <field name="production_incentive"/>
                                 <field name="asian_alliance_insurance"/>
                                 <field name="union_insurance"/>
                                 <field name="standing_order_1"/>

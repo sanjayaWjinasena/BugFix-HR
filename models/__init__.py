@@ -3,6 +3,7 @@ from . import hr_attendance
 from . import hr_contract
 from . import hr_employee
 from . import hr_job
+from . import hr_payroll_structure
 from . import hr_recruitment_stage
 from . import paye_tax_tag
 from . import paye_tax

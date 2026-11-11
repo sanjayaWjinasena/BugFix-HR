@@ -193,6 +193,7 @@
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
     "depends": [
+        "hr_payroll_account",
         "hr_holidays",
         "base_setup",
         "hr",
@@ -232,6 +233,7 @@
         "views/hr_attendance_views.xml",
         "views/hr_job_views.xml",
         "views/update_ot_line_7eea7_views.xml",
+        "data/hr_payroll_structure_data.xml",
         "views/bugfix_hr_menus.xml",
     ],
     "application": True,
