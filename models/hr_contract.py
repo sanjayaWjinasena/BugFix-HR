@@ -32,10 +32,10 @@ class HrContract(models.Model):
     # employee across the current pay period. See docs/DEFERRED.md.
     ot_hours = fields.Float(string="OT Hours", store=False, compute="_compute_ot_hours")
 
-    # v0.0.49: Clear-DB Studio compute ported (bug sheet 16/Oct, Chandika: PAYE always 0).
-    # gross = wage + the contract's default salary structure's non-code Allowance (ALW)
-    # rules; the PAYE amount is the paye_tax slab whose from/to range contains gross.
-    # Needs the paye_tax slab records (data) to return anything but 0.
+    # v0.0.49: Clear-DB Studio compute ported (bug sheet 16/Oct, Chandika: PAYE always
+    # 0). gross = wage + the contract's default salary structure's non-code Allowance
+    # (ALW) rules; the PAYE amount is the paye_tax slab whose from/to range contains
+    # gross. Needs the paye_tax slab records (data) to return anything but 0.
     paye_tax_amount = fields.Float(store=False, compute="_compute_paye_tax_amount")
 
     @api.depends("employee_id")
@@ -51,7 +51,8 @@ class HrContract(models.Model):
             paye_tax = 0.0
             salary_structure = rec.structure_type_id.default_struct_id
             if salary_structure:
-                # Clear-DB filters category_id = 2, which is Allowance (code ALW) on both databases.
+                # Clear-DB filters category_id = 2, which is Allowance (code ALW) on
+                # both databases.
                 rules = self.env["hr.salary.rule"].search(
                     [
                         ("struct_id", "=", salary_structure.id),
