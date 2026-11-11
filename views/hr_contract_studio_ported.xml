@@ -41,9 +41,9 @@
                                 <field name="x_studio_travelling_allowance"/>
                                 <field name="x_studio_ex_gratia"/>
                                 <field name="x_studio_special_allowance"/>
+                                <field name="x_studio_production_incentive"/>
                             </group>
                             <group>
-                                <field name="x_studio_production_incentive"/>
                                 <field name="x_studio_asian_alliance_insurance"/>
                                 <field name="x_studio_union_insurance"/>
                                 <field name="x_studio_standing_order_1"/>

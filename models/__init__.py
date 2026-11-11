@@ -15,3 +15,4 @@ from . import x_paye_tax_gap
 from . import x_paye_tax_tag_gap
 from . import x_update_ot_gap
 from . import x_update_ot_line_7eea7_gap
+from . import hr_payroll_structure
