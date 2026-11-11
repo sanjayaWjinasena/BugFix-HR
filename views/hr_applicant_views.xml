@@ -9,20 +9,20 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='date_closed']" position="after">
-                    <field name="custom_reports_priority" string="Line Manager Selection" readonly="x_studio_cu_line_manager == False"/>
-                    <field name="x_studio_2nd_selection" string="Leadership Selection" readonly="x_studio_cu_leadership == False"/>
-                    <field name="x_studio_marks_1" string="Recruiter Assignment Marks %" readonly="x_studio_cu_recruiter == False"/>
-                    <field name="x_studio_line_manager_name" string="Line Manager Name"/>
-                    <field name="x_studio_interview_marks_1" string="Line Manager Marks %" readonly="x_studio_cu_line_manager == False"/>
-                    <field name="x_studio_cu_line_manager" string="CU - Line Manager" force_save="True" readonly="1" invisible="1"/>
-                    <field name="x_studio_leadership_name" string="Leadership Name"/>
-                    <field name="x_studio_interview_marks_2" string="Leadership Marks %" readonly="x_studio_cu_leadership == False"/>
-                    <field name="x_studio_cu_leadership" string="CU - Leadership" force_save="True" readonly="1" invisible="1"/>
+                    <field name="custom_reports_priority" string="Line Manager Selection" readonly="cu_line_manager == False"/>
+                    <field name="hr_2nd_selection" string="Leadership Selection" readonly="cu_leadership == False"/>
+                    <field name="marks_1" string="Recruiter Assignment Marks %" readonly="cu_recruiter == False"/>
+                    <field name="line_manager_name" string="Line Manager Name"/>
+                    <field name="interview_marks_1" string="Line Manager Marks %" readonly="cu_line_manager == False"/>
+                    <field name="cu_line_manager" string="CU - Line Manager" force_save="True" readonly="1" invisible="1"/>
+                    <field name="leadership_name" string="Leadership Name"/>
+                    <field name="interview_marks_2" string="Leadership Marks %" readonly="cu_leadership == False"/>
+                    <field name="cu_leadership" string="CU - Leadership" force_save="True" readonly="1" invisible="1"/>
                     <xpath expr="//field[@name='user_id']" position="move"/>
-                    <field name="x_studio_recruiter" string="Recruiter"/>
-                    <field name="x_studio_interview_marks_3" string="Recruiter Marks %" readonly="x_studio_cu_recruiter == False"/>
-                    <field name="x_studio_total_marks" string="Total Marks" widget="progressbar" force_save="True" readonly="1"/>
-                    <field name="x_studio_cu_recruiter" string="CU - Recruiter" force_save="True" readonly="1" invisible="1"/>
+                    <field name="recruiter" string="Recruiter"/>
+                    <field name="interview_marks_3" string="Recruiter Marks %" readonly="cu_recruiter == False"/>
+                    <field name="total_marks" string="Total Marks" widget="progressbar" force_save="True" readonly="1"/>
+                    <field name="cu_recruiter" string="CU - Recruiter" force_save="True" readonly="1" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="force_save">True</attribute>

@@ -2,27 +2,27 @@ from odoo import fields, models
 
 
 class X_update_ot_line_7eea7(models.Model):
-    _name = "x_update_ot_line_7eea7"
+    _name = "update_ot_line_7eea7"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Update Ot  Lines"
 
     name = fields.Char(string="Description", required=True)
-    x_studio_approve_ot = fields.Boolean(string="Approve OT")
-    x_studio_attendance_id = fields.Many2one(
+    approve_ot = fields.Boolean(string="Approve OT")
+    attendance_id = fields.Many2one(
         comodel_name="hr.attendance", string="Attendance Id"
     )
-    x_studio_check_in = fields.Datetime(string="Check In")
-    x_studio_check_out = fields.Datetime(string="Check Out")
-    x_studio_employee_id = fields.Many2one(
+    check_in = fields.Datetime(string="Check In")
+    check_out = fields.Datetime(string="Check Out")
+    employee_id = fields.Many2one(
         comodel_name="hr.employee", string="Employee ID"
     )
     sequence = fields.Integer(string="Sequence")
-    x_update_ot_id = fields.Many2one(comodel_name="x_update_ot")
+    update_ot_id = fields.Many2one(comodel_name="update_ot")
 
 
 class XUpdateOtLine7eea7Gap(models.Model):
-    _inherit = "x_update_ot_line_7eea7"
+    _inherit = "update_ot_line_7eea7"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
     name = fields.Char(string="Description", required=True)
-    x_update_ot_id = fields.Many2one(comodel_name="x_update_ot")
+    update_ot_id = fields.Many2one(comodel_name="update_ot")

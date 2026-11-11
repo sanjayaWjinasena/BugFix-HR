@@ -11,7 +11,7 @@
         }</field>
     <field name="help" type="html"><p>This report performs analysis on your work entries.</p></field>
   </record>
-  <!-- STRIPPED act_window_1559_paye_tax: model x_paye_tax not on target -->
-<!-- STRIPPED act_window_1560_paye_tax_tags: model x_paye_tax_tag not on target -->
-<!-- STRIPPED act_window_2559_update_ot: model x_update_ot not on target -->
+  <!-- STRIPPED act_window_1559_paye_tax: model paye_tax not on target -->
+<!-- STRIPPED act_window_1560_paye_tax_tags: model paye_tax_tag not on target -->
+<!-- STRIPPED act_window_2559_update_ot: model update_ot not on target -->
 </odoo>

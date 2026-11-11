@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_5522_default_form_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default form view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default form view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">form</field>
       <field name="arch" type="xml">
         <form>
@@ -22,8 +22,8 @@
       </field>
     </record>
     <record id="view_5525_default_form_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default form view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default form view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">form</field>
       <field name="arch" type="xml">
         <form>
@@ -43,8 +43,8 @@
       </field>
     </record>
     <record id="view_5521_default_list_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default list view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default list view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">tree</field>
       <field name="arch" type="xml">
         <tree editable="bottom">
@@ -54,8 +54,8 @@
       </field>
     </record>
     <record id="view_5524_default_list_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default list view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default list view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">tree</field>
       <field name="arch" type="xml">
         <tree>
@@ -65,8 +65,8 @@
       </field>
     </record>
     <record id="view_5523_default_search_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default search view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default search view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">search</field>
       <field name="arch" type="xml">
         <search>
@@ -75,8 +75,8 @@
       </field>
     </record>
     <record id="view_5526_default_search_view_for_x_update_ot_line_7eea7_e" model="ir.ui.view">
-      <field name="name">Default search view for x_update_ot_line_7eea7</field>
-      <field name="model">x_update_ot_line_7eea7</field>
+      <field name="name">Default search view for update_ot_line_7eea7</field>
+      <field name="model">update_ot_line_7eea7</field>
       <field name="type">search</field>
       <field name="arch" type="xml">
         <search>

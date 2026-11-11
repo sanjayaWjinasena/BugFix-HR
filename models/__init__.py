@@ -4,7 +4,7 @@ from . import hr_contract
 from . import hr_employee
 from . import hr_job
 from . import hr_recruitment_stage
-from . import x_paye_tax_tag
-from . import x_paye_tax
-from . import x_update_ot_line_7eea7
-from . import x_update_ot
+from . import paye_tax_tag
+from . import paye_tax
+from . import update_ot_line_7eea7
+from . import update_ot

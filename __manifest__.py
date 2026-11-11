@@ -2,7 +2,7 @@
     # upgrade-testing branch: data files below are commented out - this branch installs
     # functions only, no data is seeded.
     "name": "Jinasena : Module : HR",
-    "version": "17.0.0.0.54",
+    "version": "17.0.0.0.55",
     "summary": "Studio-to-Python port for BugFix-HR",
     "author": "Jinasena Agricultural Machinery (Pvt) Ltd.",
     "category": "Human Resources",
@@ -34,17 +34,17 @@
     # the intended names AFTER all base.automation records are created.
     # Idempotent on upgrade.
     # v0.0.22: compute methods for 3 unstored Float fields.
-    #   * x_studio_total_marks on hr.applicant: REAL compute -- simple sum
+    #   * total_marks on hr.applicant: REAL compute -- simple sum
     #     of the 4 mark percentages (matches Studio's depends declaration).
     #     Was plain stored Float in v0.0.15; now computed+stored so it
     #     auto-recalculates on marks-field changes. View 5550 displays it
     #     with widget='progressbar' (max useful = 400).
-    #   * x_studio_ot_hours on hr.contract: STUB compute returning 0.0.
-    #     Real logic depends on hr.attendance.x_studio_over_time having
+    #   * ot_hours on hr.contract: STUB compute returning 0.0.
+    #     Real logic depends on hr.attendance.over_time having
     #     its own compute (currently also 0). Depends on employee_id.
-    #   * x_studio_paye_tax_amount on hr.contract: STUB compute returning
+    #   * paye_tax_amount on hr.contract: STUB compute returning
     #     0.0. Real logic needs Sri Lankan PAYE tax brackets via
-    #     x_paye_tax + x_paye_tax_tag custom models (Studio-only, not
+    #     paye_tax + paye_tax_tag custom models (Studio-only, not
     #     ported). Depends on wage/structure_type_id/employee_id.
     # Both stubs are documented in-code and in docs/DEFERRED.md with the
     # prerequisite chain to un-defer.
@@ -55,22 +55,22 @@
     # rolled back as duplicates).
     #   * 262 HR - Applicant             on_change custom_reports_priority
     #                                     -> if 'No', set stage_id=1
-    #   * 263 HR - Applicant 2           on_change x_studio_2nd_selection
+    #   * 263 HR - Applicant 2           on_change hr_2nd_selection
     # -> if 'Yes', set stage_id=0 (Studio bug preserved)
-    #   * 264 Validate Recruiter Marks   on_change x_studio_interview_marks_3
+    #   * 264 Validate Recruiter Marks   on_change interview_marks_3
     #                                     -> raise if >100
-    #   * 265 Validate Line Manager Marks on_change x_studio_interview_marks_1
+    #   * 265 Validate Line Manager Marks on_change interview_marks_1
     #                                     -> raise if >100
-    #   * 266 Validate Leadership Marks  on_change x_studio_interview_marks_2
+    #   * 266 Validate Leadership Marks  on_change interview_marks_2
     #                                     -> raise if >100
-    #   * 267 Validate Assignment Marks  on_change x_studio_marks_1
+    #   * 267 Validate Assignment Marks  on_change marks_1
     #                                     -> raise if >100
     #   * 93  Validate Stages            on_create_or_write
-    #                                     -> check env.user has x_studio_recr_stages
+    #                                     -> check env.user has recr_stages
     #                                        permission for the stage being set
     # Uses ref='BugFix-HR.field_hr_applicant__X' to bind on_change_field_ids
     # cleanly (xmlids from v0.0.15 field port).
-    # Action 93 references res.users.x_studio_recr_stages (M2M pinned to
+    # Action 93 references res.users.recr_stages (M2M pinned to
     # studio_usermodel_migration on target env) -- runtime-safe due to
     # state=code lazy eval.
     # v0.0.20: ROLLBACK of v0.0.19's 4 hr.applicant Action-menu server
@@ -108,7 +108,7 @@
     # from hr_payroll (both anchors used in view 4930).
     # v0.0.17: 2 Studio views + 3 CU boolean compute methods.
     #   * models/hr_applicant.py: 3 new store=False computed booleans
-    #     (x_studio_cu_line_manager, x_studio_cu_leadership, x_studio_cu_recruiter)
+    #     (cu_line_manager, cu_leadership, cu_recruiter)
     #     each with @api.depends on the corresponding M2O role field.
     #     Compute logic: rec.cu_X = (rec.x_studio_X_name == env.user).
     #     Re-evaluates per user session (env.user changes).
@@ -124,15 +124,15 @@
     #     dep - retroactively added for fresh-install correctness).
     # v0.0.16: hr.contract port - all 21 x_studio_ fields, no view/actions.
     # See models/hr_contract.py. Fields split:
-    #   * 3 Char identity: x_studio_initial, x_studio_surname, x_studio_occupation_grade
-    #   * 7 Monetary compensation: x_studio_ex_gratia, x_studio_gbud_a,
-    #     x_studio_gbud_l2, x_studio_government_budget_a (duplicate label
-    #     with gbud_a - Studio quirk preserved), x_studio_standing_order_1,
-    #     x_studio_std_ord2, x_studio_travelling_allowance
-    #   * 1 Float stored: x_studio_ot_rate
+    #   * 3 Char identity: initial, surname, occupation_grade
+    #   * 7 Monetary compensation: ex_gratia, gbud_a,
+    #     gbud_l2, government_budget_a (duplicate label
+    #     with gbud_a - Studio quirk preserved), standing_order_1,
+    #     std_ord2, travelling_allowance
+    #   * 1 Float stored: ot_rate
     #   * 2 Float unstored (Studio compute w/o method - ship as plain
-    #     unstored Float returning 0.0): x_studio_ot_hours (depends=employee_id),
-    #     x_studio_paye_tax_amount (depends=wage,structure_type_id,employee_id).
+    #     unstored Float returning 0.0): ot_hours (depends=employee_id),
+    #     paye_tax_amount (depends=wage,structure_type_id,employee_id).
     #     Real compute logic (OT from attendance, PAYE from wage/structure)
     #     needs follow-up.
     #   * 8 "New Related Field" placeholders (x_studio_related_field_XXXXX):
@@ -146,14 +146,14 @@
     # v0.0.15: hr.applicant port - 12 of 15 x_studio_ fields.
     # See models/hr_applicant.py. Fields shipped:
     #   * 3 selections: custom_reports_priority (Line Manager),
-    #     x_studio_2nd_selection (Leadership), x_studio_appreciation
-    #   * 4 integer mark percentages: x_studio_marks_1,
-    #     x_studio_interview_marks_1/2/3
-    #   * 1 float x_studio_total_marks (Studio declared computed/stored
+    #     hr_2nd_selection (Leadership), appreciation
+    #   * 4 integer mark percentages: marks_1,
+    #     interview_marks_1/2/3
+    #   * 1 float total_marks (Studio declared computed/stored
     #     but no visible compute method - shipped as plain stored Float)
-    #   * 4 M2O approver roles: x_studio_recruiter (res.users),
-    #     x_studio_line_manager_name, x_studio_leadership_name,
-    #     x_studio_hr_responsible (hr.employee)
+    #   * 4 M2O approver roles: recruiter (res.users),
+    #     line_manager_name, leadership_name,
+    #     hr_responsible (hr.employee)
     # DEFERRED: 3 x_studio_cu_* current-user permission booleans and
     # view 5550 (uses those booleans as readonly gates). Need to write
     # a proper compute method matching current user against the M2O
@@ -164,13 +164,13 @@
     # base_automation validators). Port in follow-up versions.
     # v0.0.14: hr.attendance port - 7 x_studio_ fields, 0 views.
     # See models/hr_attendance.py. All fields declared from Clear-DB scout:
-    #   * x_studio_check_in_auto     (Boolean, copy=True)
-    #   * x_studio_check_out_auto    (Boolean, copy=True)
+    #   * check_in_auto     (Boolean, copy=True)
+    #   * check_out_auto    (Boolean, copy=True)
     #   * accounting_company_id        (M2O -> res.company)
-    #   * x_studio_ot_approved       (Boolean, copy=True)
-    #   * x_studio_ot_approved_by    (M2O -> res.users, copy=True)
-    #   * x_studio_ot_entry          (Boolean, copy=True)
-    #   * x_studio_over_time         (Float, store=False, readonly=True)
+    #   * ot_approved       (Boolean, copy=True)
+    #   * ot_approved_by    (M2O -> res.users, copy=True)
+    #   * ot_entry          (Boolean, copy=True)
+    #   * over_time         (Float, store=False, readonly=True)
     # Zero Studio views on hr.attendance -- the empty stub file
     # views/hr_attendance_studio_ported.xml is intentionally left as-is.
     # No new deps (hr_attendance already in dep chain).
@@ -209,8 +209,8 @@
         "security/bugfix_hr_security.xml",
         "security/ir.model.access.csv",
         "data/hr_applicant_data.xml",
-        "data/x_paye_tax_data.xml",
-        "data/x_update_ot_data.xml",
+        "data/paye_tax_data.xml",
+        "data/update_ot_data.xml",
         "data/ir_actions_server_data.xml",
         "data/act_windows.xml",
         "data/server_actions_backlog.xml",
@@ -226,12 +226,12 @@
         "views/hr_expense_sheet_views.xml",
         "views/hr_salary_rule_views.xml",
         "views/hr_work_entry_report_views.xml",
-        "views/x_paye_tax_tag_views.xml",
-        "views/x_paye_tax_views.xml",
-        "views/x_update_ot_views.xml",
+        "views/paye_tax_tag_views.xml",
+        "views/paye_tax_views.xml",
+        "views/update_ot_views.xml",
         "views/hr_attendance_views.xml",
         "views/hr_job_views.xml",
-        "views/x_update_ot_line_7eea7_views.xml",
+        "views/update_ot_line_7eea7_views.xml",
         "views/bugfix_hr_menus.xml",
     ],
     "application": True,

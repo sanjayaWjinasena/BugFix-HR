@@ -2,12 +2,12 @@
 <odoo>
   <record id="act_window_2559_update_ot" model="ir.actions.act_window">
     <field name="name">Update OT</field>
-    <field name="res_model">x_update_ot</field>
+    <field name="res_model">update_ot</field>
     <field name="view_mode">tree,form</field>
   </record>
     <record id="view_5528_default_form_view_for_x_update_ot_e" model="ir.ui.view">
-      <field name="name">Default form view for x_update_ot</field>
-      <field name="model">x_update_ot</field>
+      <field name="name">Default form view for update_ot</field>
+      <field name="model">update_ot</field>
       <field name="type">form</field>
       <field name="arch" type="xml">
         <form><field name="create_uid" invisible="1"/>
@@ -32,7 +32,7 @@
     </group>
     <notebook>
       <page string="Details" name="lines">
-        <field name="x_update_ot_line_ids_d5449"/>
+        <field name="update_ot_line_ids_d5449"/>
       </page>
     </notebook>
   </sheet>
@@ -45,8 +45,8 @@
       </field>
     </record>
     <record id="view_5527_default_list_view_for_x_update_ot_e" model="ir.ui.view">
-      <field name="name">Default list view for x_update_ot</field>
-      <field name="model">x_update_ot</field>
+      <field name="name">Default list view for update_ot</field>
+      <field name="model">update_ot</field>
       <field name="type">tree</field>
       <field name="arch" type="xml">
         <tree>
@@ -56,21 +56,21 @@
       </field>
     </record>
     <record id="view_5529_default_search_view_for_x_update_ot_e" model="ir.ui.view">
-      <field name="name">Default search view for x_update_ot</field>
-      <field name="model">x_update_ot</field>
+      <field name="name">Default search view for update_ot</field>
+      <field name="model">update_ot</field>
       <field name="type">search</field>
       <field name="arch" type="xml">
         <search>
   <field name="name"/>
   <separator/>
-  <filter string="Archived" name="archived_x_update_ot" domain="[['active', '=', False]]"/>
+  <filter string="Archived" name="archived_update_ot" domain="[['active', '=', False]]"/>
   <separator/>
 </search>
       </field>
     </record>
     <record id="view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization" model="ir.ui.view">
-      <field name="name">Odoo Studio: Default form view for x_update_ot customization</field>
-      <field name="model">x_update_ot</field>
+      <field name="name">Odoo Studio: Default form view for update_ot customization</field>
+      <field name="model">update_ot</field>
       <field name="type">form</field>
       <field name="priority">99</field>
       <field name="inherit_id" ref="BugFix-HR.view_5528_default_form_view_for_x_update_ot_e"/>
@@ -84,7 +84,7 @@
     <attribute name="string">Parameters</attribute>
   </xpath>
   <xpath expr="//group[@name='studio_group_2e1c8d_left']" position="inside">
-    <field name="x_studio_as_on_date" string="As on Date" required="1"/>
+    <field name="as_on_date" string="As on Date" required="1"/>
   </xpath>
   <xpath expr="//group[@name='studio_group_2e1c8d_right']" position="attributes">
     <attribute name="string">Log</attribute>
@@ -97,14 +97,14 @@
   <xpath expr="//page[@name='lines']" position="attributes">
     <attribute name="string">Employee Attendance</attribute>
   </xpath>
-  <xpath expr="//field[@name='x_update_ot_line_ids_d5449']" position="inside">
+  <xpath expr="//field[@name='update_ot_line_ids_d5449']" position="inside">
     <tree editable="bottom" create="false" delete="false">
       <field name="sequence" widget="handle"/>
-      <field optional="show" name="x_studio_employee_id" string="Employee ID" force_save="True" readonly="1"/>
-      <field optional="show" name="x_studio_check_in" string="Check In" force_save="True" readonly="1"/>
-      <field optional="show" name="x_studio_check_out" string="Check Out" force_save="True" readonly="1"/>
-      <field optional="show" name="x_studio_approve_ot" string="Approve OT"/>
-      <field optional="show" name="x_studio_attendance_id" string="Attendance Id" force_save="True" readonly="1" column_invisible="1"/>
+      <field optional="show" name="employee_id" string="Employee ID" force_save="True" readonly="1"/>
+      <field optional="show" name="check_in" string="Check In" force_save="True" readonly="1"/>
+      <field optional="show" name="check_out" string="Check Out" force_save="True" readonly="1"/>
+      <field optional="show" name="approve_ot" string="Approve OT"/>
+      <field optional="show" name="attendance_id" string="Attendance Id" force_save="True" readonly="1" column_invisible="1"/>
       <field name="name" column_invisible="1"/>
     </tree>
   </xpath>

@@ -8,15 +8,15 @@
         <field name="inherit_id" ref="bank-data.view_hr_payslip_bank_data_tree"/>
         <field name="arch" type="xml">
             <data>
-                <xpath expr="//field[@name='x_dest_account']" position="before">
-                    <xpath expr="//field[@name='x_dest_branch']" position="move"/>
-                    <xpath expr="//field[@name='x_dest_bank_micr']" position="move"/>
+                <xpath expr="//field[@name='dest_account']" position="before">
+                    <xpath expr="//field[@name='dest_branch']" position="move"/>
+                    <xpath expr="//field[@name='dest_bank_micr']" position="move"/>
                 </xpath>
-                <xpath expr="//field[@name='x_dest_bank_micr']" position="attributes">
+                <xpath expr="//field[@name='dest_bank_micr']" position="attributes">
                     <attribute name="optional">show</attribute>
                     <attribute name="string"/>
                 </xpath>
-                <xpath expr="//field[@name='x_dest_branch']" position="attributes">
+                <xpath expr="//field[@name='dest_branch']" position="attributes">
                     <attribute name="optional">show</attribute>
                     <attribute name="string"/>
                 </xpath>

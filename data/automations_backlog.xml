@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- BugFix-HR backlog: 4 base.automations --><odoo>
 
-  <!-- STRIPPED base_automation_94_payroll_validate_from_to_dates_in_paye_tax: model x_paye_tax not on target --><!-- STRIPPED base_automation_253_jin_update_ot_seq_no: model x_update_ot not on target --><!-- STRIPPED base_automation_254_update_ot: model x_update_ot not on target --><!-- STRIPPED base_automation_333_jin_company_id_in_update_ot: model x_update_ot not on target --></odoo>
+  <!-- STRIPPED base_automation_94_payroll_validate_from_to_dates_in_paye_tax: model paye_tax not on target --><!-- STRIPPED base_automation_253_jin_update_ot_seq_no: model update_ot not on target --><!-- STRIPPED base_automation_254_update_ot: model update_ot not on target --><!-- STRIPPED base_automation_333_jin_company_id_in_update_ot: model update_ot not on target --></odoo>

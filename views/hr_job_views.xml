@@ -10,8 +10,8 @@
       <field name="arch" type="xml">
         <data>
   <xpath expr="//field[@name='no_of_recruitment']" position="after">
-    <field name="x_studio_line_manager_name" string="Line Manager Name"/>
-    <field name="x_studio_leadership_name" string="Leadership Name"/>
+    <field name="line_manager_name" string="Line Manager Name"/>
+    <field name="leadership_name" string="Leadership Name"/>
     <!-- sentinel: hr_recruitment's interviewer_ids domain needs allowed_user_ids in the form; production copies carry an older hr_recruitment form without it, so re-validating this view fails there. Invisible, harmless where present. -->
     <field name="allowed_user_ids" invisible="1"/>
   </xpath>

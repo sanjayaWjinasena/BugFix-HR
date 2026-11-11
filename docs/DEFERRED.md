@@ -56,20 +56,20 @@ Two of the 3 compute methods ship as stubs returning 0.0 pending
 prerequisite ports. Fields work at read/write time (no crashes), but
 values are placeholders until real logic lands.
 
-### x_studio_ot_hours on hr.contract (v0.0.22 stub)
+### ot_hours on hr.contract (v0.0.22 stub)
 - Current: `@api.depends('employee_id')` compute returns 0.0.
-- Real formula likely: sum of hr.attendance.x_studio_over_time for the
+- Real formula likely: sum of hr.attendance.over_time for the
   contract's employee across the current pay period.
-- Un-defer prerequisite: hr.attendance.x_studio_over_time (v0.0.14
+- Un-defer prerequisite: hr.attendance.over_time (v0.0.14
   ported as plain unstored Float returning 0) needs its own compute.
   Then adjust _compute_ot_hours to aggregate against attendance records.
 
-### x_studio_paye_tax_amount on hr.contract (v0.0.22 stub)
+### paye_tax_amount on hr.contract (v0.0.22 stub)
 - Current: `@api.depends('wage', 'structure_type_id', 'employee_id')`
   compute returns 0.0.
 - Real formula: Sri Lankan PAYE progressive tax brackets against
   contract.wage.
-- Un-defer prerequisite: port x_paye_tax + x_paye_tax_tag Studio-only
+- Un-defer prerequisite: port paye_tax + paye_tax_tag Studio-only
   custom models (contain the bracket tables). Then rewrite
   _compute_paye_tax_amount to apply bracket rates.
 
