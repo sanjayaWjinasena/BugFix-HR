@@ -99,7 +99,7 @@ result = ot_inp.amount if ot_inp else 0]]></field>
       <field name="code">EXG</field>
       <field name="sequence">5</field>
       <field name="struct_id" ref="workers_payroll_structure"/>
-      <field name="category_id" search="[('code', '=', 'AI')]"/>
+      <field name="category_id" ref="hr_payroll.ALW"/>
       <field name="appears_on_payslip" eval="True"/>
       <field name="quantity">1.0</field>
       <field name="condition_select">python</field>
