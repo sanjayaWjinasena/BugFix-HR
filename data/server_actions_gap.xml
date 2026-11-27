@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: 14 gap server actions -->
+<odoo>
+
+
+  <record id="server_action_1561_payroll_validate_from_to_dates_in_paye_tax" model="ir.actions.server">
+    <field name="name">PAYROLL - Validate From To Dates in Paye Tax</field>
+    <field name="model_id" ref="BugFix-HR.model_x_paye_tax"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_end_date < record.x_studio_start_date:
+  raise UserError('End Date must be Greater than Start Date.')
+
+
+
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2560_update_ot_seq_no" model="ir.actions.server">
+    <field name="name">Update OT Seq.No</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+#record['x_name'] = env['ir.sequence'].next_by_code('purchase.request.seq')
+seq = env['ir.sequence'].next_by_code('ot.update.seq')
+record.write({'x_name': seq})
+
+
+
+
+
+
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2561_update_ot" model="ir.actions.server">
+    <field name="name">Update OT</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_as_on_date:
+  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+  company = env['res.company'].browse(company_id)
+  
+  temp_rec_1 = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', record._origin.id)])
+  if temp_rec_1:
+    for del_temp_rec_1 in temp_rec_1:
+      del_temp_rec_1.unlink()
+  
+  target_date = record.x_studio_as_on_date
+  target_date = target_date.strftime('%Y-%m-%d')
+  date_start = f'{target_date} 00:00:00'
+  date_end = f'{target_date} 23:59:59'
+  
+  attendance = env['hr.attendance'].search([('check_in', '>=', date_start),('check_in', '<=', date_end),('check_out', '=', False),('x_studio_ot_approved', '=', False),('x_studio_company_id', '=', company.id)])
+  for attdns in attendance:
+    create_estimated_sub_model = env['x_update_ot_line_7eea7'].create({'x_update_ot_id':record.id,'x_name':record.x_name,'x_studio_employee_id':attdns.employee_id.id,'x_studio_check_in':attdns.check_in,'x_studio_check_out':attdns.check_out,'x_studio_attendance_id':attdns.id})
+    
+    ]]></field>
+  </record>
+
+  <record id="server_action_2562_update_ot_update_all" model="ir.actions.server">
+    <field name="name">Update OT - Update All</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[
+if record.id:
+  if record.x_update_ot_line_ids_d5449:
+    for lines in record.x_update_ot_line_ids_d5449:
+      lines.write({'x_studio_approve_ot': True}) 
+  else:
+    raise UserError('There are no employee records to update.')
+  
+  
+    
+
+
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2563_update_ot_clear_all" model="ir.actions.server">
+    <field name="name">Update OT - Clear All</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[
+if record.id:
+  if record.x_update_ot_line_ids_d5449:
+    for lines in record.x_update_ot_line_ids_d5449:
+      lines.write({'x_studio_approve_ot': False}) 
+  else:
+    raise UserError('There are no employee records to clear.')
+  
+  
+    
+
+
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2564_update_ot" model="ir.actions.server">
+    <field name="name">Update OT</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">ir_cron</field>
+    <field name="code"><![CDATA[
+target_date = datetime.date.today()
+target_date = target_date.strftime('%Y-%m-%d')
+date_start = f'{target_date} 00:00:00'
+date_end = f'{target_date} 23:59:59'
+#check_out = f'{target_date} 11:00:00'
+#check_in = f'{target_date} 11:00:01'
+check_out = f'{target_date} 01:00:00'
+check_in = f'{target_date} 01:00:01'
+
+update_ot = env['x_update_ot'].search([('create_date', '>=', date_start),('create_date', '<=', date_end)],order='id desc',limit=1)
+if update_ot:
+  update_ot_lines = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', update_ot.id),('x_studio_approve_ot', '=', True)])
+  for lines in update_ot_lines:
+    attendance = env['hr.attendance'].search([('id', '=', lines.x_studio_attendance_id.id)],limit=1)
+    if attendance:
+      attendance.write({'x_studio_ot_approved':True, 'x_studio_ot_approved_by':lines.create_uid.id, 'check_out':check_out}) 
+      attendance_new_line = env['hr.attendance'].create({'employee_id':attendance.employee_id.id,'check_in':check_in,'x_studio_ot_entry':True})
+  
+  update_ot.unlink()
+      
+
+    
+    
+  
+      
+      
+    ]]></field>
+  </record>
+
+  <record id="server_action_2565_update_ot_test" model="ir.actions.server">
+    <field name="name">Update OT - Test</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">ir_cron</field>
+    <field name="code"><![CDATA[
+target_date = datetime.datetime.now()
+target_date = target_date.strftime('%Y-%m-%d')
+date_start = f'{target_date} 00:00:00'
+date_end = f'{target_date} 23:59:59'
+#check_out = f'{target_date} 11:00:00'
+#check_in = f'{target_date} 11:00:01'
+check_out = f'{target_date} 07:00:00'
+check_in = f'{target_date} 06:00:01'
+
+test_time = datetime.datetime.now()
+attendance = env['hr.attendance'].search([('x_studio_ot_entry', '=', True)],limit=1)
+if attendance:
+  time_dif = (test_time - attendance.check_in)
+  difference_in_hours = time_dif.total_seconds() / 3600
+  if difference_in_hours > 1.00:
+    raise UserError(difference_in_hours)
+
+update_ot = env['x_update_ot'].search([('create_date', '>=', date_start),('create_date', '<=', date_end)],order='id desc',limit=1)
+if update_ot:
+  update_ot_lines = env['x_update_ot_line_7eea7'].search([('x_update_ot_id', '=', update_ot.id),('x_studio_approve_ot', '=', True)])
+  for lines in update_ot_lines:
+    attendance = env['hr.attendance'].search([('id', '=', lines.x_studio_attendance_id.id)],limit=1)
+    if attendance:
+      attendance.write({'x_studio_ot_approved':True, 'x_studio_ot_approved_by':lines.create_uid.id, 'check_out':check_out}) 
+      attendance_new_line = env['hr.attendance'].create({'employee_id':attendance.employee_id.id,'check_in':check_in,'x_studio_ot_entry':True})
+  
+  update_ot.unlink()
+      
+
+    
+    
+  
+      
+      
+    ]]></field>
+  </record>
+
+  <record id="server_action_2579_hr_applicant" model="ir.actions.server">
+    <field name="name">HR - Applicant</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_priority == 'No':
+  record['stage_id'] = 1
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2580_hr_applicant_2" model="ir.actions.server">
+    <field name="name">HR - Applicant 2</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_2nd_selection == 'Yes':
+  record['stage_id'] = 0
+    ]]></field>
+  </record>
+
+  <record id="server_action_2581_hr_validate_recruiter_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Recruiter Marks</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_interview_marks_3 > 100.00:
+  raise UserError("Recruiter Marks should be Less than or Equls to 100.")
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2582_hr_validate_line_manager_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Line Manager Marks</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_interview_marks_1 > 100.00:
+  raise UserError("Line Manager Marks should be Less than or Equls to 100.")
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2583_hr_validate_leadership_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Leadership Marks</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_interview_marks_2 > 100.00:
+  raise UserError("Leadership Marks should be Less than or Equls to 100.")
+
+    ]]></field>
+  </record>
+
+  <record id="server_action_2584_hr_validate_assignment_marks" model="ir.actions.server">
+    <field name="name">HR - Validate Assignment Marks</field>
+    <field name="model_id" ref="hr_referral.model_hr_applicant"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+if record.x_studio_marks_1 > 100.0:
+   raise UserError("Assignment Marks should be Less than or Equls to 100.")
+    ]]></field>
+  </record>
+
+  <record id="server_action_2823_jin_company_id_in_update_ot" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Update OT</field>
+    <field name="model_id" ref="BugFix-HR.model_x_update_ot"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id
+    ]]></field>
+  </record>
+
+</odoo>

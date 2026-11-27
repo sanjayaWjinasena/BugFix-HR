@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Phase E - 4 views for x_paye_tax -->
+<odoo>
+  <data>
+    <record id="view_3238_default_form_view_for_x_paye_tax_e" model="ir.ui.view">
+      <field name="name">Default form view for x_paye_tax</field>
+      <field name="model">x_paye_tax</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+  <header/>
+  <sheet string="Paye Tax">
+    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="x_active == True"/>
+    <field name="x_active" invisible="1"/>
+    <div class="oe_title">
+                <h1>
+                    <field name="x_name" required="1" placeholder="Name..."/>
+                </h1>
+            </div>
+    <group name="studio_group_c9b4af">
+      <group name="studio_group_c9b4af_left">
+        <field name="x_studio_user_id" widget="many2one_avatar_user"/>
+        <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'x_color'}"/>
+      </group>
+      <group name="studio_group_c9b4af_right"/>
+    </group>
+  </sheet>
+  <div class="oe_chatter" name="oe_chatter">
+    <field name="message_follower_ids"/>
+    <field name="message_ids"/>
+    <field name="activity_ids"/>
+  </div>
+</form>
+      </field>
+    </record>
+
+    <record id="view_3237_default_list_view_for_x_paye_tax_e" model="ir.ui.view">
+      <field name="name">Default list view for x_paye_tax</field>
+      <field name="model">x_paye_tax</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+  <field name="x_studio_sequence" widget="handle"/>
+  <field name="x_name"/>
+  <field name="x_studio_user_id" widget="many2one_avatar_user"/>
+  <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'x_color'}"/>
+</tree>
+      </field>
+    </record>
+
+    <record id="view_3239_default_search_view_for_x_paye_tax_e" model="ir.ui.view">
+      <field name="name">Default search view for x_paye_tax</field>
+      <field name="model">x_paye_tax</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+        <search>
+  <field name="x_name"/>
+  <field name="x_studio_user_id"/>
+  <field name="x_studio_tag_ids"/>
+  <filter string="My Paye Tax" name="my_x_paye_tax" domain="[['x_studio_user_id', '=', uid]]"/>
+  <separator/>
+  <filter string="Archived" name="archived_x_paye_tax" domain="[['x_active', '=', False]]"/>
+  <separator/>
+  <filter name="groupby_x_user" string="Responsible" context="{'group_by': 'x_studio_user_id'}" domain="[]"/>
+</search>
+      </field>
+    </record>
+
+  </data>
+</odoo>

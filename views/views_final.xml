@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: Views final - 2 remaining views -->
+<odoo>
+  <data>
+    <record id="view_final_x_update_ot_odoo_studio_default_form_view_for_x_update_ot_customization" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default form view for x_update_ot customization</field>
+      <field name="model">x_update_ot</field>
+      <field name="type">form</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-HR.view_5528_default_form_view_for_x_update_ot_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="force_save">True</attribute>
+    <attribute name="readonly">1</attribute><attribute name="required"/></xpath>
+  <xpath expr="//group[@name='studio_group_2e1c8d_left']" position="attributes">
+    <attribute name="string">Parameters</attribute>
+  </xpath>
+  <xpath expr="//group[@name='studio_group_2e1c8d_left']" position="inside">
+    <field name="x_studio_as_on_date" string="As on Date" required="1"/>
+  </xpath>
+  <xpath expr="//group[@name='studio_group_2e1c8d_right']" position="attributes">
+    <attribute name="string">Log</attribute>
+  </xpath>
+  <xpath expr="//group[@name='studio_group_2e1c8d_right']" position="inside">
+    <field name="create_uid"/>
+    <field name="create_date"/>
+    <field name="x_studio_company_id" string="Company" force_save="True" readonly="1"/>
+  </xpath>
+  <xpath expr="//page[@name='lines']" position="attributes">
+    <attribute name="string">Employee Attendance</attribute>
+  </xpath>
+  <xpath expr="//field[@name='x_update_ot_line_ids_d5449']" position="inside">
+    <tree editable="bottom" create="false" delete="false">
+      <field name="x_studio_sequence" widget="handle"/>
+      <field optional="show" name="x_studio_employee_id" string="Employee ID" force_save="True" readonly="1"/>
+      <field optional="show" name="x_studio_check_in" string="Check In" force_save="True" readonly="1"/>
+      <field optional="show" name="x_studio_check_out" string="Check Out" force_save="True" readonly="1"/>
+      <field optional="show" name="x_studio_approve_ot" string="Approve OT"/>
+      <field optional="show" name="x_studio_attendance_id" string="Attendance Id" force_save="True" readonly="1" column_invisible="1"/>
+      <field name="x_name" column_invisible="1"/>
+    </tree>
+  </xpath>
+</data>
+      </field>
+    </record>
+
+    <record id="view_final_x_paye_tax_odoo_studio_default_list_view_for_x_paye_tax_customization" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_paye_tax customization</field>
+      <field name="model">x_paye_tax</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-HR.view_3237_default_list_view_for_x_paye_tax_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//tree[1]" position="attributes">
+    <attribute name="editable">bottom</attribute>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="string">Code</attribute>
+  <attribute name="required">1</attribute></xpath>
+  <xpath expr="//field[@name='x_name']" position="after">
+    <field name="x_studio_start_date" string="Start Date" required="1"/>
+    <field name="x_studio_end_date" string="End Date" required="1"/>
+    <field name="x_studio_from_value" string="From Value" required="1"/>
+    <field name="x_studio_to_value" string="To Value" required="1"/>
+    <field name="x_studio_tax_amount" string="Tax Amount" required="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_studio_user_id']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+
+  </data>
+</odoo>

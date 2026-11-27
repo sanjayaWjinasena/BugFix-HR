@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: access rights removed on 2026-10-06. They were entered by hand on production (Settings > Technical > Access Rights), which makes them environment data, not repo functionality; the port had also dropped their group, so they applied to every user. Kept here, commented out, so any of them can be brought back. Nothing in this file is loaded. -->
+<odoo>
+<!-- REMOVED access_6913_hr_expense_sheet (1000): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Purchase / # Jin - PO Invoicing & Payment - Inventory Credit". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_6913_hr_expense_sheet" model="ir.model.access">
+    <field name="name">hr.expense.sheet</field>
+    <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
+    <field name="group_id" ref="BugFix-Studio-Misc.group_g_purchase_jin_po_invoicing_payment_inventory_credit"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+  -->
+<!-- REMOVED access_7009_hr_expense_sheet (1000): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Accounting / Jin - Cashier". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_7009_hr_expense_sheet" model="ir.model.access">
+    <field name="name">hr.expense.sheet</field>
+    <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
+    <field name="group_id" ref="BugFix-Studio-Misc.group_g_accounting_jin_cashier"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+  -->
+<!-- REMOVED access_6915_hr_expense_sheet (1000): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Purchase / Jin - PO Invoicing & Payment - Non-Inventory Credit". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_6915_hr_expense_sheet" model="ir.model.access">
+    <field name="name">hr.expense.sheet</field>
+    <field name="model_id" ref="hr_expense.model_hr_expense_sheet"/>
+    <field name="group_id" ref="BugFix-Studio-Misc.group_g_purchase_jin_po_invoicing_payment_non_inventory_credit"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="False"/>
+    <field name="perm_create" eval="False"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+  -->
+<!-- REMOVED access_7076_hr_salary_rule_category (1110): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Payroll / Jin - HR-Payroll". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_7076_hr_salary_rule_category" model="ir.model.access">
+    <field name="name">hr.salary.rule.category</field>
+    <field name="model_id" ref="hr_payroll.model_hr_salary_rule_category"/>
+    <field name="group_id" ref="SET_GROUP"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+  -->
+<!-- REMOVED access_5949_work_entries_report (1111): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Payroll / Jin - HR-Payroll". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_5949_work_entries_report" model="ir.model.access">
+    <field name="name">Work Entries Report</field>
+    <field name="model_id" ref="hr_payroll.model_hr_work_entry_report"/>
+    <field name="group_id" ref="SET_GROUP"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="True"/>
+  </record>
+  -->
+<!-- REMOVED access_5948_hr_work_entry_type (1110): hand-made on production (hand-made (no id)); the port had dropped its group so it applied to every user. Production restricts it to group "Payroll / Jin - HR-Payroll". Uncomment (and set the group) to bring it back. -->
+  <!--
+  <record id="access_5948_hr_work_entry_type" model="ir.model.access">
+    <field name="name">HR Work Entry Type</field>
+    <field name="model_id" ref="hr_payroll.model_hr_work_entry_type"/>
+    <field name="group_id" ref="SET_GROUP"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="False"/>
+  </record>
+  -->
+</odoo>

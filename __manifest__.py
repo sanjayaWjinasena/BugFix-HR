@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 {
+    # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
     'name': 'Jinasena : Module : HR',
-    'version': '17.0.0.0.24',
+    'version': '17.0.0.0.54',
     'summary': 'Studio-to-Python port for BugFix-HR',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Human Resources',
@@ -191,18 +192,42 @@
     #     reference x_color at all.
     # Smallest hr.* port in the audit -- used to kick off a rebuild
     # of BugFix-HR after the strip cycle.
-    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_expense', 'hr_payroll', 'hr_recruitment', 'bank-data'],
+    'depends': ['base_setup', 'hr', 'hr_attendance', 'hr_contract', 'hr_holidays', 'hr_expense', 'hr_payroll', 'hr_payroll_account', 'hr_recruitment', 'bank-data', 'base_automation'],
     'data': [
+        'data/server_actions_f5.xml',
+        'data/window_actions_f4.xml',
         'data/server_actions.xml',
+        'security/ir.model.access.csv',
+        'security/removed_handmade_access_rights.xml',
         'data/automations.xml',
         'data/act_windows.xml',
         'reports/reports.xml',
         'views/hr_recruitment_stage_studio_ported.xml',
         'views/hr_contract_studio_ported.xml',
+        'data/payroll_workers_structure.xml',
         'views/hr_applicant_studio_ported.xml',
         'views/hr_employee_studio_ported.xml',
         'views/hr_expense_studio_ported.xml',
         'views/hr_payslip_studio_ported.xml',
+        'data/record_rules.xml',
+        'data/server_actions_backlog.xml',
+        'data/automations_backlog.xml',
+        'data/window_actions_backlog.xml',
+        'data/gap_automations.xml',
+        'data/record_rules_gap.xml',
+        'data/server_actions_gap.xml',
+        'data/window_actions_gap.xml',
+        'data/ir_defaults_gap.xml',  # upgrade-testing: form defaults shipped; record-specific ones commented inside
+        'views/hr_attendance_e_views.xml',
+        'views/hr_employee_e_views.xml',
+        'views/hr_job_e_views.xml',
+        'views/x_paye_tax_e_views.xml',
+        'views/x_paye_tax_tag_e_views.xml',
+        'views/x_update_ot_e_views.xml',
+        'views/views_final.xml',
+        'views/x_update_ot_line_7eea7_e_views.xml',
+        'data/menus_f6.xml',
+        'data/menus_from_routing.xml',
     ],
     'installable': True,
     'auto_install': False,

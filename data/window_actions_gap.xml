@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-HR: 4 gap window actions -->
+<odoo>
+
+
+  <record id="act_window_1559_paye_tax" model="ir.actions.act_window">
+    <field name="name">Paye Tax</field>
+    <field name="res_model">x_paye_tax</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="act_window_1560_paye_tax_tags" model="ir.actions.act_window">
+    <field name="name">Paye Tax Tags</field>
+    <field name="res_model">x_paye_tax_tag</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="act_window_2559_update_ot" model="ir.actions.act_window">
+    <field name="name">Update OT</field>
+    <field name="res_model">x_update_ot</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="act_window_2367_etf_schedule" model="ir.actions.act_window">
+    <field name="name">ETF Schedule</field>
+    <field name="res_model">hr.contract</field>
+    <field name="view_mode">kanban,tree,form,activity</field>
+  </record>
+
+</odoo>
